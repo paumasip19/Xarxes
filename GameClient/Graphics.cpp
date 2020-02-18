@@ -4,24 +4,24 @@
 
 Graphics::Graphics()
 {
-	Sala invernadero("Invernadero", 0, 0, 8, 10, sf::Color::Yellow);
-	Sala salaBillar("Sala de billar", 12, 0, 6, 10, sf::Color::Red);
-	Sala biblioteca("Biblioteca", 22, 0, 6, 10, sf::Color::Cyan);
-	Sala estudio("Estudio", 32, 0, 8, 10, sf::Color::Magenta);
-	Sala salaBaile("Sala de baile", 0, 12, 8, 6, sf::Color::Blue);
-	Sala vestibulo("vestibulo", 30, 12, 10, 8, sf::Color::White);
-	Sala cocina("cocina", 0, 20, 10, 10, sf::Color::Green);
-	Sala comedor("comedor", 13, 20, 13, 10, sf::Color(150,0,150));
-	Sala salon("salon", 30, 22, 10, 8, sf::Color(0,150,150));
-	salas[0] = invernadero;
-	salas[1] = salaBillar;
-	salas[2] = biblioteca;
-	salas[3] = estudio;
-	salas[4] = salaBaile;
-	salas[5] = vestibulo;
-	salas[6] = cocina;
-	salas[7] = comedor;
-	salas[8] = salon;
+	Sala salaArkham("Sala Arkham", 0, 0, 8, 10, sf::Color::Yellow);
+	Sala salaRapture("Sala Rapture", 12, 0, 6, 10, sf::Color::Red);
+	Sala salaProfes("Sala de Profes", 22, 0, 6, 10, sf::Color::Cyan);
+	Sala salaProyectos("Sala de Proyectos", 32, 0, 8, 10, sf::Color::Magenta);
+	Sala iglesia("Iglesia", 0, 12, 8, 6, sf::Color::Blue);
+	Sala entiPro("Enti Pro", 30, 12, 10, 8, sf::Color::White);
+	Sala secretaria("Secretaria", 0, 20, 10, 10, sf::Color::Green);
+	Sala salaPortal("Sala Portal", 13, 20, 13, 10, sf::Color(150,0,150));
+	Sala salaJuegos("Sala de Juegos", 30, 22, 10, 8, sf::Color(0,150,150));
+	salas[0] = salaArkham;
+	salas[1] = salaRapture;
+	salas[2] = salaProfes;
+	salas[3] = salaProyectos;
+	salas[4] = iglesia;
+	salas[5] = entiPro;
+	salas[6] = secretaria;
+	salas[7] = salaPortal;
+	salas[8] = salaJuegos;
 
 	centroMensajes.color = sf::Color(150,150,150);
 	centroMensajes.origen.x = 12;
@@ -32,6 +32,15 @@ Graphics::Graphics()
 
 void Graphics::DrawDungeon()
 {
+	sf::Texture texture;
+	if (!texture.loadFromFile("Jordi-Radev.jpg", sf::IntRect(0, 0, 600, 600)))
+	{
+		std::cout << "Loser";
+	}
+
+	sf::Sprite sprite;
+	sprite.setTexture(texture);
+
 	sf::RenderWindow _window(sf::VideoMode(800, 600), "Ventanita");
 	sf::RectangleShape shape(sf::Vector2f(SIZE, SIZE));
 	shape.setOutlineColor(sf::Color::Black);
@@ -76,10 +85,7 @@ void Graphics::DrawDungeon()
 		{
 			for (int j = 0; j < H_WINDOW_TITLE; j++)
 			{
-
 				shape.setFillColor(sf::Color(90, 90, 90, 255));
-
-
 				shape.setPosition(sf::Vector2f(i*SIZE, j*SIZE));
 				_window.draw(shape);
 			}
@@ -92,8 +98,8 @@ void Graphics::DrawDungeon()
 		}
 		centroMensajes.Draw(_window);
 
-		/*sf::Vector2f position;
-		position.x = 0; position.y = 0;
+		sf::Vector2f position;
+		position.x = 9; position.y = 0;
 		shape.setFillColor(sf::Color::Blue);
 		shape.setFillColor(sf::Color(0, 0, 255, 255));
 		shape.setPosition(sf::Vector2f(position.x*SIZE, position.y*SIZE));
@@ -103,7 +109,9 @@ void Graphics::DrawDungeon()
 		shape.setFillColor(sf::Color::Green);
 		shape.setFillColor(sf::Color(255, 255, 0, 255));
 		shape.setPosition(sf::Vector2f(position.x*SIZE, position.y*SIZE));
-		_window.draw(shape);*/
+		_window.draw(shape);
+
+		_window.draw(sprite);
 
 		_window.display();
 	}
