@@ -32,14 +32,14 @@ Graphics::Graphics()
 
 void Graphics::DrawDungeon()
 {
-	sf::Texture texture;
+	/*sf::Texture texture;
 	if (!texture.loadFromFile("Jordi-Radev.jpg", sf::IntRect(0, 0, 600, 600)))
 	{
 		std::cout << "Loser";
-	}
+	}*/
 
-	sf::Sprite sprite;
-	sprite.setTexture(texture);
+	//sf::Sprite sprite;
+	//sprite.setTexture(texture);
 
 	sf::RenderWindow _window(sf::VideoMode(800, 600), "Ventanita");
 	sf::RectangleShape shape(sf::Vector2f(SIZE, SIZE));
@@ -111,7 +111,7 @@ void Graphics::DrawDungeon()
 		shape.setPosition(sf::Vector2f(position.x*SIZE, position.y*SIZE));
 		_window.draw(shape);
 
-		_window.draw(sprite);
+		//_window.draw(sprite);
 
 		_window.display();
 	}
