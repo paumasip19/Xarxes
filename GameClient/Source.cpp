@@ -10,19 +10,37 @@
 
 #define MAX_PLAYERS 4
 
-bool Receive(sf::TcpSocket& socket, std::string& cabezera, std::string& mensaje)
+void Receive(sf::TcpSocket& socket, std::string& cabezera, std::string& mensaje)
 {
 	sf::Packet packet;
 	socket.receive(packet);
 	if ((packet >> mensaje)) //Si recogemos el packet
 	{
-		cabezera = mensaje;
-		cabezera.erase(cabezera.begin() + 3, cabezera.end());
-		mensaje.erase(0,3);
-		return true;
+		std::string delimiter = "_";
+
+		size_t pos = 0;
+		while ((pos = mensaje.find(delimiter)) != std::string::npos) {
+			cabezera = mensaje.substr(0, pos);
+			mensaje.erase(0, pos + delimiter.length());
+		}
 	}
-	return false;
+	
 }
+
+
+//bool Receive(sf::TcpSocket& socket, std::string& cabezera, std::string& mensaje)
+//{
+//	sf::Packet packet;
+//	socket.receive(packet);
+//	if ((packet >> mensaje)) //Si recogemos el packet
+//	{
+//		cabezera = mensaje;
+//		cabezera.erase(cabezera.begin() + 3, cabezera.end());
+//		mensaje.erase(0,3);
+//		return true;
+//	}
+//	return false;
+//}
 
 void messageConverted(std::string& tipo, std::string& _mensaje, int& _mensajeA, float& _mensajeB, std::string& _mensajeC)
 {
@@ -51,6 +69,7 @@ void messageConverted(std::string& tipo, std::string& _mensaje, int& _mensajeA, 
 }
 
 
+
 int main()
 {
 	bool running = true;
@@ -72,41 +91,62 @@ int main()
 
 	// ESPERANDO JUGADORES
 	int numPlayersConnected = 0;
-	int mensajeA = 0;
+	/*int mensajeA = 0;
 	float mensajeB = 0;
 	std::string mensajeC = " ";
 	std::string mensaje = "_";
-	std::string tipoMensaje;
+	std::string tipoMensaje;*/
+
+	std::string c;
+	std::string m;
 
 	while (numPlayersConnected < 4)
 	{
-		if (Receive(socket, tipoMensaje, mensaje))
+		Receive(socket, c, m);
+
+		if (c == "NEWPLAYER")
+		{
+			numPlayersConnected++;
+			std::cout << "Hay " + std::to_string(numPlayersConnected) << " jugadores de 4 conectados. Esperando mas jugadores..." << std::endl;
+			
+		}
+
+		/*if ()
 		{
 			messageConverted(tipoMensaje, mensaje, mensajeA, mensajeB, mensajeC);
 			if (mensajeA != numPlayersConnected)
 			{
 				numPlayersConnected = mensajeA;
-				std::cout << "Hay " + std::to_string(numPlayersConnected) << " jugadores de 4 conectados. Esperando mas jugadores..." << std::endl;
+				
 			}
-		}
+		}*/
 	}
 
 	//INICIO DE PARTIDA
 	std::cout << "Comienza la partida!!!" << std::endl;
 
-	while (initGame)
-	{
-
-	}
-
+	PlayerInfo player;
 
 	while (running)
 	{
-		
+		Cabezera cabezera = Cabezera::INITIALIZEPLAYER;
 
+		//Receive();
+
+
+		switch (cabezera)
+		{
+			case Cabezera::INITIALIZEPLAYER:
+				//Recibir Personaje
+				//Recibir cartas
+				break;
+
+			default:
+				break;
+		}
+
+		g.DrawDungeon();
 	}
-
-	g.DrawDungeon();
 
 	return 0;
 }

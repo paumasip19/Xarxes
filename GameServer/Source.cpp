@@ -3,24 +3,33 @@
 #include <SFML\Graphics.hpp>
 #include <SFML\Network.hpp>
 #include <PlayerInfo.h>
+#include "Utilities.cpp"
 #include <vector>
 #include <string>
 
 #define MAX_PLAYERS 4
 
-struct Client
+bool Send(Cabezera cabezera, std::string valor, Client client, bool checkingConection)
 {
-	sf::TcpSocket* socket;
-	sf::Socket::Status status;
-};
+	std::string cab;
 
-bool Send(std::string cabezera, std::string valor, Client client, bool checkingConection)
-{
+	switch (cabezera)
+	{
+		case Cabezera::NEWPLAYER:
+			cab = "NEWPLAYER";
+			break;
+		case Cabezera::INITIALIZEPLAYER:
+			cab = "INITIALIZEPLAYER";
+			break;
+		default:
+			break;
+	}
+
 	if (!checkingConection)
 	{
 		sf::Packet pack;
-		cabezera = cabezera + valor;
-		pack << cabezera;
+		cab = cab + "_" + valor;
+		pack << cab;
 
 		client.status = client.socket->send(pack);
 		if (client.status != sf::Socket::Done)
@@ -42,11 +51,14 @@ bool Send(std::string cabezera, std::string valor, Client client, bool checkingC
 	}
 }
 
-void Send(std::string cabezera, std::string valor, std::vector<Client> clientes)
+void Send(Cabezera cabezera, std::string valor, std::vector<Client> clientes)
 {
+	std::string cab;
+	cab = std::to_string(cabezera);
+
 	sf::Packet pack;
-	pack << (cabezera.size() + valor.size());
-	pack << cabezera << valor;
+	cab = cab + "_" + valor;
+	pack << cab;
 
 	for (int i = 0; i < clientes.size(); i++)
 	{
@@ -55,14 +67,17 @@ void Send(std::string cabezera, std::string valor, std::vector<Client> clientes)
 		{
 			std::cout << "Error al enviar mensaje" << std::endl;
 		}
+		
+		if (clientes[i].status == sf::Socket::Disconnected)
+		{
+			std::cout << "Jugador desconectado" << std::endl;
+		}
 	}
 }
 
 
 int main()
 {
-	//PlayerInfo playerInfo;
-
 	bool running = true;
 	std::string tipoMensaje = "int";
 
@@ -98,11 +113,15 @@ int main()
 
 						conexiones.push_back(c);
 						selector.add(*sock);
-						int actualizarContadores = true;
+
+						Send(Cabezera::NEWPLAYER, std::to_string(conexiones.size()), conexiones);
+
+
+						/*int actualizarContadores = true;
 
 						for (int i = 0; i < conexiones.size(); i++) //Miramos si alguien se ha desconectado
 						{
-							if (!(Send("", "", conexiones[i], true)))
+							if (!(Send(Cabezera::NEWPLAYER, "", conexiones[i], true)))
 							{
 								actualizarContadores = false;
 								for (int j = 0; j < conexiones.size(); j++) // A todos los jugadores
@@ -123,11 +142,28 @@ int main()
 							{
 								bool value = Send(tipoMensaje, std::to_string(conexiones.size()), conexiones[i], false);
 							}
-						}
+						}*/
 					}
 				}
 			}
 		}
+
+		std::vector<sf::Color> avatares = { sf::Color::Green,
+			sf::Color::Red,
+			sf::Color::Blue,
+			sf::Color::Magenta,
+			sf::Color::Yellow,
+			sf::Color::Black, };
+
+		std::vector<Carta> barajaComleta;
+
+		inicializarBaraja(barajaComleta);
+
+		std::vector<Carta> solucion;
+
+		inicializarJuego(barajaComleta, solucion, conexiones, avatares);
+
+		//Envia cartas y avatar
 
 		while (running)
 		{
