@@ -10,16 +10,18 @@
 
 #define MAX_PLAYERS 4
 
-void Receive(sf::TcpSocket& socket, std::string& cabezera, std::string& mensaje)
+bool Receive(sf::TcpSocket& socket, std::string& cabezera, std::string& mensaje)
 {
 	sf::Packet packet;
 	socket.receive(packet);
-	if ((packet >> mensaje)) //Packet Lleno
+	if ((packet >> mensaje)) //Si recogemos el packet
 	{
 		cabezera = mensaje;
 		cabezera.erase(cabezera.begin() + 3, cabezera.end());
 		mensaje.erase(0,3);
+		return true;
 	}
+	return false;
 }
 
 void messageConverted(std::string& tipo, std::string& _mensaje, int& _mensajeA, float& _mensajeB, std::string& _mensajeC)
@@ -69,21 +71,23 @@ int main()
 	}
 
 	// ESPERANDO JUGADORES
-	int numPlayersConnected = 1;
+	int numPlayersConnected = 0;
 	int mensajeA = 0;
 	float mensajeB = 0;
 	std::string mensajeC = " ";
-	std::string mensaje;
+	std::string mensaje = "_";
 	std::string tipoMensaje;
 
 	while (numPlayersConnected < 4)
 	{
-		Receive(socket, tipoMensaje, mensaje);
-		messageConverted(tipoMensaje, mensaje, mensajeA, mensajeB, mensajeC);
-		if (mensajeA != numPlayersConnected)
+		if (Receive(socket, tipoMensaje, mensaje))
 		{
-			numPlayersConnected = mensajeA;
-			std::cout << "Hay " + std::to_string(numPlayersConnected) << " jugadores de 4 conectados. Esperando mas jugadores..." << std::endl;
+			messageConverted(tipoMensaje, mensaje, mensajeA, mensajeB, mensajeC);
+			if (mensajeA != numPlayersConnected)
+			{
+				numPlayersConnected = mensajeA;
+				std::cout << "Hay " + std::to_string(numPlayersConnected) << " jugadores de 4 conectados. Esperando mas jugadores..." << std::endl;
+			}
 		}
 	}
 

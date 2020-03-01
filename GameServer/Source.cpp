@@ -14,16 +14,31 @@ struct Client
 	sf::Socket::Status status;
 };
 
-void Send(std::string cabezera, std::string valor, Client client)
+bool Send(std::string cabezera, std::string valor, Client client, bool checkingConection)
 {
-	sf::Packet pack;
-	cabezera = cabezera + valor;
-	pack << cabezera;
-
-	client.status = client.socket->send(pack);
-	if (client.status != sf::Socket::Done)
+	if (!checkingConection)
 	{
-		std::cout << "Error al enviar mensaje o jugador desconectado" << std::endl;
+		sf::Packet pack;
+		cabezera = cabezera + valor;
+		pack << cabezera;
+
+		client.status = client.socket->send(pack);
+		if (client.status != sf::Socket::Done)
+		{
+			std::cout << "Error al enviar mensaje" << std::endl;
+		}
+		return true;
+	}
+	else
+	{
+		sf::Packet pack;
+		client.status = client.socket->send(pack);
+		if (client.status != sf::Socket::Done)
+		{
+			std::cout << "Jugador desconectado" << std::endl;
+			return false;
+		}
+		return true;
 	}
 }
 
@@ -83,23 +98,31 @@ int main()
 
 						conexiones.push_back(c);
 						selector.add(*sock);
+						int actualizarContadores = true;
 
-						//Enviar numero de jugadores conectados
-						for (int i = 0; i < conexiones.size(); i++)
+						for (int i = 0; i < conexiones.size(); i++) //Miramos si alguien se ha desconectado
 						{
-							Send(tipoMensaje, std::to_string(conexiones.size()), conexiones[i]);
-							//if (!(Send(tipoMensaje, std::to_string(conexiones.size()), conexiones[i]))) // Mira si aún puede enviar algo
-							//{
-							//	for (int j = 0; j < conexiones.size(); j++) // A todos los jugadores
-							//	{
-							//		if (i != j) // Si no es el jugador desconectado
-							//		{
-							//			Send(tipoMensaje, std::to_string(conexiones.size() - 1), conexiones[j]);
-							//		}
-							//	}
-							//	conexiones[i].socket->disconnect();
-							//	conexiones.erase(conexiones.begin() + i);
-							//}
+							if (!(Send("", "", conexiones[i], true)))
+							{
+								actualizarContadores = false;
+								for (int j = 0; j < conexiones.size(); j++) // A todos los jugadores
+								{
+									if (i != j) // Si no es el jugador desconectado
+									{
+										bool value = Send(tipoMensaje, std::to_string(conexiones.size() - 1), conexiones[j], false);
+									}
+								}
+								conexiones.erase(conexiones.begin() + i);
+								i--;
+							}
+						}
+
+						if (actualizarContadores) // Si actualizamos contador
+						{
+							for (int i = 0; i < conexiones.size(); i++)
+							{
+								bool value = Send(tipoMensaje, std::to_string(conexiones.size()), conexiones[i], false);
+							}
 						}
 					}
 				}
