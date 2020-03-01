@@ -8,25 +8,22 @@
 
 #define MAX_PLAYERS 4
 
-enum cabezeras { INT, FLOAT, STRING };
-
 struct Client
 {
 	sf::TcpSocket* socket;
 	sf::Socket::Status status;
 };
 
-void Send(cabezeras a, std::string valor, Client client)
+void Send(std::string cabezera, std::string valor, Client client)
 {
 	sf::Packet pack;
-
-	pack << (sizeof(a) + valor.size());
-	pack << a << valor;
+	cabezera = cabezera + valor;
+	pack << cabezera;
 
 	client.status = client.socket->send(pack);
 	if (client.status != sf::Socket::Done)
 	{
-		std::cout << "Error al enviar mensaje" << std::endl;
+		std::cout << "Error al enviar mensaje o jugador desconectado" << std::endl;
 	}
 }
 
@@ -52,7 +49,7 @@ int main()
 	//PlayerInfo playerInfo;
 
 	bool running = true;
-	int numPlayers = MAX_PLAYERS;
+	std::string tipoMensaje = "int";
 
 	std::vector<Client> conexiones;
 	sf::TcpListener listener;
@@ -90,7 +87,19 @@ int main()
 						//Enviar numero de jugadores conectados
 						for (int i = 0; i < conexiones.size(); i++)
 						{
-							Send(cabezeras::INT, std::to_string(conexiones.size()), conexiones[i]);
+							Send(tipoMensaje, std::to_string(conexiones.size()), conexiones[i]);
+							//if (!(Send(tipoMensaje, std::to_string(conexiones.size()), conexiones[i]))) // Mira si aún puede enviar algo
+							//{
+							//	for (int j = 0; j < conexiones.size(); j++) // A todos los jugadores
+							//	{
+							//		if (i != j) // Si no es el jugador desconectado
+							//		{
+							//			Send(tipoMensaje, std::to_string(conexiones.size() - 1), conexiones[j]);
+							//		}
+							//	}
+							//	conexiones[i].socket->disconnect();
+							//	conexiones.erase(conexiones.begin() + i);
+							//}
 						}
 					}
 				}
@@ -100,25 +109,6 @@ int main()
 		while (running)
 		{
 			//Logica del juego
-			for (int i = 0; i < numPlayers; i++)
-			{
-				if (conexiones[i].status != sf::Socket::Done)
-				{
-					std::string a = "El jugador " + (i + 1); // Hay que cambiar el número por su ficha de personaje
-					std::string b = a + " tambien ha muerto. Atentamente vuestro querido asesino";
-					conexiones[i].socket->disconnect();
-					for (int j = 0; j < MAX_PLAYERS; j++)
-					{
-						if (i != j)
-						{
-							Send(cabezeras::STRING, b, conexiones[j]);
-						}
-					}
-					conexiones.erase(conexiones.begin() + i);
-				}
-
-
-			}
 		}
 
 		//Organizacion del servidor

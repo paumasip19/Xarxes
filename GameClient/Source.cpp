@@ -10,53 +10,49 @@
 
 #define MAX_PLAYERS 4
 
-enum cabezeras { INT, FLOAT, STRING };
-
-int Receive(sf::TcpSocket& socket, int cabezera, std::string& mensaje)
+void Receive(sf::TcpSocket& socket, std::string& cabezera, std::string& mensaje)
 {
 	sf::Packet packet;
 	socket.receive(packet);
-	if (!(packet >> cabezera))
+	if ((packet >> mensaje)) //Packet Lleno
 	{
-		packet >> cabezera >> mensaje;
-		std::cout << cabezera << std::endl;
-		return cabezera;
+		cabezera = mensaje;
+		cabezera.erase(cabezera.begin() + 3, cabezera.end());
+		mensaje.erase(0,3);
 	}
-	else { std::cout << "-1" << std::endl; return -1; }
 }
 
-void messageConverted(const int tipo, std::string& _mensaje, int& _mensajeA, float& _mensajeB, std::string& _mensajeC)
+void messageConverted(std::string& tipo, std::string& _mensaje, int& _mensajeA, float& _mensajeB, std::string& _mensajeC)
 {
 	if (_mensajeC != _mensaje &&			// Si alguno de los mensajes anteriores 
 		_mensajeA != std::stoi(_mensaje) &&	// no coincide con la version anterior.
 		_mensajeB != std::stof(_mensaje) &&
 		_mensaje.size() > 0)				// Si el tamaño del mensaje ha dejado de ser 0.
 	{
-		switch (tipo)
+		if (tipo == "int")
 		{
-		case cabezeras::INT:
 			_mensajeA = std::stoi(_mensaje);
-			break;
-
-		case cabezeras::FLOAT:
-			_mensajeB = std::stof(_mensaje);
-			break;
-
-		case cabezeras::STRING:
-			_mensajeC = _mensaje;
-			std::cout << _mensajeC << std::endl;
-			break;
-
-		default: // En caso de no recibir nada
-			break;
 		}
+
+		else if (tipo == "flt")
+		{
+			_mensajeB = std::stof(_mensaje);
+		}
+
+		else if(tipo == "str")
+		{
+			_mensajeC = _mensaje;
+		}
+
+		else { std::cout << "nada" << std::endl; }
 	}
 }
 
 
 int main()
 {
-	bool running = false;
+	bool running = true;
+	bool initGame = true;
 	Graphics g;
 
 	// CONEXIÓN A SERVER
@@ -74,32 +70,35 @@ int main()
 
 	// ESPERANDO JUGADORES
 	int numPlayersConnected = 1;
-	std::cout << "Hay " + std::to_string(numPlayersConnected) << " jugadores de 4 conectados. Esperando..." << std::endl;
-	
-	int mensajeA = 1;
-	float mensajeB = 1;
+	int mensajeA = 0;
+	float mensajeB = 0;
 	std::string mensajeC = " ";
-	std::string mensaje = " ";
+	std::string mensaje;
+	std::string tipoMensaje;
 
 	while (numPlayersConnected < 4)
 	{
-		int tipoMensaje = Receive(socket, 0, mensaje);
+		Receive(socket, tipoMensaje, mensaje);
 		messageConverted(tipoMensaje, mensaje, mensajeA, mensajeB, mensajeC);
 		if (mensajeA != numPlayersConnected)
 		{
 			numPlayersConnected = mensajeA;
-			//std::cout << "Hay " + numPlayersConnected;
-			//std::cout << "jugadores de 4 conectados. Esperando..." << std::endl;
+			std::cout << "Hay " + std::to_string(numPlayersConnected) << " jugadores de 4 conectados. Esperando mas jugadores..." << std::endl;
 		}
 	}
 
 	//INICIO DE PARTIDA
 	std::cout << "Comienza la partida!!!" << std::endl;
 
+	while (initGame)
+	{
+
+	}
+
+
 	while (running)
 	{
-		/*int tipoMensaje = Receive(socket, 0, mensaje);
-		messageConverted(tipoMensaje, mensaje, mensajeA, mensajeB, mensajeC);*/
+		
 
 	}
 
