@@ -11,6 +11,12 @@ struct Carta {
 	TipoCarta tipo;
 	std::string nombre;
 
+	Carta()
+	{
+		nombre = "";
+		tipo = TipoCarta();
+	}
+
 	Carta(TipoCarta t, std::string n)
 	{
 		nombre = n;

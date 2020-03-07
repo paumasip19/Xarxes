@@ -31,18 +31,39 @@ void inicializarBaraja(std::vector<Carta> &b)
 void inicializarJuego(std::vector<Carta> baraja, std::vector<Carta> &solucion, std::vector<Client> &con , std::vector<sf::Color> &av)
 {
 	//Pillar 3 cartas en solucion
-	
-	int value = rand() % 6;
-	solucion.push_back(baraja[value]);
-	baraja.erase(baraja.begin()+value);
-
-	value = rand() % 11 + 5;
-	solucion.push_back(baraja[value]);
-	baraja.erase(baraja.begin() + value);
-
-	value = rand() % 19 + 10;
-	solucion.push_back(baraja[value]);
-	baraja.erase(baraja.begin() + value);
+	int i = 0;
+	int value = 0;
+	while (solucion.size() < 3)
+	{
+		value = rand() % baraja.size();
+		if (i == 0)
+		{
+			if (baraja[value].tipo == TipoCarta::PERSONAJE)
+			{
+				solucion.push_back(baraja[value]);
+				baraja.erase(baraja.begin() + value);
+				i++;
+			}
+		}
+		else if (i == 1)
+		{
+			if (baraja[value].tipo == TipoCarta::ARMA)
+			{
+				solucion.push_back(baraja[value]);
+				baraja.erase(baraja.begin() + value);
+				i++;
+			}
+		}
+		else if (i == 2)
+		{
+			if (baraja[value].tipo == TipoCarta::HABITACION)
+			{
+				solucion.push_back(baraja[value]);
+				baraja.erase(baraja.begin() + value);
+				i++;
+			}
+		}
+	}
 
 	//Asignar manos a los clientes
 	int numCartas = baraja.size();
@@ -57,7 +78,7 @@ void inicializarJuego(std::vector<Carta> baraja, std::vector<Carta> &solucion, s
 		con[j].player.mano.push_back(baraja[value]);
 		baraja.erase(baraja.begin() + value);
 
-		if (j == numJugadores)
+		if (j == numJugadores - 1)
 		{
 			j = 0;
 		}

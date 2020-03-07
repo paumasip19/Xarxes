@@ -9,49 +9,7 @@
 
 #define MAX_PLAYERS 4
 
-bool Send(Cabezera cabezera, std::string valor, Client client, bool checkingConection)
-{
-	std::string cab;
-
-	switch (cabezera)
-	{
-		case Cabezera::NEWPLAYER:
-			cab = "NEWPLAYER";
-			break;
-		case Cabezera::INITIALIZEPLAYER:
-			cab = "INITIALIZEPLAYER";
-			break;
-		default:
-			break;
-	}
-
-	if (!checkingConection)
-	{
-		sf::Packet pack;
-		cab = cab + "_" + valor;
-		pack << cab;
-
-		client.status = client.socket->send(pack);
-		if (client.status != sf::Socket::Done)
-		{
-			std::cout << "Error al enviar mensaje" << std::endl;
-		}
-		return true;
-	}
-	else
-	{
-		sf::Packet pack;
-		client.status = client.socket->send(pack);
-		if (client.status != sf::Socket::Done)
-		{
-			std::cout << "Jugador desconectado" << std::endl;
-			return false;
-		}
-		return true;
-	}
-}
-
-void Send(Cabezera cabezera, std::string valor, std::vector<Client> clientes)
+void Send(Cabezera cabezera, std::string valor, std::vector<Client> &clientes)
 {
 	std::string cab;
 	cab = std::to_string(cabezera);
@@ -63,21 +21,62 @@ void Send(Cabezera cabezera, std::string valor, std::vector<Client> clientes)
 	for (int i = 0; i < clientes.size(); i++)
 	{
 		clientes[i].status = clientes[i].socket->send(pack);
-		if (clientes[i].status != sf::Socket::Done)
+		if (clientes[i].status == sf::Socket::Done)
+		{
+			std::cout << "Enviado Correctamente" << std::endl;
+		}
+		else if (clientes[i].status != sf::Socket::Done)
 		{
 			std::cout << "Error al enviar mensaje" << std::endl;
 		}
-		
+
 		if (clientes[i].status == sf::Socket::Disconnected)
 		{
-			std::cout << "Jugador desconectado" << std::endl;
+			clientes.erase(clientes.begin() + i);
+			std::cout << "Desconectado" << std::endl;
+			Send(Cabezera::NEWPLAYER, std::to_string(clientes.size()), clientes);
 		}
 	}
 }
 
+void Send(Cabezera cabezera, std::string valor, std::vector<Client> &clientes, Client &cliente)
+{
+	std::string cab;
+	cab = std::to_string(cabezera);
+
+	sf::Packet pack;
+	cab = cab + "_" + valor;
+	pack << cab;
+
+	cliente.status = cliente.socket->send(pack);
+	if (cliente.status == sf::Socket::Done)
+	{
+		std::cout << "Enviado Correctamente" << std::endl;
+	}
+	else if (cliente.status != sf::Socket::Done)
+	{
+		std::cout << "Error al enviar mensaje" << std::endl;
+	}
+
+	if (cliente.status == sf::Socket::Disconnected)
+	{
+		for (int i = 0; i < clientes.size(); i++)
+		{
+			if (cliente.player.avatar == clientes[i].player.avatar)
+			{
+				clientes.erase(clientes.begin() + i);
+				std::cout << "Desconectado" << std::endl;
+				Send(Cabezera::NEWPLAYER, std::to_string(clientes.size()), clientes);
+			}
+		}	
+	}
+	
+}
 
 int main()
 {
+	srand(time(NULL));
+
 	bool running = true;
 	std::string tipoMensaje = "int";
 
@@ -145,15 +144,19 @@ int main()
 						}*/
 					}
 				}
+				else
+				{
+					Send(Cabezera::NEWPLAYER, std::to_string(conexiones.size()), conexiones);
+				}
 			}
 		}
 
 		std::vector<sf::Color> avatares = { sf::Color::Green,
-			sf::Color::Red,
+			sf::Color::Red, 
 			sf::Color::Blue,
 			sf::Color::Magenta,
 			sf::Color::Yellow,
-			sf::Color::Black, };
+			sf::Color::Black };
 
 		std::vector<Carta> barajaComleta;
 
@@ -163,7 +166,25 @@ int main()
 
 		inicializarJuego(barajaComleta, solucion, conexiones, avatares);
 
-		//Envia cartas y avatar
+		for (int i = 0; i < conexiones.size(); i++)
+		{
+			std::string temp;
+
+			for (int j = 0; j < conexiones[i].player.mano.size(); j++)
+			{
+				temp += std::to_string(conexiones[i].player.mano[j].tipo);
+				temp += conexiones[i].player.mano[j].nombre;
+				temp += "-";
+			}
+
+			temp += "/";
+
+			temp += std::to_string(conexiones[i].player.avatar.r);
+			temp += std::to_string(conexiones[i].player.avatar.g);
+			temp += std::to_string(conexiones[i].player.avatar.b);
+
+			Send(Cabezera::INITIALIZEPLAYER, temp, conexiones, conexiones[i]);
+		}
 
 		while (running)
 		{

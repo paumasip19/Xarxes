@@ -10,8 +10,9 @@
 
 #define MAX_PLAYERS 4
 
-void Receive(sf::TcpSocket& socket, std::string& cabezera, std::string& mensaje)
+void Receive(sf::TcpSocket& socket, Cabezera& cabezera, std::string& mensaje)
 {
+	std::string cab = "";
 	sf::Packet packet;
 	socket.receive(packet);
 	if ((packet >> mensaje)) //Si recogemos el packet
@@ -20,9 +21,11 @@ void Receive(sf::TcpSocket& socket, std::string& cabezera, std::string& mensaje)
 
 		size_t pos = 0;
 		while ((pos = mensaje.find(delimiter)) != std::string::npos) {
-			cabezera = mensaje.substr(0, pos);
+			cab = mensaje.substr(0, pos);
 			mensaje.erase(0, pos + delimiter.length());
 		}
+
+		cabezera = (Cabezera)std::stoi(cab);
 	}
 	
 }
@@ -97,17 +100,17 @@ int main()
 	std::string mensaje = "_";
 	std::string tipoMensaje;*/
 
-	std::string c;
+	Cabezera c;
 	std::string m;
 
 	while (numPlayersConnected < 4)
 	{
 		Receive(socket, c, m);
 
-		if (c == "NEWPLAYER")
+		if (c == Cabezera::NEWPLAYER)
 		{
-			numPlayersConnected++;
-			std::cout << "Hay " + std::to_string(numPlayersConnected) << " jugadores de 4 conectados. Esperando mas jugadores..." << std::endl;
+			numPlayersConnected = std::stoi(m);
+			std::cout << "Hay " + m + " jugadores de 4 conectados. Esperando mas jugadores..." << std::endl;
 			
 		}
 
@@ -129,17 +132,54 @@ int main()
 
 	while (running)
 	{
-		Cabezera cabezera = Cabezera::INITIALIZEPLAYER;
+		std::string delimiter1;
+		std::string delimiter2;
+		std::string temp;
 
-		//Receive();
+		size_t pos = 0;
 
+		Receive(socket, c, m);
 
-		switch (cabezera)
+		switch (c)
 		{
-			case Cabezera::INITIALIZEPLAYER:
-				//Recibir Personaje
-				//Recibir cartas
-				break;
+			case Cabezera::INITIALIZEPLAYER: //0Ruth-1Phaser-0Oriol-2SalaDeJocs/sjdbjsadiuandiuasudausdsa	
+				delimiter1 = "-";
+				delimiter2 = "/";
+				temp = "";
+
+				while ((pos = m.find(delimiter1)) != std::string::npos) {
+					std::string temp = m.substr(0, pos);
+					m.erase(0, pos + delimiter1.length());
+
+					player.mano.push_back(Carta(TipoCarta((int)(temp[0] - 48)), temp.substr(1, temp.length() - 1)));
+				}
+
+				temp = m.substr(1, m.length()-1);
+
+				if (temp == "000")
+				{
+					player.avatar = sf::Color::Black;
+					//Posiciones
+				}	
+				else if (temp == "255255255") {
+					player.avatar = sf::Color::White;
+				}
+				else if (temp == "02550") {
+					player.avatar = sf::Color::Green;
+				}
+				else if (temp == "2550255") {
+					player.avatar = sf::Color::Magenta;
+				}
+				else if (temp == "00255") {
+					player.avatar = sf::Color::Blue;
+				}
+				else if (temp == "25500") {
+					player.avatar = sf::Color::Red;
+				}
+				else if (temp == "2552550") {
+					player.avatar = sf::Color::Yellow;
+				}
+			break;
 
 			default:
 				break;
