@@ -3,4 +3,4 @@ d:\program files (x86)\xite\desktop\xarxes\gamelib\utilities.cpp(69): warning C4
 d:\program files (x86)\xite\desktop\xarxes\gamelib\utilities.cpp(70): warning C4267: '=': conversión de 'size_t' a 'int'; posible pérdida de datos
 d:\program files (x86)\xite\desktop\xarxes\gamelib\utilities.cpp(72): warning C4267: 'inicializando': conversión de 'size_t' a 'int'; posible pérdida de datos
 d:\program files (x86)\xite\desktop\xarxes\gameserver\source.cpp(78): warning C4244: 'argumento': conversión de 'time_t' a 'unsigned int'; posible pérdida de datos
-LINK : fatal error LNK1104: no se puede abrir el archivo 'GameLib.lib'
+  GameServer.vcxproj -> D:\Program Files (x86)\Xite\Desktop\Xarxes\x64\Debug\GameServer.exe

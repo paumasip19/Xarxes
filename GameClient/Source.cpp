@@ -157,7 +157,9 @@ int main()
 					m.erase(0, pos + delimiter1.length());
 
 					player.mano.push_back(Carta(TipoCarta((int)(temp[0] - 48)), temp.substr(1, temp.length() - 1)));
-				}			
+				}		
+
+				m.erase(m.begin());
 
 				while ((pos = m.find(delimiter2)) != std::string::npos) {
 					std::string temp = m.substr(0, pos);
@@ -165,25 +167,25 @@ int main()
 
 					if (temp == "000")
 					{						
-						p.push_back(GraphicPlayer(sf::Color::Black, sf::Vector2f(0 * SIZE, 0 * SIZE)));
+						p.push_back(GraphicPlayer(sf::Color::Black, sf::Vector2f(1 * SIZE, 1 * SIZE)));
 					}
 					else if (temp == "255255255") {
-						p.push_back(GraphicPlayer(sf::Color::White, sf::Vector2f(0 * SIZE, 0 * SIZE)));
+						p.push_back(GraphicPlayer(sf::Color::White, sf::Vector2f(2 * SIZE, 2 * SIZE)));
 					}
 					else if (temp == "02550") {
-						p.push_back(GraphicPlayer(sf::Color::Green, sf::Vector2f(0 * SIZE, 0 * SIZE)));
+						p.push_back(GraphicPlayer(sf::Color::Green, sf::Vector2f(3 * SIZE, 3 * SIZE)));
 					}
 					else if (temp == "2550255") {
-						p.push_back(GraphicPlayer(sf::Color::Magenta, sf::Vector2f(0 * SIZE, 0 * SIZE)));
+						p.push_back(GraphicPlayer(sf::Color::Magenta, sf::Vector2f(4 * SIZE, 4 * SIZE)));
 					}
 					else if (temp == "00255") {
-						p.push_back(GraphicPlayer(sf::Color::Blue, sf::Vector2f(0 * SIZE, 0 * SIZE)));
+						p.push_back(GraphicPlayer(sf::Color::Blue, sf::Vector2f(5 * SIZE, 5 * SIZE)));
 					}
 					else if (temp == "25500") {
-						p.push_back(GraphicPlayer(sf::Color::Red, sf::Vector2f(0 * SIZE, 0 * SIZE)));
+						p.push_back(GraphicPlayer(sf::Color::Red, sf::Vector2f(6 * SIZE, 6 * SIZE)));
 					}
 					else if (temp == "2552550") {
-						p.push_back(GraphicPlayer(sf::Color::Yellow, sf::Vector2f(0 * SIZE, 0 * SIZE)));
+						p.push_back(GraphicPlayer(sf::Color::Yellow, sf::Vector2f(7 * SIZE, 7 * SIZE)));
 					}
 
 					player.avatar = p[0].color;

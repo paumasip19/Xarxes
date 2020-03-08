@@ -194,6 +194,8 @@ int main()
 				}			
 			}
 
+			temp += "/";
+
 			Send(Cabezera::INITIALIZEPLAYER, temp, conexiones, conexiones[i]);
 		}
 

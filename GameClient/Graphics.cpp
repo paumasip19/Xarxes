@@ -108,7 +108,7 @@ void Graphics::DrawDungeon()
 		centroMensajes.Draw(_window);
 
 
-		for (int i = 0; i < gPlayers.size(); i++)
+		for (int i = gPlayers.size()-1; i >= 0; i--)
 		{
 			_window.draw(gPlayers[i].shape);
 		}

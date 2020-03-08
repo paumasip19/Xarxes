@@ -36,6 +36,7 @@ d:\program files (x86)\xite\desktop\xarxes\gameclient\graphics.h(45): warning C4
           [
               T=float
           ]
+d:\program files (x86)\xite\desktop\xarxes\gameclient\graphics.cpp(111): warning C4267: 'inicializando': conversión de 'size_t' a 'int'; posible pérdida de datos
   Source.cpp
 d:\program files (x86)\xite\desktop\xarxes\gameclient\graphics.h(30): warning C4244: '=': conversión de 'int' a 'T'; posible pérdida de datos
           with
@@ -75,4 +76,4 @@ d:\program files (x86)\xite\desktop\xarxes\gameclient\graphics.h(45): warning C4
               T=float
           ]
   Generando código...
-LINK : fatal error LNK1104: no se puede abrir el archivo 'GameLib.lib'
+  GameClient.vcxproj -> D:\Program Files (x86)\Xite\Desktop\Xarxes\x64\Debug\GameClient.exe
