@@ -174,7 +174,7 @@ int main()
 
 		size_t pos = 0;
 
-		std::string t = 0;
+		std::string t = "";
 
 		Receive(servidor, c, m);
 
@@ -220,12 +220,12 @@ int main()
 					else if (temp == "2552550") {
 						p.push_back(GraphicPlayer(sf::Color::Yellow, sf::Vector2f(7 * SIZE, 7 * SIZE)));
 					}
-
-					player.avatar = p[0].color;
-
-					g = Graphics(p);
 				}
-			break;
+
+				player.avatar = p[0].color;
+
+				g = Graphics(p);
+				break;
 
 			case Cabezera::YOURTURNDICE:				
 				std::cout << "Es tu turno. Escribe 'R' para tirar" << std::endl;
@@ -256,6 +256,14 @@ int main()
 				break;
 
 			case Cabezera::GLOBALTURNDICE:
+				delimiter1 = "-";
+				delimiter2 = "/";
+
+				while ((pos = m.find(delimiter1)) != std::string::npos) {
+					std::string temp = m.substr(0, pos);
+					m.erase(0, pos + delimiter1.length());
+
+				}
 				break;
 			default:
 				break;

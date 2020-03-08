@@ -229,6 +229,8 @@ int main()
 
 		size_t pos = 0;
 
+		system("cls");
+
 		while (running)
 		{
 			//Tirar dado
@@ -244,7 +246,7 @@ int main()
 			}
 			
 
-			if (selector.isReady)
+			if (selector.isReady(*conexiones[turnPlayer].socket))
 			{
 				Receive(conexiones[turnPlayer], c, m);
 
@@ -260,8 +262,14 @@ int main()
 
 						conexiones[turnPlayer].player.position = sf::Vector2f(std::stoi(temp), std::stoi(m));
 
+						temp += "-" + m + "/";
+
+						temp += std::to_string(conexiones[turnPlayer].player.avatar.r);
+						temp += std::to_string(conexiones[turnPlayer].player.avatar.g);
+						temp += std::to_string(conexiones[turnPlayer].player.avatar.b);
+
 						//Enviar color per saber quin hay que mover
-						Send(Cabezera::GLOBALTURNDICE, temp+m, conexiones);
+						Send(Cabezera::GLOBALTURNDICE, temp, conexiones);
 					}
 					break;
 				default:

@@ -1,79 +1,79 @@
 ﻿  Graphics.cpp
-d:\program files (x86)\xite\desktop\xarxes\gameclient\graphics.h(30): warning C4244: '=': conversión de 'int' a 'T'; posible pérdida de datos
+d:\uni\3r\xarxes\xarxes\gameclient\graphics.h(30): warning C4244: '=': conversión de 'int' a 'T'; posible pérdida de datos
           with
           [
               T=float
           ]
-d:\program files (x86)\xite\desktop\xarxes\gameclient\graphics.h(31): warning C4244: '=': conversión de 'int' a 'T'; posible pérdida de datos
+d:\uni\3r\xarxes\xarxes\gameclient\graphics.h(31): warning C4244: '=': conversión de 'int' a 'T'; posible pérdida de datos
           with
           [
               T=float
           ]
-d:\program files (x86)\xite\desktop\xarxes\gameclient\graphics.h(32): warning C4244: '=': conversión de 'int' a 'T'; posible pérdida de datos
+d:\uni\3r\xarxes\xarxes\gameclient\graphics.h(32): warning C4244: '=': conversión de 'int' a 'T'; posible pérdida de datos
           with
           [
               T=float
           ]
-d:\program files (x86)\xite\desktop\xarxes\gameclient\graphics.h(33): warning C4244: '=': conversión de 'int' a 'T'; posible pérdida de datos
+d:\uni\3r\xarxes\xarxes\gameclient\graphics.h(33): warning C4244: '=': conversión de 'int' a 'T'; posible pérdida de datos
           with
           [
               T=float
           ]
-d:\program files (x86)\xite\desktop\xarxes\gameclient\graphics.h(41): warning C4244: 'inicializando': conversión de 'T' a 'int'; posible pérdida de datos
+d:\uni\3r\xarxes\xarxes\gameclient\graphics.h(41): warning C4244: 'inicializando': conversión de 'T' a 'int'; posible pérdida de datos
           with
           [
               T=float
           ]
-d:\program files (x86)\xite\desktop\xarxes\gameclient\graphics.h(41): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
-d:\program files (x86)\xite\desktop\xarxes\gameclient\graphics.h(43): warning C4244: 'inicializando': conversión de 'T' a 'int'; posible pérdida de datos
+d:\uni\3r\xarxes\xarxes\gameclient\graphics.h(41): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+d:\uni\3r\xarxes\xarxes\gameclient\graphics.h(43): warning C4244: 'inicializando': conversión de 'T' a 'int'; posible pérdida de datos
           with
           [
               T=float
           ]
-d:\program files (x86)\xite\desktop\xarxes\gameclient\graphics.h(43): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
-d:\program files (x86)\xite\desktop\xarxes\gameclient\graphics.h(45): warning C4244: 'argumento': conversión de 'int' a 'T'; posible pérdida de datos
+d:\uni\3r\xarxes\xarxes\gameclient\graphics.h(43): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+d:\uni\3r\xarxes\xarxes\gameclient\graphics.h(45): warning C4244: 'argumento': conversión de 'int' a 'T'; posible pérdida de datos
           with
           [
               T=float
           ]
-d:\program files (x86)\xite\desktop\xarxes\gameclient\graphics.cpp(111): warning C4267: 'inicializando': conversión de 'size_t' a 'int'; posible pérdida de datos
+d:\uni\3r\xarxes\xarxes\gameclient\graphics.cpp(116): warning C4267: 'inicializando': conversión de 'size_t' a 'int'; posible pérdida de datos
   Source.cpp
-d:\program files (x86)\xite\desktop\xarxes\gameclient\graphics.h(30): warning C4244: '=': conversión de 'int' a 'T'; posible pérdida de datos
+d:\uni\3r\xarxes\xarxes\gameclient\graphics.h(30): warning C4244: '=': conversión de 'int' a 'T'; posible pérdida de datos
           with
           [
               T=float
           ]
-d:\program files (x86)\xite\desktop\xarxes\gameclient\graphics.h(31): warning C4244: '=': conversión de 'int' a 'T'; posible pérdida de datos
+d:\uni\3r\xarxes\xarxes\gameclient\graphics.h(31): warning C4244: '=': conversión de 'int' a 'T'; posible pérdida de datos
           with
           [
               T=float
           ]
-d:\program files (x86)\xite\desktop\xarxes\gameclient\graphics.h(32): warning C4244: '=': conversión de 'int' a 'T'; posible pérdida de datos
+d:\uni\3r\xarxes\xarxes\gameclient\graphics.h(32): warning C4244: '=': conversión de 'int' a 'T'; posible pérdida de datos
           with
           [
               T=float
           ]
-d:\program files (x86)\xite\desktop\xarxes\gameclient\graphics.h(33): warning C4244: '=': conversión de 'int' a 'T'; posible pérdida de datos
+d:\uni\3r\xarxes\xarxes\gameclient\graphics.h(33): warning C4244: '=': conversión de 'int' a 'T'; posible pérdida de datos
           with
           [
               T=float
           ]
-d:\program files (x86)\xite\desktop\xarxes\gameclient\graphics.h(41): warning C4244: 'inicializando': conversión de 'T' a 'int'; posible pérdida de datos
+d:\uni\3r\xarxes\xarxes\gameclient\graphics.h(41): warning C4244: 'inicializando': conversión de 'T' a 'int'; posible pérdida de datos
           with
           [
               T=float
           ]
-d:\program files (x86)\xite\desktop\xarxes\gameclient\graphics.h(41): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
-d:\program files (x86)\xite\desktop\xarxes\gameclient\graphics.h(43): warning C4244: 'inicializando': conversión de 'T' a 'int'; posible pérdida de datos
+d:\uni\3r\xarxes\xarxes\gameclient\graphics.h(41): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+d:\uni\3r\xarxes\xarxes\gameclient\graphics.h(43): warning C4244: 'inicializando': conversión de 'T' a 'int'; posible pérdida de datos
           with
           [
               T=float
           ]
-d:\program files (x86)\xite\desktop\xarxes\gameclient\graphics.h(43): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
-d:\program files (x86)\xite\desktop\xarxes\gameclient\graphics.h(45): warning C4244: 'argumento': conversión de 'int' a 'T'; posible pérdida de datos
+d:\uni\3r\xarxes\xarxes\gameclient\graphics.h(43): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+d:\uni\3r\xarxes\xarxes\gameclient\graphics.h(45): warning C4244: 'argumento': conversión de 'int' a 'T'; posible pérdida de datos
           with
           [
               T=float
           ]
   Generando código...
-  GameClient.vcxproj -> D:\Program Files (x86)\Xite\Desktop\Xarxes\x64\Debug\GameClient.exe
+  GameClient.vcxproj -> D:\Uni\3r\Xarxes\Xarxes\x64\Debug\GameClient.exe
