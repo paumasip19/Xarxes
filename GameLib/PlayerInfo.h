@@ -29,7 +29,6 @@ class PlayerInfo
 public:
 	std::string name;
 	sf::Color avatar;
-	sf::Vector2i position;
 	std::vector<Carta> mano;
 
 	PlayerInfo();

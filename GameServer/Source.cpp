@@ -183,6 +183,17 @@ int main()
 			temp += std::to_string(conexiones[i].player.avatar.g);
 			temp += std::to_string(conexiones[i].player.avatar.b);
 
+			for (int j = 0; j < conexiones.size(); j++)
+			{
+				if (conexiones[j].player.avatar != conexiones[i].player.avatar)
+				{
+					temp += "/";
+					temp += std::to_string(conexiones[j].player.avatar.r);
+					temp += std::to_string(conexiones[j].player.avatar.g);
+					temp += std::to_string(conexiones[j].player.avatar.b);
+				}			
+			}
+
 			Send(Cabezera::INITIALIZEPLAYER, temp, conexiones, conexiones[i]);
 		}
 

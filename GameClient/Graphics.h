@@ -58,13 +58,37 @@ struct Sala
 		_window.draw(text);
 	}
 };
+
+struct GraphicPlayer
+{
+	sf::RectangleShape shape;
+	sf::Color color;
+
+	GraphicPlayer()
+	{
+	}
+
+	GraphicPlayer(sf::Color c, sf::Vector2f p)
+	{
+		shape.setSize(sf::Vector2f(SIZE, SIZE));
+		shape.setOutlineColor(sf::Color::Black);
+		shape.setOutlineThickness(2.f);
+
+		shape.setFillColor(c);
+		shape.setPosition(p);
+	}
+};
+
 class Graphics
 {
 	std::array<Sala, NUM_SALAS> salas;
 	Sala centroMensajes;
+	std::vector<GraphicPlayer> gPlayers;
 public:
 	Graphics();
+	Graphics(std::vector<GraphicPlayer> oP);
 	void DrawDungeon();
+	void movePlayer(int player, sf::Vector2f pos);
 	~Graphics();
 };
 

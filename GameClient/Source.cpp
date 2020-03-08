@@ -75,9 +75,10 @@ void messageConverted(std::string& tipo, std::string& _mensaje, int& _mensajeA, 
 
 int main()
 {
+	
 	bool running = true;
 	bool initGame = true;
-	Graphics g;
+	
 
 	// CONEXIÓN A SERVER
 	sf::TcpSocket socket;
@@ -130,11 +131,15 @@ int main()
 
 	PlayerInfo player;
 
+	Graphics g;
+
 	while (running)
 	{
 		std::string delimiter1;
 		std::string delimiter2;
 		std::string temp;
+
+		std::vector<GraphicPlayer> p;
 
 		size_t pos = 0;
 
@@ -152,33 +157,40 @@ int main()
 					m.erase(0, pos + delimiter1.length());
 
 					player.mano.push_back(Carta(TipoCarta((int)(temp[0] - 48)), temp.substr(1, temp.length() - 1)));
+				}			
+
+				while ((pos = m.find(delimiter2)) != std::string::npos) {
+					std::string temp = m.substr(0, pos);
+					m.erase(0, pos + delimiter2.length());
+
+					if (temp == "000")
+					{						
+						p.push_back(GraphicPlayer(sf::Color::Black, sf::Vector2f(0 * SIZE, 0 * SIZE)));
+					}
+					else if (temp == "255255255") {
+						p.push_back(GraphicPlayer(sf::Color::White, sf::Vector2f(0 * SIZE, 0 * SIZE)));
+					}
+					else if (temp == "02550") {
+						p.push_back(GraphicPlayer(sf::Color::Green, sf::Vector2f(0 * SIZE, 0 * SIZE)));
+					}
+					else if (temp == "2550255") {
+						p.push_back(GraphicPlayer(sf::Color::Magenta, sf::Vector2f(0 * SIZE, 0 * SIZE)));
+					}
+					else if (temp == "00255") {
+						p.push_back(GraphicPlayer(sf::Color::Blue, sf::Vector2f(0 * SIZE, 0 * SIZE)));
+					}
+					else if (temp == "25500") {
+						p.push_back(GraphicPlayer(sf::Color::Red, sf::Vector2f(0 * SIZE, 0 * SIZE)));
+					}
+					else if (temp == "2552550") {
+						p.push_back(GraphicPlayer(sf::Color::Yellow, sf::Vector2f(0 * SIZE, 0 * SIZE)));
+					}
+
+					player.avatar = p[0].color;
+
+					g = Graphics(p);
 				}
 
-				temp = m.substr(1, m.length()-1);
-
-				if (temp == "000")
-				{
-					player.avatar = sf::Color::Black;
-					//Posiciones
-				}	
-				else if (temp == "255255255") {
-					player.avatar = sf::Color::White;
-				}
-				else if (temp == "02550") {
-					player.avatar = sf::Color::Green;
-				}
-				else if (temp == "2550255") {
-					player.avatar = sf::Color::Magenta;
-				}
-				else if (temp == "00255") {
-					player.avatar = sf::Color::Blue;
-				}
-				else if (temp == "25500") {
-					player.avatar = sf::Color::Red;
-				}
-				else if (temp == "2552550") {
-					player.avatar = sf::Color::Yellow;
-				}
 			break;
 
 			default:
@@ -186,6 +198,7 @@ int main()
 		}
 
 		g.DrawDungeon();
+
 	}
 
 	return 0;

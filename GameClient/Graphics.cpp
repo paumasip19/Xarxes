@@ -4,6 +4,11 @@
 
 Graphics::Graphics()
 {
+}
+
+Graphics::Graphics(std::vector<GraphicPlayer> oP)
+{
+	//Mapa
 	Sala salaArkham("Sala Arkham", 0, 0, 8, 10, sf::Color::Yellow);
 	Sala salaRapture("Sala Rapture", 12, 0, 6, 10, sf::Color::Red);
 	Sala salaProfes("Sala de Profes", 22, 0, 6, 10, sf::Color::Cyan);
@@ -11,8 +16,8 @@ Graphics::Graphics()
 	Sala iglesia("Iglesia", 0, 12, 8, 6, sf::Color::Blue);
 	Sala entiPro("Enti Pro", 30, 12, 10, 8, sf::Color::White);
 	Sala secretaria("Secretaria", 0, 20, 10, 10, sf::Color::Green);
-	Sala salaPortal("Sala Portal", 13, 20, 13, 10, sf::Color(150,0,150));
-	Sala salaJuegos("Sala de Juegos", 30, 22, 10, 8, sf::Color(0,150,150));
+	Sala salaPortal("Sala Portal", 13, 20, 13, 10, sf::Color(150, 0, 150));
+	Sala salaJuegos("Sala de Juegos", 30, 22, 10, 8, sf::Color(0, 150, 150));
 	salas[0] = salaArkham;
 	salas[1] = salaRapture;
 	salas[2] = salaProfes;
@@ -23,11 +28,15 @@ Graphics::Graphics()
 	salas[7] = salaPortal;
 	salas[8] = salaJuegos;
 
-	centroMensajes.color = sf::Color(150,150,150);
+	centroMensajes.color = sf::Color(150, 150, 150);
 	centroMensajes.origen.x = 12;
 	centroMensajes.origen.y = 12;
 	centroMensajes.longitud.x = 14;
 	centroMensajes.longitud.y = 6;
+
+	//Players
+	gPlayers = oP;
+	
 }
 
 void Graphics::DrawDungeon()
@@ -63,19 +72,19 @@ void Graphics::DrawDungeon()
 				}
 				if (event.key.code == sf::Keyboard::Left)
 				{
-					std::cout << "LEFT\n";
+					gPlayers[0].shape.setPosition(gPlayers[0].shape.getPosition().x - SIZE, gPlayers[0].shape.getPosition().y);
 				}
 				else if (event.key.code == sf::Keyboard::Up)
 				{
-					std::cout << "UP\n";
+					gPlayers[0].shape.setPosition(gPlayers[0].shape.getPosition().x, gPlayers[0].shape.getPosition().y - SIZE);
 				}
 				else if (event.key.code == sf::Keyboard::Right)
 				{
-					std::cout << "RIGTH\n";
+					gPlayers[0].shape.setPosition(gPlayers[0].shape.getPosition().x + SIZE, gPlayers[0].shape.getPosition().y);
 				}
 				else if (event.key.code == sf::Keyboard::Down)
 				{
-					std::cout << "DOWN\n";
+					gPlayers[0].shape.setPosition(gPlayers[0].shape.getPosition().x, gPlayers[0].shape.getPosition().y + SIZE);
 				}
 				break;
 			}
@@ -98,23 +107,22 @@ void Graphics::DrawDungeon()
 		}
 		centroMensajes.Draw(_window);
 
-		sf::Vector2f position;
-		position.x = 9; position.y = 0;
-		shape.setFillColor(sf::Color::Blue);
-		shape.setFillColor(sf::Color(0, 0, 255, 255));
-		shape.setPosition(sf::Vector2f(position.x*SIZE, position.y*SIZE));
-		_window.draw(shape);
 
-		position.x = W_WINDOW_TITLE - 1; position.y = H_WINDOW_TITLE - 1;
-		shape.setFillColor(sf::Color::Green);
-		shape.setFillColor(sf::Color(255, 255, 0, 255));
-		shape.setPosition(sf::Vector2f(position.x*SIZE, position.y*SIZE));
-		_window.draw(shape);
+		for (int i = 0; i < gPlayers.size(); i++)
+		{
+			_window.draw(gPlayers[i].shape);
+		}
+		
 
 		//_window.draw(sprite);
 
 		_window.display();
 	}
+}
+
+void Graphics::movePlayer(int player, sf::Vector2f pos)
+{
+	gPlayers[player].shape.setPosition(pos);
 }
 
 
