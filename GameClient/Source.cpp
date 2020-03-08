@@ -10,11 +10,11 @@
 
 #define MAX_PLAYERS 4
 
-void Receive(sf::TcpSocket& socket, Cabezera& cabezera, std::string& mensaje)
+void Receive(Client& client, Cabezera& cabezera, std::string& mensaje)
 {
 	std::string cab = "";
 	sf::Packet packet;
-	socket.receive(packet);
+	client.socket->receive(packet);
 	if ((packet >> mensaje)) //Si recogemos el packet
 	{
 		std::string delimiter = "_";
@@ -28,6 +28,32 @@ void Receive(sf::TcpSocket& socket, Cabezera& cabezera, std::string& mensaje)
 		cabezera = (Cabezera)std::stoi(cab);
 	}
 	
+}
+
+void Send(Client& client, Cabezera& cabezera, std::string& mensaje)
+{
+	std::string cab;
+	cab = std::to_string(cabezera);
+
+	sf::Packet pack;
+	cab = cab + "_" + mensaje;
+	pack << cab;
+
+	client.status = client.socket->send(pack);
+	if (client.status == sf::Socket::Done)
+	{
+		std::cout << "Enviado Correctamente" << std::endl;
+	}
+	else if (client.status != sf::Socket::Done)
+	{
+		std::cout << "Error al enviar mensaje" << std::endl;
+	}
+
+	if (client.status == sf::Socket::Disconnected)
+	{
+		std::cout << "Desconectado" << std::endl;
+	}
+
 }
 
 
@@ -75,10 +101,10 @@ void messageConverted(std::string& tipo, std::string& _mensaje, int& _mensajeA, 
 
 int main()
 {
-	
 	bool running = true;
 	bool initGame = true;
-	
+
+	Client servidor;
 
 	// CONEXIÓN A SERVER
 	sf::TcpSocket socket;
@@ -91,6 +117,8 @@ int main()
 	else
 	{
 		std::cout << "Conectado al Servidor!!!" << std::endl;
+		servidor.socket = &socket;
+		servidor.status = status;
 	}
 
 	// ESPERANDO JUGADORES
@@ -106,13 +134,16 @@ int main()
 
 	while (numPlayersConnected < 4)
 	{
-		Receive(socket, c, m);
+		Receive(servidor, c, m);
 
 		if (c == Cabezera::NEWPLAYER)
 		{
-			numPlayersConnected = std::stoi(m);
-			std::cout << "Hay " + m + " jugadores de 4 conectados. Esperando mas jugadores..." << std::endl;
-			
+			if (numPlayersConnected != std::stoi(m))
+			{
+				numPlayersConnected = std::stoi(m);
+				system("cls");
+				std::cout << "Hay " + m + " jugadores de 4 conectados. Esperando mas jugadores..." << std::endl;
+			}
 		}
 
 		/*if ()
@@ -143,7 +174,9 @@ int main()
 
 		size_t pos = 0;
 
-		Receive(socket, c, m);
+		std::string t = 0;
+
+		Receive(servidor, c, m);
 
 		switch (c)
 		{
@@ -192,9 +225,38 @@ int main()
 
 					g = Graphics(p);
 				}
-
 			break;
 
+			case Cabezera::YOURTURNDICE:				
+				std::cout << "Es tu turno. Escribe 'R' para tirar" << std::endl;
+				
+				std::cin >> t;
+				if (t == "R")
+				{
+					std::cout << "Has sacado un " + m + "!!! Mueve tu personaje el mismo numero de veces" << std::endl;
+					int movimientos = std::stoi(m);
+					sf::Vector2f lastPos = g.gPlayers[0].shape.getPosition();
+					g.canMove = true;
+					while (movimientos != 0)
+					{
+						if (lastPos != g.gPlayers[0].shape.getPosition())
+						{
+							movimientos--;
+						}
+
+						g.DrawDungeon();
+					}
+					g.canMove = false;
+					
+					m = std::to_string(g.gPlayers[0].shape.getPosition().x) + "-" + std::to_string(g.gPlayers[0].shape.getPosition().y);
+
+					Send(servidor, c, m);				
+				}
+				
+				break;
+
+			case Cabezera::GLOBALTURNDICE:
+				break;
 			default:
 				break;
 		}

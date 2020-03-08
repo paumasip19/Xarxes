@@ -9,6 +9,26 @@
 
 #define MAX_PLAYERS 4
 
+void Receive(Client& client, Cabezera& cabezera, std::string& mensaje)
+{
+	std::string cab = "";
+	sf::Packet packet;
+	client.socket->receive(packet);
+	if ((packet >> mensaje)) //Si recogemos el packet
+	{
+		std::string delimiter = "_";
+
+		size_t pos = 0;
+		while ((pos = mensaje.find(delimiter)) != std::string::npos) {
+			cab = mensaje.substr(0, pos);
+			mensaje.erase(0, pos + delimiter.length());
+		}
+
+		cabezera = (Cabezera)std::stoi(cab);
+	}
+
+}
+
 void Send(Cabezera cabezera, std::string valor, std::vector<Client> &clientes)
 {
 	std::string cab;
@@ -106,6 +126,7 @@ int main()
 					}
 					else
 					{
+						sock->setBlocking(false);
 						Client c;
 						c.socket = sock;
 						c.status = stat;
@@ -113,21 +134,17 @@ int main()
 						conexiones.push_back(c);
 						selector.add(*sock);
 
-						Send(Cabezera::NEWPLAYER, std::to_string(conexiones.size()), conexiones);
-
-
-						/*int actualizarContadores = true;
-
+						int actualizarContadores = true;
 						for (int i = 0; i < conexiones.size(); i++) //Miramos si alguien se ha desconectado
 						{
-							if (!(Send(Cabezera::NEWPLAYER, "", conexiones[i], true)))
+							if (conexiones[i].status == sf::Socket::Disconnected)
 							{
 								actualizarContadores = false;
 								for (int j = 0; j < conexiones.size(); j++) // A todos los jugadores
 								{
 									if (i != j) // Si no es el jugador desconectado
 									{
-										bool value = Send(tipoMensaje, std::to_string(conexiones.size() - 1), conexiones[j], false);
+										Send(Cabezera::NEWPLAYER, std::to_string(conexiones.size() - 1), conexiones, conexiones[j]);
 									}
 								}
 								conexiones.erase(conexiones.begin() + i);
@@ -137,11 +154,8 @@ int main()
 
 						if (actualizarContadores) // Si actualizamos contador
 						{
-							for (int i = 0; i < conexiones.size(); i++)
-							{
-								bool value = Send(tipoMensaje, std::to_string(conexiones.size()), conexiones[i], false);
-							}
-						}*/
+							Send(Cabezera::NEWPLAYER, std::to_string(conexiones.size()), conexiones);
+						}
 					}
 				}
 				else
@@ -199,9 +213,73 @@ int main()
 			Send(Cabezera::INITIALIZEPLAYER, temp, conexiones, conexiones[i]);
 		}
 
+		//Informacion del juego
+		Cabezera c;
+		std::string m;
+
+		int dice = 0;
+		int turnPlayer = 0;
+
+		bool rollDice = true;
+		bool makeSuggestion = false;
+		bool makeAcusation = false;
+
+		std::string delimiter1;
+		std::string temp;
+
+		size_t pos = 0;
+
 		while (running)
 		{
-			//Logica del juego
+			//Tirar dado
+			if (rollDice)
+			{
+				dice = rand() % 6 + 1;
+				Send(Cabezera::YOURTURNDICE, std::to_string(dice), conexiones, conexiones[turnPlayer]);
+				rollDice = false;
+			}
+			else if (makeSuggestion)
+			{
+
+			}
+			
+
+			if (selector.isReady)
+			{
+				Receive(conexiones[turnPlayer], c, m);
+
+				switch (c)
+				{
+				case Cabezera::YOURTURNDICE:
+
+					delimiter1 = "-";
+
+					while ((pos = m.find(delimiter1)) != std::string::npos) {
+						std::string temp = m.substr(0, pos);
+						m.erase(0, pos + delimiter1.length());
+
+						conexiones[turnPlayer].player.position = sf::Vector2f(std::stoi(temp), std::stoi(m));
+
+						//Enviar color per saber quin hay que mover
+						Send(Cabezera::GLOBALTURNDICE, temp+m, conexiones);
+					}
+					break;
+				default:
+					break;
+				}
+
+				if (turnPlayer == MAX_PLAYERS - 1)
+				{
+					turnPlayer = 0;
+				}
+				else
+				{
+					turnPlayer++;
+				}
+			}
+
+
+			
 		}
 
 		//Organizacion del servidor

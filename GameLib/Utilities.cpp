@@ -93,6 +93,32 @@ void inicializarJuego(std::vector<Carta> baraja, std::vector<Carta> &solucion, s
 	{
 		value = rand() % av.size();
 		con[i].player.avatar = av[value];
+
+		if (av[value] == sf::Color::Black)
+		{
+			con[i].player.position = sf::Vector2f(1, 1);
+		}
+		else if (av[value] == sf::Color::White) {
+			con[i].player.position = sf::Vector2f(2, 2);
+		}
+		else if (av[value] == sf::Color::Green) {
+			con[i].player.position = sf::Vector2f(3, 3);
+		}
+		else if (av[value] == sf::Color::Magenta) {
+			con[i].player.position = sf::Vector2f(4, 4);
+		}
+		else if (av[value] == sf::Color::Blue) {
+			con[i].player.position = sf::Vector2f(5, 5);
+		}
+		else if (av[value] == sf::Color::Red) {
+			con[i].player.position = sf::Vector2f(6, 6);
+		}
+		else if (av[value] == sf::Color::Yellow) {
+			con[i].player.position = sf::Vector2f(7, 7);
+		}
+
 		av.erase(av.begin() + value);
 	}
+
+	
 }

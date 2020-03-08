@@ -83,8 +83,10 @@ class Graphics
 {
 	std::array<Sala, NUM_SALAS> salas;
 	Sala centroMensajes;
-	std::vector<GraphicPlayer> gPlayers;
 public:
+	std::vector<GraphicPlayer> gPlayers;
+	bool canMove = false;
+
 	Graphics();
 	Graphics(std::vector<GraphicPlayer> oP);
 	void DrawDungeon();

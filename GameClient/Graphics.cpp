@@ -70,22 +70,27 @@ void Graphics::DrawDungeon()
 				{
 					_window.close();
 				}
-				if (event.key.code == sf::Keyboard::Left)
+
+				if (canMove)
 				{
-					gPlayers[0].shape.setPosition(gPlayers[0].shape.getPosition().x - SIZE, gPlayers[0].shape.getPosition().y);
+					if (event.key.code == sf::Keyboard::Left)
+					{
+						movePlayer(0, sf::Vector2f(gPlayers[0].shape.getPosition().x - SIZE, gPlayers[0].shape.getPosition().y));
+					}
+					else if (event.key.code == sf::Keyboard::Up)
+					{
+						movePlayer(0, sf::Vector2f(gPlayers[0].shape.getPosition().x, gPlayers[0].shape.getPosition().y - SIZE));
+					}
+					else if (event.key.code == sf::Keyboard::Right)
+					{
+						movePlayer(0, sf::Vector2f(gPlayers[0].shape.getPosition().x + SIZE, gPlayers[0].shape.getPosition().y));
+					}
+					else if (event.key.code == sf::Keyboard::Down)
+					{
+						movePlayer(0, sf::Vector2f(gPlayers[0].shape.getPosition().x, gPlayers[0].shape.getPosition().y + SIZE));
+					}
 				}
-				else if (event.key.code == sf::Keyboard::Up)
-				{
-					gPlayers[0].shape.setPosition(gPlayers[0].shape.getPosition().x, gPlayers[0].shape.getPosition().y - SIZE);
-				}
-				else if (event.key.code == sf::Keyboard::Right)
-				{
-					gPlayers[0].shape.setPosition(gPlayers[0].shape.getPosition().x + SIZE, gPlayers[0].shape.getPosition().y);
-				}
-				else if (event.key.code == sf::Keyboard::Down)
-				{
-					gPlayers[0].shape.setPosition(gPlayers[0].shape.getPosition().x, gPlayers[0].shape.getPosition().y + SIZE);
-				}
+				
 				break;
 			}
 		}

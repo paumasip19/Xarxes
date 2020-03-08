@@ -5,7 +5,7 @@
 
 enum TipoCarta { PERSONAJE, ARMA, HABITACION, COUNT };
 
-enum Cabezera { NEWPLAYER, INITIALIZEPLAYER };
+enum Cabezera { NEWPLAYER, INITIALIZEPLAYER, YOURTURNDICE, GLOBALTURNDICE, YOURTURNCARDS, GLOBALTURNCARDS };
 
 struct Carta {
 	TipoCarta tipo;
@@ -29,6 +29,7 @@ class PlayerInfo
 public:
 	std::string name;
 	sf::Color avatar;
+	sf::Vector2f position;
 	std::vector<Carta> mano;
 
 	PlayerInfo();
