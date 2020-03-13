@@ -39,7 +39,7 @@ Graphics::Graphics(std::vector<GraphicPlayer> oP)
 	
 }
 
-void Graphics::DrawDungeon()
+void Graphics::DrawDungeon(sf::RenderWindow &_window, sf::RectangleShape &shape)
 {
 	/*sf::Texture texture;
 	if (!texture.loadFromFile("Jordi-Radev.jpg", sf::IntRect(0, 0, 600, 600)))
@@ -50,15 +50,11 @@ void Graphics::DrawDungeon()
 	//sf::Sprite sprite;
 	//sprite.setTexture(texture);
 
-	sf::RenderWindow _window(sf::VideoMode(800, 600), "Ventanita");
-	sf::RectangleShape shape(sf::Vector2f(SIZE, SIZE));
-	shape.setOutlineColor(sf::Color::Black);
-	shape.setOutlineThickness(2.f);
-	while (_window.isOpen())
+	if (_window.isOpen())
 	{
 		sf::Event event;
 		bool playerMoved = false;
-		while (_window.pollEvent(event))
+		if (_window.pollEvent(event))
 		{
 			switch (event.type)
 			{

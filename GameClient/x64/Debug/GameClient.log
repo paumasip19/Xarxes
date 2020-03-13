@@ -36,7 +36,7 @@ d:\uni\3r\xarxes\xarxes\gameclient\graphics.h(45): warning C4244: 'argumento': c
           [
               T=float
           ]
-d:\uni\3r\xarxes\xarxes\gameclient\graphics.cpp(116): warning C4267: 'inicializando': conversión de 'size_t' a 'int'; posible pérdida de datos
+d:\uni\3r\xarxes\xarxes\gameclient\graphics.cpp(112): warning C4267: 'inicializando': conversión de 'size_t' a 'int'; posible pérdida de datos
   Source.cpp
 d:\uni\3r\xarxes\xarxes\gameclient\graphics.h(30): warning C4244: '=': conversión de 'int' a 'T'; posible pérdida de datos
           with

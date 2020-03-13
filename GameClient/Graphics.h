@@ -62,7 +62,6 @@ struct Sala
 struct GraphicPlayer
 {
 	sf::RectangleShape shape;
-	sf::Color color;
 
 	GraphicPlayer()
 	{
@@ -89,7 +88,7 @@ public:
 
 	Graphics();
 	Graphics(std::vector<GraphicPlayer> oP);
-	void DrawDungeon();
+	void DrawDungeon(sf::RenderWindow &_window, sf::RectangleShape &shape);
 	void movePlayer(int player, sf::Vector2f pos);
 	~Graphics();
 };

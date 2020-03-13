@@ -14,20 +14,23 @@ void Receive(Client& client, Cabezera& cabezera, std::string& mensaje)
 {
 	std::string cab = "";
 	sf::Packet packet;
-	client.socket->receive(packet);
-	if ((packet >> mensaje)) //Si recogemos el packet
+	client.status = client.socket->receive(packet);
+
+	if (client.status == sf::Socket::Status::Done && client.status != sf::Socket::Status::NotReady)
 	{
-		std::string delimiter = "_";
+		if ((packet >> mensaje)) //Si recogemos el packet
+		{
+			std::string delimiter = "_";
 
-		size_t pos = 0;
-		while ((pos = mensaje.find(delimiter)) != std::string::npos) {
-			cab = mensaje.substr(0, pos);
-			mensaje.erase(0, pos + delimiter.length());
+			size_t pos = 0;
+			while ((pos = mensaje.find(delimiter)) != std::string::npos) {
+				cab = mensaje.substr(0, pos);
+				mensaje.erase(0, pos + delimiter.length());
+			}
+
+			cabezera = (Cabezera)std::stoi(cab);
 		}
-
-		cabezera = (Cabezera)std::stoi(cab);
 	}
-	
 }
 
 void Send(Client& client, Cabezera& cabezera, std::string& mensaje)
@@ -119,6 +122,8 @@ int main()
 		std::cout << "Conectado al Servidor!!!" << std::endl;
 		servidor.socket = &socket;
 		servidor.status = status;
+
+		servidor.socket->setBlocking(false);
 	}
 
 	// ESPERANDO JUGADORES
@@ -164,17 +169,27 @@ int main()
 
 	Graphics g;
 
+	sf::RenderWindow _window(sf::VideoMode(800, 600), "Ventanita");
+	sf::RectangleShape shape(sf::Vector2f(SIZE, SIZE));
+	shape.setOutlineColor(sf::Color::Black);
+	shape.setOutlineThickness(2.f);
+
+	std::vector<GraphicPlayer> p;
+
 	while (running)
 	{
 		std::string delimiter1;
 		std::string delimiter2;
 		std::string temp;
 
-		std::vector<GraphicPlayer> p;
-
 		size_t pos = 0;
 
 		std::string t = "";
+
+		int z = 0;
+
+		sf::Color colorTemp;
+		sf::Vector2f position;
 
 		Receive(servidor, c, m);
 
@@ -222,7 +237,7 @@ int main()
 					}
 				}
 
-				player.avatar = p[0].color;
+				player.avatar = p[0].shape.getFillColor();
 
 				g = Graphics(p);
 				break;
@@ -242,9 +257,10 @@ int main()
 						if (lastPos != g.gPlayers[0].shape.getPosition())
 						{
 							movimientos--;
+							lastPos = g.gPlayers[0].shape.getPosition();
 						}
 
-						g.DrawDungeon();
+						g.DrawDungeon(_window, shape);
 					}
 					g.canMove = false;
 					
@@ -259,17 +275,67 @@ int main()
 				delimiter1 = "-";
 				delimiter2 = "/";
 
+				
+
 				while ((pos = m.find(delimiter1)) != std::string::npos) {
 					std::string temp = m.substr(0, pos);
-					m.erase(0, pos + delimiter1.length());
+					m.erase(0, (pos+1) + (delimiter1.length()-1));		
 
+					if (z == 0)
+					{
+						position = { std::stof(temp), std::stof(m) };
+						z++;
+					}
+					
 				}
+
+				
+
+				while ((pos = m.find(delimiter2)) != std::string::npos) {
+					std::string tempC = m.substr(0, pos);
+					m.erase(0, pos + delimiter2.length());
+
+					
+
+					if (m == "000"){
+						colorTemp = sf::Color::Black;
+					}
+					else if (m == "255255255") {
+						colorTemp = sf::Color::White;
+					}
+					else if (m == "02550") {
+						colorTemp = sf::Color::Green;
+					}
+					else if (m == "2550255") {
+						colorTemp = sf::Color::Magenta;
+					}
+					else if (m == "00255") {
+						colorTemp = sf::Color::Blue;
+					}
+					else if (m == "25500") {
+						colorTemp = sf::Color::Red; 
+					}
+					else if (m == "2552550") {
+						colorTemp = sf::Color::Yellow;
+					}				
+
+					for (int i = 0; i < g.gPlayers.size(); i++)
+					{
+						if (g.gPlayers[i].shape.getFillColor() == colorTemp)
+						{
+							g.gPlayers[i].shape.setPosition(position);
+						}
+					}
+				}
+
+
 				break;
 			default:
 				break;
 		}
 
-		g.DrawDungeon();
+		c = Cabezera::COUNTT;
+		g.DrawDungeon(_window, shape);
 
 	}
 

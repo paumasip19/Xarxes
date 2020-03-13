@@ -245,49 +245,53 @@ int main()
 
 			}
 			
-
-			if (selector.isReady(*conexiones[turnPlayer].socket))
+			if (selector.wait())
 			{
-				Receive(conexiones[turnPlayer], c, m);
-
-				switch (c)
+				if (selector.isReady(*conexiones[turnPlayer].socket))
 				{
-				case Cabezera::YOURTURNDICE:
+					Receive(conexiones[turnPlayer], c, m);
 
-					delimiter1 = "-";
+					switch (c)
+					{
+					case Cabezera::YOURTURNDICE:
 
-					while ((pos = m.find(delimiter1)) != std::string::npos) {
-						std::string temp = m.substr(0, pos);
-						m.erase(0, pos + delimiter1.length());
+						delimiter1 = "-";
 
-						conexiones[turnPlayer].player.position = sf::Vector2f(std::stoi(temp), std::stoi(m));
+						while ((pos = m.find(delimiter1)) != std::string::npos) {
+							std::string temp = m.substr(0, pos);
+							m.erase(0, pos + delimiter1.length());
 
-						temp += "-" + m + "/";
+							conexiones[turnPlayer].player.position = sf::Vector2f(std::stoi(temp), std::stoi(m));
 
-						temp += std::to_string(conexiones[turnPlayer].player.avatar.r);
-						temp += std::to_string(conexiones[turnPlayer].player.avatar.g);
-						temp += std::to_string(conexiones[turnPlayer].player.avatar.b);
+							temp += "-" + m + "-/";
 
-						//Enviar color per saber quin hay que mover
-						Send(Cabezera::GLOBALTURNDICE, temp, conexiones);
+							temp += std::to_string(conexiones[turnPlayer].player.avatar.r);
+							temp += std::to_string(conexiones[turnPlayer].player.avatar.g);
+							temp += std::to_string(conexiones[turnPlayer].player.avatar.b);
+
+							//Enviar color per saber quin hay que mover
+							Send(Cabezera::GLOBALTURNDICE, temp, conexiones);
+
+							//Provisional
+							rollDice++;
+
+							if (turnPlayer == MAX_PLAYERS - 1)
+							{
+								turnPlayer = 0;
+							}
+							else
+							{
+								turnPlayer++;
+							}
+						}
+						break;
+					default:
+						break;
 					}
-					break;
-				default:
-					break;
-				}
 
-				if (turnPlayer == MAX_PLAYERS - 1)
-				{
-					turnPlayer = 0;
+					
 				}
-				else
-				{
-					turnPlayer++;
-				}
-			}
-
-
-			
+			}	
 		}
 
 		//Organizacion del servidor
