@@ -7,6 +7,7 @@
 #include <vector>
 #include <fcntl.h>
 #include "Graphics.h"
+#include "Utilities.cpp"
 
 #define MAX_PLAYERS 4
 
@@ -150,16 +151,6 @@ int main()
 				std::cout << "Hay " + m + " jugadores de 4 conectados. Esperando mas jugadores..." << std::endl;
 			}
 		}
-
-		/*if ()
-		{
-			messageConverted(tipoMensaje, mensaje, mensajeA, mensajeB, mensajeC);
-			if (mensajeA != numPlayersConnected)
-			{
-				numPlayersConnected = mensajeA;
-				
-			}
-		}*/
 	}
 
 	//INICIO DE PARTIDA
@@ -190,6 +181,9 @@ int main()
 
 		sf::Color colorTemp;
 		sf::Vector2f position;
+
+		std::string salaActual;
+		std::string eleccion;
 
 		Receive(servidor, c, m);
 
@@ -238,6 +232,8 @@ int main()
 				}
 
 				player.avatar = p[0].shape.getFillColor();
+				printearPlayer(player);
+				printearCartas(player);
 
 				g = Graphics(p);
 				break;
@@ -245,28 +241,64 @@ int main()
 			case Cabezera::YOURTURNDICE:				
 				std::cout << "Es tu turno. Escribe 'R' para tirar" << std::endl;
 				
-				std::cin >> t;
-				if (t == "R")
+				while (t != "R")
 				{
-					std::cout << "Has sacado un " + m + "!!! Mueve tu personaje el mismo numero de veces" << std::endl;
-					int movimientos = std::stoi(m);
-					sf::Vector2f lastPos = g.gPlayers[0].shape.getPosition();
-					g.canMove = true;
-					while (movimientos != 0)
+					std::cin >> t;
+					if (t == "R")
 					{
-						if (lastPos != g.gPlayers[0].shape.getPosition())
+						std::cout << "Has sacado un " + m + "!!! Mueve tu personaje el mismo numero de veces" << std::endl;
+						int movimientos = std::stoi(m);
+						sf::Vector2f lastPos = g.gPlayers[0].shape.getPosition();
+						g.canMove = true;
+						while (movimientos != 0)
 						{
-							movimientos--;
-							lastPos = g.gPlayers[0].shape.getPosition();
+							if (lastPos != g.gPlayers[0].shape.getPosition())
+							{
+								movimientos--;
+								lastPos = g.gPlayers[0].shape.getPosition();
+							}
+
+							g.DrawDungeon(_window, shape);
 						}
+						g.canMove = false;
 
-						g.DrawDungeon(_window, shape);
+						m = std::to_string(g.gPlayers[0].shape.getPosition().x) + "-" + std::to_string(g.gPlayers[0].shape.getPosition().y);
+
+						Send(servidor, c, m);
+
+						/*if (checkearSala(g, salaActual))
+						{							
+							while (eleccion != "1" || eleccion != "2")
+							{								
+								std::cout << "Que quieres hacer?" << std::endl;
+								std::cout << "1. Hacer sugestion" << std::endl;
+								std::cout << "2. Hacer resolucion" << std::endl;
+
+								std::cin >> eleccion;
+								if (eleccion == "1")
+								{
+
+								}
+								else if (eleccion == "2")
+								{
+
+								}
+								else
+								{
+									system("cls");
+									std::cout << "Vuelve a intentarlo." << std::endl;
+								}
+							}
+						}
+						else
+						{
+							//Dar opcion de resolucion
+						}*/
 					}
-					g.canMove = false;
-					
-					m = std::to_string(g.gPlayers[0].shape.getPosition().x) + "-" + std::to_string(g.gPlayers[0].shape.getPosition().y);
-
-					Send(servidor, c, m);				
+					else
+					{
+						std::cout << "Nos has escrito R. Vuleve a intenatarlo:" << std::endl;
+					}
 				}
 				
 				break;
@@ -274,8 +306,6 @@ int main()
 			case Cabezera::GLOBALTURNDICE:
 				delimiter1 = "-";
 				delimiter2 = "/";
-
-				
 
 				while ((pos = m.find(delimiter1)) != std::string::npos) {
 					std::string temp = m.substr(0, pos);
@@ -289,19 +319,12 @@ int main()
 					
 				}
 
-				
-
 				while ((pos = m.find(delimiter2)) != std::string::npos) {
 					std::string tempC = m.substr(0, pos);
-					m.erase(0, pos + delimiter2.length());
-
-					
+					m.erase(0, pos + delimiter2.length());	
 
 					if (m == "000"){
 						colorTemp = sf::Color::Black;
-					}
-					else if (m == "255255255") {
-						colorTemp = sf::Color::White;
 					}
 					else if (m == "02550") {
 						colorTemp = sf::Color::Green;
@@ -328,8 +351,12 @@ int main()
 					}
 				}
 
+				break;
+
+			case Cabezera::YOURTURNCARDS:
 
 				break;
+
 			default:
 				break;
 		}

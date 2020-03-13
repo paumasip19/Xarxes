@@ -69,21 +69,38 @@ void Graphics::DrawDungeon(sf::RenderWindow &_window, sf::RectangleShape &shape)
 
 				if (canMove)
 				{
+					//Hay que arreglar
 					if (event.key.code == sf::Keyboard::Left)
 					{
-						movePlayer(0, sf::Vector2f(gPlayers[0].shape.getPosition().x - SIZE, gPlayers[0].shape.getPosition().y));
+						if (gPlayers[0].shape.getPosition().x - SIZE >= 0)
+						{
+							movePlayer(0, sf::Vector2f(gPlayers[0].shape.getPosition().x - SIZE, gPlayers[0].shape.getPosition().y));
+						}
+						std::cout << "Left" << std::endl;
 					}
 					else if (event.key.code == sf::Keyboard::Up)
 					{
-						movePlayer(0, sf::Vector2f(gPlayers[0].shape.getPosition().x, gPlayers[0].shape.getPosition().y - SIZE));
+						if (gPlayers[0].shape.getPosition().y - SIZE >= 0)
+						{
+							movePlayer(0, sf::Vector2f(gPlayers[0].shape.getPosition().x, gPlayers[0].shape.getPosition().y - SIZE));
+						}
+						std::cout << "Up" << std::endl;
 					}
 					else if (event.key.code == sf::Keyboard::Right)
 					{
-						movePlayer(0, sf::Vector2f(gPlayers[0].shape.getPosition().x + SIZE, gPlayers[0].shape.getPosition().y));
+						if (gPlayers[0].shape.getPosition().x + SIZE < 800)
+						{
+							movePlayer(0, sf::Vector2f(gPlayers[0].shape.getPosition().x + SIZE, gPlayers[0].shape.getPosition().y));
+						}		
+						std::cout << "Right" << std::endl;
 					}
 					else if (event.key.code == sf::Keyboard::Down)
 					{
-						movePlayer(0, sf::Vector2f(gPlayers[0].shape.getPosition().x, gPlayers[0].shape.getPosition().y + SIZE));
+						if (gPlayers[0].shape.getPosition().y + SIZE < 600)
+						{
+							movePlayer(0, sf::Vector2f(gPlayers[0].shape.getPosition().x, gPlayers[0].shape.getPosition().y + SIZE));
+						}			
+						std::cout << "Down" << std::endl;
 					}
 				}
 				
@@ -126,6 +143,10 @@ void Graphics::movePlayer(int player, sf::Vector2f pos)
 	gPlayers[player].shape.setPosition(pos);
 }
 
+std::array<Sala, NUM_SALAS> Graphics::getSalas()
+{
+	return salas;
+}
 
 Graphics::~Graphics()
 {

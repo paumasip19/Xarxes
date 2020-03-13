@@ -3,5 +3,8 @@
 d:\uni\3r\xarxes\xarxes\gamelib\utilities.cpp(69): warning C4267: 'inicializando': conversión de 'size_t' a 'int'; posible pérdida de datos
 d:\uni\3r\xarxes\xarxes\gamelib\utilities.cpp(70): warning C4267: '=': conversión de 'size_t' a 'int'; posible pérdida de datos
 d:\uni\3r\xarxes\xarxes\gamelib\utilities.cpp(72): warning C4267: 'inicializando': conversión de 'size_t' a 'int'; posible pérdida de datos
+d:\uni\3r\xarxes\xarxes\gamelib\utilities.cpp(179): error C2065: 'Graphics': identificador no declarado
+d:\uni\3r\xarxes\xarxes\gamelib\utilities.cpp(179): error C2146: error de sintaxis: falta ')' delante del identificador 'g'
+d:\uni\3r\xarxes\xarxes\gamelib\utilities.cpp(180): error C2143: error de sintaxis: falta ';' delante de '{'
+d:\uni\3r\xarxes\xarxes\gamelib\utilities.cpp(180): error C2447: '{': falta el encabezado de función (¿lista formal de estilo anterior?)
   Generando código...
-  GameLib.vcxproj -> D:\Uni\3r\Xarxes\Xarxes\x64\Debug\GameLib.lib

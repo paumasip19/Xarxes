@@ -1,5 +1,6 @@
 #include <iostream>
 #include "PlayerInfo.h"
+#include "Graphics.h"
 
 void inicializarBaraja(std::vector<Carta> &b)
 {
@@ -94,6 +95,7 @@ void inicializarJuego(std::vector<Carta> baraja, std::vector<Carta> &solucion, s
 		value = rand() % av.size();
 		con[i].player.avatar = av[value];
 
+		//Caniar a posteriori
 		if (av[value] == sf::Color::Black)
 		{
 			con[i].player.position = sf::Vector2f(1, 1);
@@ -121,4 +123,78 @@ void inicializarJuego(std::vector<Carta> baraja, std::vector<Carta> &solucion, s
 	}
 
 	
+}
+
+void printearPlayer(PlayerInfo p)
+{
+	std::cout << "Tu personaje es ";
+	if (p.avatar == sf::Color::Black)
+	{
+		std::cout << "Enrique" << std::endl << "El color de tu ficha es el negro" << std::endl;
+	}
+	else if (p.avatar == sf::Color::Green)
+	{
+		std::cout << "Oriol" << std::endl << "El color de tu ficha es el verde" << std::endl;
+	}
+	else if (p.avatar == sf::Color::Magenta)
+	{
+		std::cout << "Richard" << std::endl << "El color de tu ficha es el magenta" << std::endl;
+	}
+	else if (p.avatar == sf::Color::Blue)
+	{
+		std::cout << "Ruth" << std::endl << "El color de tu ficha es el azul" << std::endl;
+	}
+	else if (p.avatar == sf::Color::Red)
+	{
+		std::cout << "Tona" << std::endl << "El color de tu ficha es el rojo" << std::endl;
+	}
+	else if (p.avatar == sf::Color::Yellow)
+	{
+		std::cout << "Carmen" << std::endl << "El color de tu ficha es el amarillo" << std::endl;
+	}
+}
+
+void printearCartas(PlayerInfo p)
+{
+	std::cout << "Tus cartas son:" << std::endl;
+	for (int i = 0; i < p.mano.size(); i++)
+	{
+		std::cout << i + 1 << ". ";
+		switch (p.mano[i].tipo)
+		{
+		case TipoCarta::PERSONAJE:
+			std::cout << "PERSONAJE - " << p.mano[i].nombre << std::endl;
+			break;
+		case TipoCarta::ARMA:
+			std::cout << "ARMA - " << p.mano[i].nombre << std::endl;
+			break;
+		case TipoCarta::HABITACION:
+			std::cout << "HABITACION - " << p.mano[i].nombre << std::endl;
+			break;
+		default:
+			break;
+		}
+	}
+}
+
+bool checkearSalas(Graphics g, std::string &nombreHabitacion)
+{
+	std::array<Sala, NUM_SALAS> salas = g.getSalas();
+
+	//player pos en pixeles
+	//salas pos en casillas
+
+	bool isIn = false;
+
+	for (int i = 0; i < NUM_SALAS; i++)
+	{
+		//Izquierda
+		//Derecha
+		//Arriba 
+		//Abajo
+		//if(g.gPlayers[0].shape.getPosition().x / SIZE < )
+		
+	}
+
+	return isIn;
 }

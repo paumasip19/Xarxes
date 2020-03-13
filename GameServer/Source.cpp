@@ -165,12 +165,14 @@ int main()
 			}
 		}
 
-		std::vector<sf::Color> avatares = { sf::Color::Green,
+		std::vector<sf::Color> avatares = { 
+			sf::Color::Green,
 			sf::Color::Red, 
 			sf::Color::Blue,
 			sf::Color::Magenta,
 			sf::Color::Yellow,
-			sf::Color::Black };
+			sf::Color::Black 
+		};
 
 		std::vector<Carta> barajaComleta;
 
@@ -271,25 +273,24 @@ int main()
 
 							//Enviar color per saber quin hay que mover
 							Send(Cabezera::GLOBALTURNDICE, temp, conexiones);
-
-							//Provisional
-							rollDice++;
-
-							if (turnPlayer == MAX_PLAYERS - 1)
-							{
-								turnPlayer = 0;
-							}
-							else
-							{
-								turnPlayer++;
-							}
+							
 						}
+						break;
+
+					case Cabezera::YOURTURNCARDS:
 						break;
 					default:
 						break;
 					}
 
-					
+					if (turnPlayer == MAX_PLAYERS - 1)
+					{
+						turnPlayer = 0;
+					}
+					else
+					{
+						turnPlayer++;
+					}
 				}
 			}	
 		}
