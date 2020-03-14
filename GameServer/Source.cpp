@@ -324,7 +324,7 @@ int main()
 
 								for (int j = 0; j < cartasTemp.size(); j++)
 								{
-									m = std::to_string(cartasTemp[j].tipo) + cartasTemp[j].nombre + "-";
+									m += std::to_string(cartasTemp[j].tipo) + cartasTemp[j].nombre + "-";
 								}
 								
 								Send(c, m, conexiones, conexiones[i]);
