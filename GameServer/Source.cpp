@@ -277,6 +277,18 @@ int main()
 						}
 						break;
 
+					case Cabezera::ENDTURN:
+						if (turnPlayer == MAX_PLAYERS - 1)
+						{
+							turnPlayer = 0;
+						}
+						else
+						{
+							turnPlayer++;
+						}
+						rollDice = true;
+						break;
+
 					case Cabezera::YOURTURNCARDS:
 						//Recibe cartas de suggestion
 						break;
@@ -284,14 +296,7 @@ int main()
 						break;
 					}
 
-					if (turnPlayer == MAX_PLAYERS - 1)
-					{
-						turnPlayer = 0;
-					}
-					else
-					{
-						turnPlayer++;
-					}
+					
 				}
 			}
 		}

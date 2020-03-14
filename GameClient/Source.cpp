@@ -60,49 +60,6 @@ void Send(Client& client, Cabezera& cabezera, std::string& mensaje)
 
 }
 
-
-//bool Receive(sf::TcpSocket& socket, std::string& cabezera, std::string& mensaje)
-//{
-//	sf::Packet packet;
-//	socket.receive(packet);
-//	if ((packet >> mensaje)) //Si recogemos el packet
-//	{
-//		cabezera = mensaje;
-//		cabezera.erase(cabezera.begin() + 3, cabezera.end());
-//		mensaje.erase(0,3);
-//		return true;
-//	}
-//	return false;
-//}
-
-void messageConverted(std::string& tipo, std::string& _mensaje, int& _mensajeA, float& _mensajeB, std::string& _mensajeC)
-{
-	if (_mensajeC != _mensaje &&			// Si alguno de los mensajes anteriores 
-		_mensajeA != std::stoi(_mensaje) &&	// no coincide con la version anterior.
-		_mensajeB != std::stof(_mensaje) &&
-		_mensaje.size() > 0)				// Si el tamaño del mensaje ha dejado de ser 0.
-	{
-		if (tipo == "int")
-		{
-			_mensajeA = std::stoi(_mensaje);
-		}
-
-		else if (tipo == "flt")
-		{
-			_mensajeB = std::stof(_mensaje);
-		}
-
-		else if (tipo == "str")
-		{
-			_mensajeC = _mensaje;
-		}
-
-		else { std::cout << "nada" << std::endl; }
-	}
-}
-
-
-
 int main()
 {
 	bool running = true;
@@ -155,6 +112,10 @@ int main()
 
 	//INICIO DE PARTIDA
 	std::cout << "Comienza la partida!!!" << std::endl;
+
+	std::vector<Carta> barajaCompleta;
+
+	inicializarBaraja(barajaCompleta);
 
 	PlayerInfo player;
 
@@ -209,25 +170,22 @@ int main()
 
 				if (temp == "000")
 				{
-					p.push_back(GraphicPlayer(sf::Color::Black, sf::Vector2f(1 * SIZE, 1 * SIZE)));
-				}
-				else if (temp == "255255255") {
-					p.push_back(GraphicPlayer(sf::Color::White, sf::Vector2f(2 * SIZE, 2 * SIZE)));
+					p.push_back(GraphicPlayer(sf::Color::Black, sf::Vector2f(28 * SIZE, 29 * SIZE)));
 				}
 				else if (temp == "02550") {
-					p.push_back(GraphicPlayer(sf::Color::Green, sf::Vector2f(3 * SIZE, 3 * SIZE)));
+					p.push_back(GraphicPlayer(sf::Color::Green, sf::Vector2f(11 * SIZE, 29 * SIZE)));
 				}
 				else if (temp == "2550255") {
-					p.push_back(GraphicPlayer(sf::Color::Magenta, sf::Vector2f(4 * SIZE, 4 * SIZE)));
+					p.push_back(GraphicPlayer(sf::Color::Magenta, sf::Vector2f(0 * SIZE, 10 * SIZE)));
 				}
 				else if (temp == "00255") {
-					p.push_back(GraphicPlayer(sf::Color::Blue, sf::Vector2f(5 * SIZE, 5 * SIZE)));
+					p.push_back(GraphicPlayer(sf::Color::Blue, sf::Vector2f(19 * SIZE, 0 * SIZE)));
 				}
 				else if (temp == "25500") {
-					p.push_back(GraphicPlayer(sf::Color::Red, sf::Vector2f(6 * SIZE, 6 * SIZE)));
+					p.push_back(GraphicPlayer(sf::Color::Red, sf::Vector2f(30 * SIZE, 0 * SIZE)));
 				}
 				else if (temp == "2552550") {
-					p.push_back(GraphicPlayer(sf::Color::Yellow, sf::Vector2f(7 * SIZE, 7 * SIZE)));
+					p.push_back(GraphicPlayer(sf::Color::Yellow, sf::Vector2f(39 * SIZE, 10 * SIZE)));
 				}
 			}
 
@@ -268,8 +226,9 @@ int main()
 
 					if (g.checkearSalas(salaActual))
 					{
-						while (eleccion != "1" || eleccion != "2")
+						while (eleccion != "1" && eleccion != "2")
 						{
+							std::cout << "Ahora, te encuentras en la " << salaActual << std::endl;
 							std::cout << "Que quieres hacer?" << std::endl;
 							std::cout << "1. Hacer sugestion" << std::endl;
 							std::cout << "2. Hacer resolucion" << std::endl;
@@ -277,11 +236,15 @@ int main()
 							std::cin >> eleccion;
 							if (eleccion == "1")
 							{
-								//Hacer proposicion
+								m = hacerAcusacion(barajaCompleta, salaActual);
+								c = Cabezera::YOURTURNCARDS;
+								Send(servidor, c, m);
 							}
 							else if (eleccion == "2")
 							{
-								//Hacer resolucion
+								//m = hacerAcusacionFinal(barajaCompleta);
+								//c = Cabezera::YOURTURNCARDS;   cabezera definitiva
+								//Send(servidor, c, m);
 							}
 							else
 							{
@@ -292,7 +255,7 @@ int main()
 					}
 					else
 					{
-						while (eleccion != "1" || eleccion != "2")
+						while (eleccion != "1" && eleccion != "2")
 						{
 							std::cout << "Que quieres hacer?" << std::endl;
 							std::cout << "1. Hacer resolucion" << std::endl;
@@ -301,11 +264,15 @@ int main()
 							std::cin >> eleccion;
 							if (eleccion == "1")
 							{
-								//Hacer resolucion
+								//m = hacerAcusacionFinal(barajaCompleta);
+								//c = Cabezera::YOURTURNCARDS;   cabezera definitiva
+								//Send(servidor, c, m);
 							}
 							else if (eleccion == "2")
 							{
-								//Avisar al servidor del siguiente turno
+								c = Cabezera::ENDTURN;
+								m = "";
+								Send(servidor, c, m);
 							}
 							else
 							{

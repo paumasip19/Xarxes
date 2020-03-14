@@ -155,10 +155,10 @@ bool Graphics::checkearSalas(std::string &nombreHabitacion)
 		//Arriba 
 		//Abajo
 
-		if (gPlayers[0].shape.getPosition().x / SIZE >= (salas[i].origen.x - (salas[i].longitud.x / 2)) &&
-			gPlayers[0].shape.getPosition().x / SIZE <= (salas[i].origen.x + (salas[i].longitud.x / 2)) &&
-			gPlayers[0].shape.getPosition().y / SIZE >= (salas[i].origen.y - (salas[i].longitud.y / 2)) &&
-			gPlayers[0].shape.getPosition().y / SIZE <= (salas[i].origen.y + (salas[i].longitud.y / 2)))
+		if (gPlayers[0].shape.getPosition().x / SIZE >= (salas[i].origen.x) &&
+			gPlayers[0].shape.getPosition().x / SIZE <= ((salas[i].origen.x + salas[i].longitud.x-1)) &&
+			gPlayers[0].shape.getPosition().y / SIZE >= (salas[i].origen.y) &&
+			gPlayers[0].shape.getPosition().y / SIZE <= ((salas[i].origen.y + salas[i].longitud.y-1)))
 		{
 			nombreHabitacion = salas[i].texto;
 			return true;
