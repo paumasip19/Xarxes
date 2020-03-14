@@ -9,15 +9,15 @@ Graphics::Graphics()
 Graphics::Graphics(std::vector<GraphicPlayer> oP)
 {
 	//Mapa
-	Sala salaArkham("Sala Arkham", 0, 0, 8, 10, sf::Color::Yellow);
-	Sala salaRapture("Sala Rapture", 12, 0, 6, 10, sf::Color::Red);
-	Sala salaProfes("Sala de Profes", 22, 0, 6, 10, sf::Color::Cyan);
-	Sala salaProyectos("Sala de Proyectos", 32, 0, 8, 10, sf::Color::Magenta);
+	Sala salaArkham("SalaArkham", 0, 0, 8, 10, sf::Color::Yellow);
+	Sala salaRapture("SalaRapture", 12, 0, 6, 10, sf::Color::Red);
+	Sala salaProfes("SalaDeProfes", 22, 0, 6, 10, sf::Color::Cyan);
+	Sala salaProyectos("SalaDeProyectos", 32, 0, 8, 10, sf::Color::Magenta);
 	Sala iglesia("Iglesia", 0, 12, 8, 6, sf::Color::Blue);
-	Sala entiPro("Enti Pro", 30, 12, 10, 8, sf::Color::White);
+	Sala entiPro("EntiPro", 30, 12, 10, 8, sf::Color::White);
 	Sala secretaria("Secretaria", 0, 20, 10, 10, sf::Color::Green);
-	Sala salaPortal("Sala Portal", 13, 20, 13, 10, sf::Color(150, 0, 150));
-	Sala salaJuegos("Sala de Juegos", 30, 22, 10, 8, sf::Color(0, 150, 150));
+	Sala salaPortal("SalaPortal", 13, 20, 13, 10, sf::Color(150, 0, 150));
+	Sala salaJuegos("SalaDeJuegos", 30, 22, 10, 8, sf::Color(0, 150, 150));
 	salas[0] = salaArkham;
 	salas[1] = salaRapture;
 	salas[2] = salaProfes;

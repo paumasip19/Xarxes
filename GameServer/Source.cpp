@@ -300,6 +300,8 @@ int main()
 							acusacion.push_back(Carta(TipoCarta((int)(temp[0] - 48)), temp.substr(1, temp.length() - 1)));
 						}
 
+						cartasTemp.clear();
+
 						for(int i = turnPlayer + 1; cartasTemp.size() == 0 && i != turnPlayer; i++)
 						{
 							if (i == conexiones.size())
@@ -347,7 +349,13 @@ int main()
 							}						
 						}
 
-						
+
+						if (cartasTemp.size() == 0)
+						{
+							c = Cabezera::RESULTPROVE;
+							m = "Ningun jugador ha podido mostrar ninguna carta ;)";
+							Send(c, m, conexiones, conexiones[turnPlayer]);
+						}
 
 						break;
 
