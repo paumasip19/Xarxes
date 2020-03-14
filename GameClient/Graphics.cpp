@@ -168,6 +168,40 @@ bool Graphics::checkearSalas(std::string &nombreHabitacion)
 	return false;
 }
 
+bool Graphics::checkearSalasOther(sf::Color color, std::string &nombreHabitacion, std::vector<GraphicPlayer> players)
+{
+	int p = 0;
+
+	for (int i = 0; i < players.size(); i++)
+	{
+		if (players[i].shape.getFillColor() == color)
+		{
+			p = i;
+		}
+	}
+	//player pos en pixeles
+	//salas pos en casillas
+
+	for (int i = 0; i < NUM_SALAS; i++)
+	{
+		//Izquierda
+		//Derecha
+		//Arriba 
+		//Abajo
+
+		if (gPlayers[p].shape.getPosition().x / SIZE >= (salas[i].origen.x) &&
+			gPlayers[p].shape.getPosition().x / SIZE <= ((salas[i].origen.x + salas[i].longitud.x - 1)) &&
+			gPlayers[p].shape.getPosition().y / SIZE >= (salas[i].origen.y) &&
+			gPlayers[p].shape.getPosition().y / SIZE <= ((salas[i].origen.y + salas[i].longitud.y - 1)))
+		{
+			nombreHabitacion = salas[i].texto;
+			return true;
+		}
+	}
+
+	return false;
+}
+
 Graphics::~Graphics()
 {
 }

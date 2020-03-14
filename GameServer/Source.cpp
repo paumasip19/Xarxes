@@ -233,6 +233,9 @@ int main()
 
 		system("cls");
 
+		std::vector<Carta> acusacion;
+		std::vector<Carta> cartasTemp;
+
 		while (running)
 		{
 			//Tirar dado
@@ -241,10 +244,6 @@ int main()
 				dice = rand() % 6 + 1;
 				Send(Cabezera::YOURTURNDICE, std::to_string(dice), conexiones, conexiones[turnPlayer]);
 				rollDice = false;
-			}
-			else if (makeSuggestion)
-			{
-
 			}
 
 			if (selector.wait())
@@ -271,7 +270,7 @@ int main()
 							temp += std::to_string(conexiones[turnPlayer].player.avatar.g);
 							temp += std::to_string(conexiones[turnPlayer].player.avatar.b);
 
-							//Enviar color per saber quin hay que mover
+							//Enviar color per saber quien hay que mover
 							Send(Cabezera::GLOBALTURNDICE, temp, conexiones);
 
 						}
@@ -290,8 +289,68 @@ int main()
 						break;
 
 					case Cabezera::YOURTURNCARDS:
-						//Recibe cartas de suggestion
+						delimiter1 = "-";
+						temp = "";
+						acusacion.clear();
+
+						while ((pos = m.find(delimiter1)) != std::string::npos) {
+							std::string temp = m.substr(0, pos);
+							m.erase(0, pos + delimiter1.length());
+
+							acusacion.push_back(Carta(TipoCarta((int)(temp[0] - 48)), temp.substr(1, temp.length() - 1)));
+						}
+
+						for(int i = turnPlayer + 1; cartasTemp.size() == 0 && i != turnPlayer; i++)
+						{
+							if (i == conexiones.size())
+							{
+								i = 0;
+							}
+
+							for (int j = 0; j < acusacion.size(); j++)
+							{
+								for (int k = 0; k < conexiones[i].player.mano.size(); k++)
+								{
+									if (acusacion[j].nombre == conexiones[i].player.mano[k].nombre)
+									{
+										cartasTemp.push_back(conexiones[i].player.mano[k]);
+									}
+								}
+							}
+
+							if (cartasTemp.size() != 0)
+							{								
+								c = Cabezera::PROVECARDS;
+
+								for (int j = 0; j < cartasTemp.size(); j++)
+								{
+									m = std::to_string(cartasTemp[j].tipo) + cartasTemp[j].nombre + "-";
+								}
+								
+								Send(c, m, conexiones, conexiones[i]);
+
+
+								if (selector.wait())
+								{
+									if (selector.isReady(*conexiones[i].socket))
+									{
+										Receive(conexiones[i], c, m);
+
+										if (c == Cabezera::PROVECARDS)
+										{
+											c = Cabezera::RESULTPROVE;
+											m = "El jugador " + conexiones[i].player.name + " te ha enseñado la carta de " + m;
+											Send(c, m, conexiones, conexiones[turnPlayer]);
+										}
+									}
+								}
+							}						
+						}
+
+						
+
 						break;
+
 					default:
 						break;
 					}

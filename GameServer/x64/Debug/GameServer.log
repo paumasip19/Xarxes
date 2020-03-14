@@ -3,7 +3,7 @@ d:\program files (x86)\xite\desktop\xarxes\gamelib\utilities.cpp(69): warning C4
 d:\program files (x86)\xite\desktop\xarxes\gamelib\utilities.cpp(70): warning C4267: '=': conversión de 'size_t' a 'int'; posible pérdida de datos
 d:\program files (x86)\xite\desktop\xarxes\gamelib\utilities.cpp(72): warning C4267: 'inicializando': conversión de 'size_t' a 'int'; posible pérdida de datos
 d:\program files (x86)\xite\desktop\xarxes\gameserver\source.cpp(98): warning C4244: 'argumento': conversión de 'time_t' a 'unsigned int'; posible pérdida de datos
-d:\program files (x86)\xite\desktop\xarxes\gameserver\source.cpp(266): warning C4244: 'argumento': conversión de 'int' a 'T'; posible pérdida de datos
+d:\program files (x86)\xite\desktop\xarxes\gameserver\source.cpp(265): warning C4244: 'argumento': conversión de 'int' a 'T'; posible pérdida de datos
           with
           [
               T=float

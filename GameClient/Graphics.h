@@ -91,6 +91,7 @@ public:
 	void DrawDungeon(sf::RenderWindow &_window, sf::RectangleShape &shape);
 	void movePlayer(int player, sf::Vector2f pos);
 	bool checkearSalas(std::string &nombreHabitacion);
+	bool checkearSalasOther(sf::Color color, std::string &nombreHabitacion, std::vector<GraphicPlayer> players);
 	~Graphics();
 };
 

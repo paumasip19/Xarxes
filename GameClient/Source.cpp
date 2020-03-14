@@ -128,6 +128,8 @@ int main()
 
 	std::vector<GraphicPlayer> p;
 
+
+
 	while (running)
 	{
 		std::string delimiter1;
@@ -145,6 +147,10 @@ int main()
 
 		std::string salaActual;
 		std::string eleccion;
+
+		bool isInSala = false;
+
+		std::vector<Carta> tempCards;
 
 		Receive(servidor, c, m);
 
@@ -336,14 +342,41 @@ int main()
 						g.gPlayers[i].shape.setPosition(position);
 					}
 				}
+
+				isInSala = g.checkearSalasOther(colorTemp, salaActual, p);
+
+				printearMovimientoExterno(colorTemp, isInSala, salaActual);
+
+				c = Cabezera::COUNTT;
 			}
 
 			break;
 
-		case Cabezera::YOURTURNCARDS:
+		case Cabezera::PROVECARDS:
+			tempCards.clear();
 
+			delimiter1 = "-";
+			temp = "";
+
+			while ((pos = m.find(delimiter1)) != std::string::npos) {
+				std::string temp = m.substr(0, pos);
+				m.erase(0, pos + delimiter1.length());
+
+				tempCards.push_back(Carta(TipoCarta((int)(temp[0] - 48)), temp.substr(1, temp.length() - 1)));
+			}
+
+			m = desmentirCarta(tempCards);
+			c = Cabezera::PROVECARDS;
+
+			Send(servidor, c, m);
 			break;
 
+		case Cabezera::RESULTPROVE:
+			std::cout << m << std::endl;
+			m = "";
+			c = Cabezera::ENDTURN;
+			Send(servidor, c, m);
+			break;
 		default:
 			break;
 		}
