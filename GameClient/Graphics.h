@@ -90,7 +90,8 @@ public:
 	Graphics(std::vector<GraphicPlayer> oP);
 	void DrawDungeon(sf::RenderWindow &_window, sf::RectangleShape &shape);
 	void movePlayer(int player, sf::Vector2f pos);
-	std::array<Sala, NUM_SALAS> getSalas();
+	bool checkearSalas(std::string &nombreHabitacion);
 	~Graphics();
 };
+
 

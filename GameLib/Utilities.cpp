@@ -1,6 +1,5 @@
 #include <iostream>
 #include "PlayerInfo.h"
-#include "Graphics.h"
 
 void inicializarBaraja(std::vector<Carta> &b)
 {
@@ -29,7 +28,7 @@ void inicializarBaraja(std::vector<Carta> &b)
 	b.push_back(Carta(TipoCarta::HABITACION, "Sala de Juegos"));
 }
 
-void inicializarJuego(std::vector<Carta> baraja, std::vector<Carta> &solucion, std::vector<Client> &con , std::vector<sf::Color> &av)
+void inicializarJuego(std::vector<Carta> baraja, std::vector<Carta> &solucion, std::vector<Client> &con, std::vector<sf::Color> &av)
 {
 	//Pillar 3 cartas en solucion
 	int i = 0;
@@ -122,7 +121,7 @@ void inicializarJuego(std::vector<Carta> baraja, std::vector<Carta> &solucion, s
 		av.erase(av.begin() + value);
 	}
 
-	
+
 }
 
 void printearPlayer(PlayerInfo p)
@@ -175,26 +174,4 @@ void printearCartas(PlayerInfo p)
 			break;
 		}
 	}
-}
-
-bool checkearSalas(Graphics g, std::string &nombreHabitacion)
-{
-	std::array<Sala, NUM_SALAS> salas = g.getSalas();
-
-	//player pos en pixeles
-	//salas pos en casillas
-
-	bool isIn = false;
-
-	for (int i = 0; i < NUM_SALAS; i++)
-	{
-		//Izquierda
-		//Derecha
-		//Arriba 
-		//Abajo
-		//if(g.gPlayers[0].shape.getPosition().x / SIZE < )
-		
-	}
-
-	return isIn;
 }

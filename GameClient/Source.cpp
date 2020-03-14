@@ -92,7 +92,7 @@ void messageConverted(std::string& tipo, std::string& _mensaje, int& _mensajeA, 
 			_mensajeB = std::stof(_mensaje);
 		}
 
-		else if(tipo == "str")
+		else if (tipo == "str")
 		{
 			_mensajeC = _mensaje;
 		}
@@ -189,176 +189,196 @@ int main()
 
 		switch (c)
 		{
-			case Cabezera::INITIALIZEPLAYER: //0Ruth-1Phaser-0Oriol-2SalaDeJocs/sjdbjsadiuandiuasudausdsa	
-				delimiter1 = "-";
-				delimiter2 = "/";
-				temp = "";
+		case Cabezera::INITIALIZEPLAYER: //0Ruth-1Phaser-0Oriol-2SalaDeJocs/sjdbjsadiuandiuasudausdsa	
+			delimiter1 = "-";
+			delimiter2 = "/";
+			temp = "";
 
-				while ((pos = m.find(delimiter1)) != std::string::npos) {
-					std::string temp = m.substr(0, pos);
-					m.erase(0, pos + delimiter1.length());
+			while ((pos = m.find(delimiter1)) != std::string::npos) {
+				std::string temp = m.substr(0, pos);
+				m.erase(0, pos + delimiter1.length());
 
-					player.mano.push_back(Carta(TipoCarta((int)(temp[0] - 48)), temp.substr(1, temp.length() - 1)));
-				}		
+				player.mano.push_back(Carta(TipoCarta((int)(temp[0] - 48)), temp.substr(1, temp.length() - 1)));
+			}
 
-				m.erase(m.begin());
+			m.erase(m.begin());
 
-				while ((pos = m.find(delimiter2)) != std::string::npos) {
-					std::string temp = m.substr(0, pos);
-					m.erase(0, pos + delimiter2.length());
+			while ((pos = m.find(delimiter2)) != std::string::npos) {
+				std::string temp = m.substr(0, pos);
+				m.erase(0, pos + delimiter2.length());
 
-					if (temp == "000")
-					{						
-						p.push_back(GraphicPlayer(sf::Color::Black, sf::Vector2f(1 * SIZE, 1 * SIZE)));
-					}
-					else if (temp == "255255255") {
-						p.push_back(GraphicPlayer(sf::Color::White, sf::Vector2f(2 * SIZE, 2 * SIZE)));
-					}
-					else if (temp == "02550") {
-						p.push_back(GraphicPlayer(sf::Color::Green, sf::Vector2f(3 * SIZE, 3 * SIZE)));
-					}
-					else if (temp == "2550255") {
-						p.push_back(GraphicPlayer(sf::Color::Magenta, sf::Vector2f(4 * SIZE, 4 * SIZE)));
-					}
-					else if (temp == "00255") {
-						p.push_back(GraphicPlayer(sf::Color::Blue, sf::Vector2f(5 * SIZE, 5 * SIZE)));
-					}
-					else if (temp == "25500") {
-						p.push_back(GraphicPlayer(sf::Color::Red, sf::Vector2f(6 * SIZE, 6 * SIZE)));
-					}
-					else if (temp == "2552550") {
-						p.push_back(GraphicPlayer(sf::Color::Yellow, sf::Vector2f(7 * SIZE, 7 * SIZE)));
-					}
-				}
-
-				player.avatar = p[0].shape.getFillColor();
-				printearPlayer(player);
-				printearCartas(player);
-
-				g = Graphics(p);
-				break;
-
-			case Cabezera::YOURTURNDICE:				
-				std::cout << "Es tu turno. Escribe 'R' para tirar" << std::endl;
-				
-				while (t != "R")
+				if (temp == "000")
 				{
-					std::cin >> t;
-					if (t == "R")
+					p.push_back(GraphicPlayer(sf::Color::Black, sf::Vector2f(1 * SIZE, 1 * SIZE)));
+				}
+				else if (temp == "255255255") {
+					p.push_back(GraphicPlayer(sf::Color::White, sf::Vector2f(2 * SIZE, 2 * SIZE)));
+				}
+				else if (temp == "02550") {
+					p.push_back(GraphicPlayer(sf::Color::Green, sf::Vector2f(3 * SIZE, 3 * SIZE)));
+				}
+				else if (temp == "2550255") {
+					p.push_back(GraphicPlayer(sf::Color::Magenta, sf::Vector2f(4 * SIZE, 4 * SIZE)));
+				}
+				else if (temp == "00255") {
+					p.push_back(GraphicPlayer(sf::Color::Blue, sf::Vector2f(5 * SIZE, 5 * SIZE)));
+				}
+				else if (temp == "25500") {
+					p.push_back(GraphicPlayer(sf::Color::Red, sf::Vector2f(6 * SIZE, 6 * SIZE)));
+				}
+				else if (temp == "2552550") {
+					p.push_back(GraphicPlayer(sf::Color::Yellow, sf::Vector2f(7 * SIZE, 7 * SIZE)));
+				}
+			}
+
+			player.avatar = p[0].shape.getFillColor();
+			printearPlayer(player);
+			printearCartas(player);
+
+			g = Graphics(p);
+			break;
+
+		case Cabezera::YOURTURNDICE:
+			std::cout << "Es tu turno. Escribe 'R' para tirar" << std::endl;
+
+			while (t != "R")
+			{
+				std::cin >> t;
+				if (t == "R")
+				{
+					std::cout << "Has sacado un " + m + "!!! Mueve tu personaje el mismo numero de veces" << std::endl;
+					int movimientos = std::stoi(m);
+					sf::Vector2f lastPos = g.gPlayers[0].shape.getPosition();
+					g.canMove = true;
+					while (movimientos != 0)
 					{
-						std::cout << "Has sacado un " + m + "!!! Mueve tu personaje el mismo numero de veces" << std::endl;
-						int movimientos = std::stoi(m);
-						sf::Vector2f lastPos = g.gPlayers[0].shape.getPosition();
-						g.canMove = true;
-						while (movimientos != 0)
+						if (lastPos != g.gPlayers[0].shape.getPosition())
 						{
-							if (lastPos != g.gPlayers[0].shape.getPosition())
+							movimientos--;
+							lastPos = g.gPlayers[0].shape.getPosition();
+						}
+
+						g.DrawDungeon(_window, shape);
+					}
+					g.canMove = false;
+
+					m = std::to_string(g.gPlayers[0].shape.getPosition().x) + "-" + std::to_string(g.gPlayers[0].shape.getPosition().y);
+
+					Send(servidor, c, m);
+
+					if (g.checkearSalas(salaActual))
+					{
+						while (eleccion != "1" || eleccion != "2")
+						{
+							std::cout << "Que quieres hacer?" << std::endl;
+							std::cout << "1. Hacer sugestion" << std::endl;
+							std::cout << "2. Hacer resolucion" << std::endl;
+
+							std::cin >> eleccion;
+							if (eleccion == "1")
 							{
-								movimientos--;
-								lastPos = g.gPlayers[0].shape.getPosition();
+								//Hacer proposicion
 							}
-
-							g.DrawDungeon(_window, shape);
-						}
-						g.canMove = false;
-
-						m = std::to_string(g.gPlayers[0].shape.getPosition().x) + "-" + std::to_string(g.gPlayers[0].shape.getPosition().y);
-
-						Send(servidor, c, m);
-
-						/*if (checkearSala(g, salaActual))
-						{							
-							while (eleccion != "1" || eleccion != "2")
-							{								
-								std::cout << "Que quieres hacer?" << std::endl;
-								std::cout << "1. Hacer sugestion" << std::endl;
-								std::cout << "2. Hacer resolucion" << std::endl;
-
-								std::cin >> eleccion;
-								if (eleccion == "1")
-								{
-
-								}
-								else if (eleccion == "2")
-								{
-
-								}
-								else
-								{
-									system("cls");
-									std::cout << "Vuelve a intentarlo." << std::endl;
-								}
+							else if (eleccion == "2")
+							{
+								//Hacer resolucion
+							}
+							else
+							{
+								system("cls");
+								std::cout << "Vuelve a intentarlo." << std::endl;
 							}
 						}
-						else
-						{
-							//Dar opcion de resolucion
-						}*/
 					}
 					else
 					{
-						std::cout << "Nos has escrito R. Vuleve a intenatarlo:" << std::endl;
-					}
-				}
-				
-				break;
-
-			case Cabezera::GLOBALTURNDICE:
-				delimiter1 = "-";
-				delimiter2 = "/";
-
-				while ((pos = m.find(delimiter1)) != std::string::npos) {
-					std::string temp = m.substr(0, pos);
-					m.erase(0, (pos+1) + (delimiter1.length()-1));		
-
-					if (z == 0)
-					{
-						position = { std::stof(temp), std::stof(m) };
-						z++;
-					}
-					
-				}
-
-				while ((pos = m.find(delimiter2)) != std::string::npos) {
-					std::string tempC = m.substr(0, pos);
-					m.erase(0, pos + delimiter2.length());	
-
-					if (m == "000"){
-						colorTemp = sf::Color::Black;
-					}
-					else if (m == "02550") {
-						colorTemp = sf::Color::Green;
-					}
-					else if (m == "2550255") {
-						colorTemp = sf::Color::Magenta;
-					}
-					else if (m == "00255") {
-						colorTemp = sf::Color::Blue;
-					}
-					else if (m == "25500") {
-						colorTemp = sf::Color::Red; 
-					}
-					else if (m == "2552550") {
-						colorTemp = sf::Color::Yellow;
-					}				
-
-					for (int i = 0; i < g.gPlayers.size(); i++)
-					{
-						if (g.gPlayers[i].shape.getFillColor() == colorTemp)
+						while (eleccion != "1" || eleccion != "2")
 						{
-							g.gPlayers[i].shape.setPosition(position);
+							std::cout << "Que quieres hacer?" << std::endl;
+							std::cout << "1. Hacer resolucion" << std::endl;
+							std::cout << "2. Pasar turno" << std::endl;
+
+							std::cin >> eleccion;
+							if (eleccion == "1")
+							{
+								//Hacer resolucion
+							}
+							else if (eleccion == "2")
+							{
+								//Avisar al servidor del siguiente turno
+							}
+							else
+							{
+								system("cls");
+								std::cout << "Vuelve a intentarlo." << std::endl;
+							}
 						}
 					}
 				}
+				else
+				{
+					std::cout << "Nos has escrito R. Vuleve a intenatarlo:" << std::endl;
+				}
+			}
 
-				break;
+			break;
 
-			case Cabezera::YOURTURNCARDS:
+		case Cabezera::GLOBALTURNDICE:
+			delimiter1 = "-";
+			delimiter2 = "/";
 
-				break;
+			while ((pos = m.find(delimiter1)) != std::string::npos) {
+				std::string temp = m.substr(0, pos);
+				m.erase(0, (pos + 1) + (delimiter1.length() - 1));
 
-			default:
-				break;
+				if (z == 0)
+				{
+					position = { std::stof(temp), std::stof(m) };
+					z++;
+				}
+
+			}
+
+			while ((pos = m.find(delimiter2)) != std::string::npos) {
+				std::string tempC = m.substr(0, pos);
+				m.erase(0, pos + delimiter2.length());
+
+				if (m == "000") {
+					colorTemp = sf::Color::Black;
+				}
+				else if (m == "02550") {
+					colorTemp = sf::Color::Green;
+				}
+				else if (m == "2550255") {
+					colorTemp = sf::Color::Magenta;
+				}
+				else if (m == "00255") {
+					colorTemp = sf::Color::Blue;
+				}
+				else if (m == "25500") {
+					colorTemp = sf::Color::Red;
+				}
+				else if (m == "2552550") {
+					colorTemp = sf::Color::Yellow;
+				}
+
+				for (int i = 0; i < g.gPlayers.size(); i++)
+				{
+					if (g.gPlayers[i].shape.getFillColor() == colorTemp)
+					{
+						g.gPlayers[i].shape.setPosition(position);
+					}
+				}
+			}
+
+			break;
+
+		case Cabezera::YOURTURNCARDS:
+
+			break;
+
+		default:
+			break;
 		}
 
 		c = Cabezera::COUNTT;

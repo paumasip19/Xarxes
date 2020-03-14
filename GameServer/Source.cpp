@@ -88,9 +88,9 @@ void Send(Cabezera cabezera, std::string valor, std::vector<Client> &clientes, C
 				std::cout << "Desconectado" << std::endl;
 				Send(Cabezera::NEWPLAYER, std::to_string(clientes.size()), clientes);
 			}
-		}	
+		}
 	}
-	
+
 }
 
 int main()
@@ -165,13 +165,13 @@ int main()
 			}
 		}
 
-		std::vector<sf::Color> avatares = { 
+		std::vector<sf::Color> avatares = {
 			sf::Color::Green,
-			sf::Color::Red, 
+			sf::Color::Red,
 			sf::Color::Blue,
 			sf::Color::Magenta,
 			sf::Color::Yellow,
-			sf::Color::Black 
+			sf::Color::Black
 		};
 
 		std::vector<Carta> barajaComleta;
@@ -207,7 +207,7 @@ int main()
 					temp += std::to_string(conexiones[j].player.avatar.r);
 					temp += std::to_string(conexiones[j].player.avatar.g);
 					temp += std::to_string(conexiones[j].player.avatar.b);
-				}			
+				}
 			}
 
 			temp += "/";
@@ -246,7 +246,7 @@ int main()
 			{
 
 			}
-			
+
 			if (selector.wait())
 			{
 				if (selector.isReady(*conexiones[turnPlayer].socket))
@@ -273,11 +273,12 @@ int main()
 
 							//Enviar color per saber quin hay que mover
 							Send(Cabezera::GLOBALTURNDICE, temp, conexiones);
-							
+
 						}
 						break;
 
 					case Cabezera::YOURTURNCARDS:
+						//Recibe cartas de suggestion
 						break;
 					default:
 						break;
@@ -292,7 +293,7 @@ int main()
 						turnPlayer++;
 					}
 				}
-			}	
+			}
 		}
 
 		//Organizacion del servidor

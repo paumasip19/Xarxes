@@ -36,7 +36,7 @@ Graphics::Graphics(std::vector<GraphicPlayer> oP)
 
 	//Players
 	gPlayers = oP;
-	
+
 }
 
 void Graphics::DrawDungeon(sf::RenderWindow &_window, sf::RectangleShape &shape)
@@ -44,7 +44,7 @@ void Graphics::DrawDungeon(sf::RenderWindow &_window, sf::RectangleShape &shape)
 	/*sf::Texture texture;
 	if (!texture.loadFromFile("Jordi-Radev.jpg", sf::IntRect(0, 0, 600, 600)))
 	{
-		std::cout << "Loser";
+	std::cout << "Loser";
 	}*/
 
 	//sf::Sprite sprite;
@@ -91,7 +91,7 @@ void Graphics::DrawDungeon(sf::RenderWindow &_window, sf::RectangleShape &shape)
 						if (gPlayers[0].shape.getPosition().x + SIZE < 800)
 						{
 							movePlayer(0, sf::Vector2f(gPlayers[0].shape.getPosition().x + SIZE, gPlayers[0].shape.getPosition().y));
-						}		
+						}
 						std::cout << "Right" << std::endl;
 					}
 					else if (event.key.code == sf::Keyboard::Down)
@@ -99,11 +99,11 @@ void Graphics::DrawDungeon(sf::RenderWindow &_window, sf::RectangleShape &shape)
 						if (gPlayers[0].shape.getPosition().y + SIZE < 600)
 						{
 							movePlayer(0, sf::Vector2f(gPlayers[0].shape.getPosition().x, gPlayers[0].shape.getPosition().y + SIZE));
-						}			
+						}
 						std::cout << "Down" << std::endl;
 					}
 				}
-				
+
 				break;
 			}
 		}
@@ -121,16 +121,16 @@ void Graphics::DrawDungeon(sf::RenderWindow &_window, sf::RectangleShape &shape)
 		for (size_t i = 0; i < salas.size(); i++)
 		{
 			salas[i].Draw(_window);
-			
+
 		}
 		centroMensajes.Draw(_window);
 
 
-		for (int i = gPlayers.size()-1; i >= 0; i--)
+		for (int i = gPlayers.size() - 1; i >= 0; i--)
 		{
 			_window.draw(gPlayers[i].shape);
 		}
-		
+
 
 		//_window.draw(sprite);
 
@@ -143,9 +143,29 @@ void Graphics::movePlayer(int player, sf::Vector2f pos)
 	gPlayers[player].shape.setPosition(pos);
 }
 
-std::array<Sala, NUM_SALAS> Graphics::getSalas()
+bool Graphics::checkearSalas(std::string &nombreHabitacion)
 {
-	return salas;
+	//player pos en pixeles
+	//salas pos en casillas
+
+	for (int i = 0; i < NUM_SALAS; i++)
+	{
+		//Izquierda
+		//Derecha
+		//Arriba 
+		//Abajo
+
+		if (gPlayers[0].shape.getPosition().x / SIZE >= (salas[i].origen.x - (salas[i].longitud.x / 2)) &&
+			gPlayers[0].shape.getPosition().x / SIZE <= (salas[i].origen.x + (salas[i].longitud.x / 2)) &&
+			gPlayers[0].shape.getPosition().y / SIZE >= (salas[i].origen.y - (salas[i].longitud.y / 2)) &&
+			gPlayers[0].shape.getPosition().y / SIZE <= (salas[i].origen.y + (salas[i].longitud.y / 2)))
+		{
+			nombreHabitacion = salas[i].texto;
+			return true;
+		}
+	}
+
+	return false;
 }
 
 Graphics::~Graphics()
