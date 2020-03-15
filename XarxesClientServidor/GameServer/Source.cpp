@@ -283,9 +283,10 @@ int main()
 											NoHasCard = false;
 											m = "El jugador " + conexiones[i].player.name + " tiene la carta de " + m;
 											Send(d, m, conexiones, conexiones[turnPlayer]);
+											d = Cabezera::RECIEVEHINT;										
+											Send(d, m, conexiones);
 										}
-									}
-									
+									}									
 								}
 								
 								if (NoHasCard)
@@ -338,24 +339,6 @@ int main()
 						break;
 
 					case Cabezera::ENDTURN:
-
-						//ESTO HAY QUE CORREGIRLO
-						//SI EL PRIMER JUGADOR ES ELIMINADO POR CAGARLA EN LA RESOLUCION, ESTE SE AÑADE A EXPELLED, LA LISTA DE JUGADORES ELIMINADOS
-						//ESTOS RECIBIRAN INFORMACION, PERO NI TIRARAN MAS, NI HARAN ACUSACIONES DE NINGUN TIPO
-						//AQUI HACE FALTA SALTARLOS CON UNA COMPARACION
-						//NO FUNCIONA BIEN AUN
-						//SI EL PRIMER JUGADOR QUEDA ELIMINADO, EL SEGUNDO HACE SU TIRADA, SU JUGADA, ETC... PERO CUANDO LE TOCARIA AL TERCER JUGADOR, SIEMPRE LE VUELVE A TOCAR AL SEGUNDO
-						//PORFA ARREGLAR
-
-						/*if (turnPlayer == MAX_PLAYERS - 1)
-						{
-							turnPlayer = 0;
-						}
-						else
-						{
-
-							turnPlayer++;
-						}*/
 						
 						while (!canContinue)
 						{

@@ -474,7 +474,9 @@ int main()
 			}
 
 			break;
-
+		case Cabezera::RECIEVEHINT:
+			std::cout << m << std::endl;
+			break;
 		default:
 			break;
 		}
