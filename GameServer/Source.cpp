@@ -236,6 +236,8 @@ int main()
 		std::vector<Carta> acusacion;
 		std::vector<Carta> cartasTemp;
 
+		int ok = 0;
+
 		while (running)
 		{
 			//Tirar dado
@@ -292,6 +294,17 @@ int main()
 						delimiter1 = "-";
 						temp = "";
 						acusacion.clear();
+
+						temp += m + "/";
+
+						temp += std::to_string(conexiones[turnPlayer].player.avatar.r);
+						temp += std::to_string(conexiones[turnPlayer].player.avatar.g);
+						temp += std::to_string(conexiones[turnPlayer].player.avatar.b);
+
+						temp += "/";
+
+						c = Cabezera::INFORMACUSATION;
+						Send(c, temp, conexiones);
 
 						while ((pos = m.find(delimiter1)) != std::string::npos) {
 							std::string temp = m.substr(0, pos);
@@ -359,6 +372,35 @@ int main()
 
 						break;
 
+					case Cabezera::MAKERESOLUTION:
+						delimiter1 = "-";
+						temp = "";
+						acusacion.clear();
+
+						while ((pos = m.find(delimiter1)) != std::string::npos) {
+							std::string temp = m.substr(0, pos);
+							m.erase(0, pos + delimiter1.length());
+
+							acusacion.push_back(Carta(TipoCarta((int)(temp[0] - 48)), temp.substr(1, temp.length() - 1)));
+						}
+
+						ok = 0;
+						for (int i = 0; i < solucion.size(); i++)
+						{
+							if (acusacion[i].nombre == solucion[i].nombre)
+							{
+								ok++;
+							}
+						}
+
+						if (ok == 3)
+						{
+							//Acusacion buena
+						}
+						else
+						{
+							//Acusacion mala
+						}
 					default:
 						break;
 					}

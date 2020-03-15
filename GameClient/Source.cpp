@@ -203,6 +203,10 @@ int main()
 			break;
 
 		case Cabezera::YOURTURNDICE:
+			system("cls");
+			printearPlayer(player);
+			printearCartas(player);
+
 			std::cout << "Es tu turno. Escribe 'R' para tirar" << std::endl;
 
 			while (t != "R")
@@ -248,9 +252,9 @@ int main()
 							}
 							else if (eleccion == "2")
 							{
-								//m = hacerAcusacionFinal(barajaCompleta);
-								//c = Cabezera::YOURTURNCARDS;   cabezera definitiva
-								//Send(servidor, c, m);
+								m = hacerAcusacionFinal(barajaCompleta);
+								c = Cabezera::MAKERESOLUTION; 
+								Send(servidor, c, m);
 							}
 							else
 							{
@@ -376,6 +380,10 @@ int main()
 			m = "";
 			c = Cabezera::ENDTURN;
 			Send(servidor, c, m);
+			break;
+
+		case Cabezera::INFORMACUSATION:
+			printearAcusacionExterna(m);
 			break;
 		default:
 			break;

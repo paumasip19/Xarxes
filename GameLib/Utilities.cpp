@@ -412,7 +412,7 @@ std::string hacerAcusacionFinal(std::vector<Carta> deck)
 
 	std::cout << "Has acusado definitivamente a " << p << " con un/una " << a << " en la " << h << std::endl;
 
-	return "0" + p + "-1" + a + "-2" + h;
+	return "0" + p + "-1" + a + "-2" + h + "-";
 }
 
 std::string desmentirCarta(std::vector<Carta> temp)
@@ -463,4 +463,49 @@ std::string desmentirCarta(std::vector<Carta> temp)
 	
 	return e;
 
+}
+
+void printearAcusacionExterna(std::string m)
+{
+	std::string delimiter1 = "-";
+	std::string delimiter2 = "/";
+	std::string temp = "";
+	std::vector<Carta> tempCards;
+	size_t pos = 0;
+
+	while ((pos = m.find(delimiter1)) != std::string::npos) {
+		std::string temp = m.substr(0, pos);
+		m.erase(0, pos + delimiter1.length());
+
+		tempCards.push_back(Carta(TipoCarta((int)(temp[0] - 48)), temp.substr(1, temp.length() - 1)));
+	}
+
+	m.erase(m.begin());
+
+	while ((pos = m.find(delimiter2)) != std::string::npos) {
+		std::string temp = m.substr(0, pos);
+		m.erase(0, pos + delimiter2.length());
+
+		if (temp == "000")
+		{
+			std::cout << "El jugador Enrique ";
+		}
+		else if (temp == "02550") {
+			std::cout << "El jugador Oriol ";
+		}
+		else if (temp == "2550255") {
+			std::cout << "El jugador Richard ";
+		}
+		else if (temp == "00255") {
+			std::cout << "La jugadora Ruth ";
+		}
+		else if (temp == "25500") {
+			std::cout << "La jugadora Tona ";
+		}
+		else if (temp == "2552550") {
+			std::cout << "La jugadora Carmen ";
+		}
+	}
+
+	std::cout << "ha acusado a " << tempCards[0].nombre << " de asesinar con un/una " << tempCards[1].nombre << " en la " << tempCards[2].nombre << std::endl;
 }
