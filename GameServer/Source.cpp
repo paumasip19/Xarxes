@@ -217,9 +217,11 @@ int main()
 
 		//Informacion del juego
 		Cabezera c;
+		Cabezera d;
 		std::string m;
 
 		int dice[2];
+		int randomHint;
 		int turnPlayer = 0;
 
 		bool rollDice = true;
@@ -243,6 +245,8 @@ int main()
 
 		bool canContinue = false;
 
+		bool NoHasCard = true;
+
 		while (running)
 		{
 			
@@ -251,9 +255,56 @@ int main()
 			{
 				dice[0] = rand() % 6 + 1;
 				dice[1] = rand() % 6 + 1;
-				dice[0] = dice[0] * 10 + dice[1];
-				Send(Cabezera::YOURTURNDICE, std::to_string(dice[0]), conexiones, conexiones[turnPlayer]);
-				rollDice = false;
+				if (dice[0] == 1 || dice[1] == 1)
+				{
+					randomHint = rand() % 3 + 1;
+					randomHint *= 100;
+					dice[0] = dice[0] * 10 + dice[1] + randomHint;
+					Send(Cabezera::YOURTURNDICE, std::to_string(dice[0]), conexiones, conexiones[turnPlayer]);
+					rollDice = false;
+
+					// Escuchamos que pista quiere el player
+
+					if (selector.wait())
+					{
+						if (selector.isReady(*conexiones[turnPlayer].socket))
+						{
+							Receive(conexiones[turnPlayer], d, m);
+
+							if (d == Cabezera::TELLHINT)
+							{
+								d = Cabezera::TELLHINT;
+								for (int i = 0; i < conexiones.size(); i++)
+								{
+									for(int j = 0; j < conexiones[i].player.mano.size(); j++)
+									{ 
+										if (m == conexiones[i].player.mano[j].nombre)
+										{
+											NoHasCard = false;
+											m = "El jugador " + conexiones[i].player.name + " tiene la carta de " + m;
+											Send(d, m, conexiones, conexiones[turnPlayer]);
+										}
+									}
+									
+								}
+								
+								if (NoHasCard)
+								{
+									m = "Nadie tiene la carta de " + m;
+									Send(d, m, conexiones, conexiones[turnPlayer]);
+								}
+							}
+						}
+					}
+
+
+				}
+				else
+				{
+					dice[0] = dice[0] * 10 + dice[1];
+					Send(Cabezera::YOURTURNDICE, std::to_string(dice[0]), conexiones, conexiones[turnPlayer]);
+					rollDice = false;
+				}
 			}
 
 			if (selector.wait())
@@ -296,7 +347,17 @@ int main()
 						//SI EL PRIMER JUGADOR QUEDA ELIMINADO, EL SEGUNDO HACE SU TIRADA, SU JUGADA, ETC... PERO CUANDO LE TOCARIA AL TERCER JUGADOR, SIEMPRE LE VUELVE A TOCAR AL SEGUNDO
 						//PORFA ARREGLAR
 
-						while (!canContinue)
+						if (turnPlayer == MAX_PLAYERS - 1)
+						{
+							turnPlayer = 0;
+						}
+						else
+						{
+
+							turnPlayer++;
+						}
+						
+						/*while (!canContinue)
 						{
 							if (turnPlayer == MAX_PLAYERS - 1)
 							{
@@ -317,7 +378,7 @@ int main()
 									canContinue = false;
 								}
 							}
-						}					
+						}					*/
 						rollDice = true;
 						break;
 

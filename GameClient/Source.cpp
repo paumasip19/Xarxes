@@ -128,7 +128,8 @@ int main()
 
 	std::vector<GraphicPlayer> p;
 	int dice[2];
-
+	int hintType;
+	bool validHint = false;
 
 	while (running)
 	{
@@ -151,6 +152,7 @@ int main()
 		bool isInSala = false;
 
 		std::vector<Carta> tempCards;
+		Cabezera d;
 
 		Receive(servidor, c, m);
 
@@ -216,13 +218,64 @@ int main()
 				{
 					
 					dice[0] = std::stoi(m);
-					dice[1] = dice[0] % 10;
-					dice[0] /= 10;
+					if (dice[0] > 100)
+					{
+						dice[1] = dice[0] % 10;
+						dice[0] /= 10;
+						hintType = dice[0] / 10;
+						dice[0] = dice[0] % 10;
 
-					std::cout << "Has sacado un " + std::to_string(dice[0]) + "y un" + std::to_string(dice[1]) + " !!!";
+						if (hintType == 1)
+						{
+							std::cout << "Tienes una pista de tipo PERSONAJE, elige cual quieres de forma correcta" << std::endl;
+						}
+						else if (hintType == 2)
+						{
+							std::cout << "Tienes una pista de tipo ARMA, elige cual quieres de forma correcta" << std::endl;
+						}
+						else
+						{
+							std::cout << "Tienes una pista de tipo HABITACION, elige cual quieres de forma correcta" << std::endl;
+						}
+						mostrarCartasConcrentas(barajaCompleta, hintType);
+						while (!validHint)
+						{
+							std::cin >> m;
+							for (int i = 0; i < barajaCompleta.size(); i++)
+							{
+								if (hintType - 1 == barajaCompleta[i].tipo)
+								{
+									if (m == barajaCompleta[i].nombre)
+									{
+										validHint = true;
+									}
+								}
+							}
+							if (!validHint)
+							{
+								std::cout << "[Breathes in catalan...] AVIAM... Escull un nom correcte" << std::endl;
+							}
+						}
+						d = Cabezera::TELLHINT;
+						Send(servidor, d, m);
+
+						Receive(servidor, d, m);
+						if (d == Cabezera::TELLHINT)
+						{
+							std::cout << m << std::endl;
+						}
+					}
+					else
+					{
+						hintType = 0;
+						dice[1] = dice[0] % 10;
+						dice[0] /= 10;
+					}
+
+					std::cout << "Has sacado un " + std::to_string(dice[0]) + " y un " + std::to_string(dice[1]) + " !!!";
 					dice[0] += dice[1];
 					std::cout << "Mueve tu personaje " + std::to_string(dice[0]) + " veces" << std::endl;
-					int movimientos = std::stoi(m);
+					int movimientos = dice[0];
 					sf::Vector2f lastPos = g.gPlayers[0].shape.getPosition();
 					g.canMove = true;
 					while (movimientos != 0)
