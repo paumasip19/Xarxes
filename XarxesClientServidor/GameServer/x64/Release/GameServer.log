@@ -1,0 +1,12 @@
+﻿  Source.cpp
+d:\program files (x86)\xite\desktop\xarxes\gamelib\utilities.cpp(69): warning C4267: 'inicializando': conversión de 'size_t' a 'int'; posible pérdida de datos
+d:\program files (x86)\xite\desktop\xarxes\gamelib\utilities.cpp(70): warning C4267: '=': conversión de 'size_t' a 'int'; posible pérdida de datos
+d:\program files (x86)\xite\desktop\xarxes\gamelib\utilities.cpp(72): warning C4267: 'inicializando': conversión de 'size_t' a 'int'; posible pérdida de datos
+d:\program files (x86)\xite\desktop\xarxes\gameserver\source.cpp(78): warning C4244: 'argumento': conversión de 'time_t' a 'unsigned int'; posible pérdida de datos
+  Generando código
+  414 of 414 functions (100.0%) were compiled.
+    384 functions were new in current compilation
+    0 functions had inline decision re-evaluated but remain unchanged
+  Generación de código finalizada
+GameLib.lib(PlayerInfo.obj) : warning LNK4099: no se encontró PDB 'GameLib.pdb' con 'GameLib.lib(PlayerInfo.obj)' o en 'D:\Program Files (x86)\Xite\Desktop\Xarxes\x64\Release\GameLib.pdb'; se vinculará el objeto sin tener en cuenta información de depuración
+  GameServer.vcxproj -> D:\Program Files (x86)\Xite\Desktop\Xarxes\x64\Release\GameServer.exe
