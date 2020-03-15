@@ -347,7 +347,7 @@ int main()
 						//SI EL PRIMER JUGADOR QUEDA ELIMINADO, EL SEGUNDO HACE SU TIRADA, SU JUGADA, ETC... PERO CUANDO LE TOCARIA AL TERCER JUGADOR, SIEMPRE LE VUELVE A TOCAR AL SEGUNDO
 						//PORFA ARREGLAR
 
-						if (turnPlayer == MAX_PLAYERS - 1)
+						/*if (turnPlayer == MAX_PLAYERS - 1)
 						{
 							turnPlayer = 0;
 						}
@@ -355,9 +355,9 @@ int main()
 						{
 
 							turnPlayer++;
-						}
+						}*/
 						
-						/*while (!canContinue)
+						while (!canContinue)
 						{
 							if (turnPlayer == MAX_PLAYERS - 1)
 							{
@@ -378,7 +378,8 @@ int main()
 									canContinue = false;
 								}
 							}
-						}					*/
+						}	
+						canContinue = false;
 						rollDice = true;
 						break;
 
@@ -516,7 +517,7 @@ int main()
 						break;
 					}
 
-					
+					c = Cabezera::COUNTT;
 				}
 			}
 		}

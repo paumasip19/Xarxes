@@ -11,7 +11,7 @@
 
 #define MAX_PLAYERS 4
 
-void Receive(Client& client, Cabezera& cabezera, std::string& mensaje)
+void Receive(Client& client, Cabezera& cabezera, std::string& mensaje, bool& running)
 {
 	std::string cab = "";
 	sf::Packet packet;
@@ -32,9 +32,15 @@ void Receive(Client& client, Cabezera& cabezera, std::string& mensaje)
 			cabezera = (Cabezera)std::stoi(cab);
 		}
 	}
+	else if (client.status == sf::Socket::Disconnected)
+	{
+		std::cout << "Desconectado" << std::endl;
+		std::cout << "El servidor se ha desconectado. Lo sentimos mucho. Intente resetear el juego." << std::endl;
+		running = false;
+	}
 }
 
-void Send(Client& client, Cabezera& cabezera, std::string& mensaje)
+void Send(Client& client, Cabezera& cabezera, std::string& mensaje, bool& running)
 {
 	std::string cab;
 	cab = std::to_string(cabezera);
@@ -56,6 +62,8 @@ void Send(Client& client, Cabezera& cabezera, std::string& mensaje)
 	if (client.status == sf::Socket::Disconnected)
 	{
 		std::cout << "Desconectado" << std::endl;
+		std::cout << "El servidor se ha desconectado. Lo sentimos mucho. Intente resetear el juego." << std::endl;
+		running = false;
 	}
 
 }
@@ -97,7 +105,7 @@ int main()
 
 	while (numPlayersConnected < 4)
 	{
-		Receive(servidor, c, m);
+		Receive(servidor, c, m, running);
 
 		if (c == Cabezera::NEWPLAYER)
 		{
@@ -136,6 +144,7 @@ int main()
 		std::string delimiter1;
 		std::string delimiter2;
 		std::string temp;
+		std::string temp2;
 
 		size_t pos = 0;
 
@@ -154,7 +163,7 @@ int main()
 		std::vector<Carta> tempCards;
 		Cabezera d;
 
-		Receive(servidor, c, m);
+		Receive(servidor, c, m, running);
 
 		switch (c)
 		{
@@ -257,9 +266,9 @@ int main()
 							}
 						}
 						d = Cabezera::TELLHINT;
-						Send(servidor, d, m);
+						Send(servidor, d, m, running);
 
-						Receive(servidor, d, m);
+						Receive(servidor, d, m, running);
 						if (d == Cabezera::TELLHINT)
 						{
 							std::cout << m << std::endl;
@@ -292,7 +301,7 @@ int main()
 
 					m = std::to_string(g.gPlayers[0].shape.getPosition().x) + "-" + std::to_string(g.gPlayers[0].shape.getPosition().y);
 
-					Send(servidor, c, m);
+					Send(servidor, c, m, running);
 
 					if (g.checkearSalas(salaActual))
 					{
@@ -308,13 +317,13 @@ int main()
 							{
 								m = hacerAcusacion(barajaCompleta, salaActual);
 								c = Cabezera::YOURTURNCARDS;
-								Send(servidor, c, m);
+								Send(servidor, c, m, running);
 							}
 							else if (eleccion == "2")
 							{
 								m = hacerAcusacionFinal(barajaCompleta);
 								c = Cabezera::MAKERESOLUTION; 
-								Send(servidor, c, m);
+								Send(servidor, c, m, running);
 							}
 							else
 							{
@@ -336,13 +345,13 @@ int main()
 							{
 								m = hacerAcusacionFinal(barajaCompleta);
 								c = Cabezera::MAKERESOLUTION;
-								Send(servidor, c, m);
+								Send(servidor, c, m, running);
 							}
 							else if (eleccion == "2")
 							{
 								c = Cabezera::ENDTURN;
 								m = "";
-								Send(servidor, c, m);
+								Send(servidor, c, m, running);
 							}
 							else
 							{
@@ -432,14 +441,14 @@ int main()
 			m = desmentirCarta(tempCards);
 			c = Cabezera::PROVECARDS;
 
-			Send(servidor, c, m);
+			Send(servidor, c, m, running);
 			break;
 
 		case Cabezera::RESULTPROVE:
 			std::cout << m << std::endl;
 			m = "";
 			c = Cabezera::ENDTURN;
-			Send(servidor, c, m);
+			Send(servidor, c, m, running);
 			break;
 
 		case Cabezera::INFORMACUSATION:
@@ -448,15 +457,20 @@ int main()
 
 		case Cabezera::MAKERESOLUTION:
 			temp = printearAcusacionFinalExterna(m);
-			if (temp == "1+")
+			if (m == "1+")
 			{
-				return 0;
+				running = false;
 			}
 			else
 			{
 				m = "";
-				c = Cabezera::ENDTURN;
-				Send(servidor, c, m);
+				std::string temp2 = std::to_string(player.avatar.r) + std::to_string(player.avatar.g) + std::to_string(player.avatar.b);
+				if (temp == temp2)
+				{
+					c = Cabezera::ENDTURN;
+					Send(servidor, c, m, running);
+				}
+				
 			}
 
 			break;
@@ -469,6 +483,10 @@ int main()
 		g.DrawDungeon(_window, shape);
 
 	}
+
+	//Desconectamos socket en caso de terminar partida
+	servidor.socket->disconnect();
+	delete(servidor.socket);
 
 	return 0;
 }

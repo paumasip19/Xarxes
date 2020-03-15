@@ -510,7 +510,7 @@ void printearAcusacionExterna(std::string m)
 	std::cout << "ha acusado a " << tempCards[0].nombre << " de asesinar con un/una " << tempCards[1].nombre << " en la " << tempCards[2].nombre << std::endl;
 }
 
-std::string printearAcusacionFinalExterna(std::string m)
+std::string printearAcusacionFinalExterna(std::string &m)
 {
 	std::string delimiter1 = "-";
 	std::string delimiter2 = "/";
@@ -521,7 +521,7 @@ std::string printearAcusacionFinalExterna(std::string m)
 	size_t pos = 0;
 
 	while ((pos = m.find(delimiter1)) != std::string::npos) {
-		std::string temp = m.substr(0, pos);
+		temp = m.substr(0, pos);
 		m.erase(0, pos + delimiter1.length());
 
 		tempCards.push_back(Carta(TipoCarta((int)(temp[0] - 48)), temp.substr(1, temp.length() - 1)));
@@ -530,7 +530,7 @@ std::string printearAcusacionFinalExterna(std::string m)
 	m.erase(m.begin());
 
 	while ((pos = m.find(delimiter2)) != std::string::npos) {
-		std::string temp = m.substr(0, pos);
+		temp = m.substr(0, pos);
 		m.erase(0, pos + delimiter2.length());
 
 		if (temp == "000")

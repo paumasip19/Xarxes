@@ -1,7 +1,7 @@
 ﻿  PlayerInfo.cpp
   Utilities.cpp
-d:\program files (x86)\xite\desktop\xarxes\gamelib\utilities.cpp(69): warning C4267: 'inicializando': conversión de 'size_t' a 'int'; posible pérdida de datos
-d:\program files (x86)\xite\desktop\xarxes\gamelib\utilities.cpp(70): warning C4267: '=': conversión de 'size_t' a 'int'; posible pérdida de datos
-d:\program files (x86)\xite\desktop\xarxes\gamelib\utilities.cpp(72): warning C4267: 'inicializando': conversión de 'size_t' a 'int'; posible pérdida de datos
+d:\uni\3r\xarxes\xarxes\gamelib\utilities.cpp(69): warning C4267: 'inicializando': conversión de 'size_t' a 'int'; posible pérdida de datos
+d:\uni\3r\xarxes\xarxes\gamelib\utilities.cpp(70): warning C4267: '=': conversión de 'size_t' a 'int'; posible pérdida de datos
+d:\uni\3r\xarxes\xarxes\gamelib\utilities.cpp(72): warning C4267: 'inicializando': conversión de 'size_t' a 'int'; posible pérdida de datos
   Generando código...
-  GameLib.vcxproj -> D:\Program Files (x86)\Xite\Desktop\Xarxes\x64\Debug\GameLib.lib
+  GameLib.vcxproj -> D:\Uni\3r\Xarxes\Xarxes\x64\Debug\GameLib.lib
