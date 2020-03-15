@@ -1,11 +1,1 @@
-﻿  Source.cpp
-d:\uni\3r\xarxes\xarxes\gamelib\utilities.cpp(69): warning C4267: 'inicializando': conversión de 'size_t' a 'int'; posible pérdida de datos
-d:\uni\3r\xarxes\xarxes\gamelib\utilities.cpp(70): warning C4267: '=': conversión de 'size_t' a 'int'; posible pérdida de datos
-d:\uni\3r\xarxes\xarxes\gamelib\utilities.cpp(72): warning C4267: 'inicializando': conversión de 'size_t' a 'int'; posible pérdida de datos
-d:\uni\3r\xarxes\xarxes\gameserver\source.cpp(98): warning C4244: 'argumento': conversión de 'time_t' a 'unsigned int'; posible pérdida de datos
-d:\uni\3r\xarxes\xarxes\gameserver\source.cpp(273): warning C4244: 'argumento': conversión de 'int' a 'T'; posible pérdida de datos
-          with
-          [
-              T=float
-          ]
-  GameServer.vcxproj -> D:\Uni\3r\Xarxes\Xarxes\x64\Debug\GameServer.exe
+﻿  GameServer.vcxproj -> C:\Users\manu\Desktop\Xarxes\x64\Debug\GameServer.exe

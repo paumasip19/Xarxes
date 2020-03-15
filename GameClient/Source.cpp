@@ -127,7 +127,7 @@ int main()
 	shape.setOutlineThickness(2.f);
 
 	std::vector<GraphicPlayer> p;
-
+	int dice[2];
 
 
 	while (running)
@@ -214,7 +214,14 @@ int main()
 				std::cin >> t;
 				if (t == "R")
 				{
-					std::cout << "Has sacado un " + m + "!!! Mueve tu personaje el mismo numero de veces" << std::endl;
+					
+					dice[0] = std::stoi(m);
+					dice[1] = dice[0] % 10;
+					dice[0] /= 10;
+
+					std::cout << "Has sacado un " + std::to_string(dice[0]) + "y un" + std::to_string(dice[1]) + " !!!";
+					dice[0] += dice[1];
+					std::cout << "Mueve tu personaje " + std::to_string(dice[0]) + " veces" << std::endl;
 					int movimientos = std::stoi(m);
 					sf::Vector2f lastPos = g.gPlayers[0].shape.getPosition();
 					g.canMove = true;

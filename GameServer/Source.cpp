@@ -219,7 +219,7 @@ int main()
 		Cabezera c;
 		std::string m;
 
-		int dice = 0;
+		int dice[2];
 		int turnPlayer = 0;
 
 		bool rollDice = true;
@@ -249,8 +249,10 @@ int main()
 			//Tirar dado
 			if (rollDice)
 			{
-				dice = rand() % 6 + 1;
-				Send(Cabezera::YOURTURNDICE, std::to_string(dice), conexiones, conexiones[turnPlayer]);
+				dice[0] = rand() % 6 + 1;
+				dice[1] = rand() % 6 + 1;
+				dice[0] = dice[0] * 10 + dice[1];
+				Send(Cabezera::YOURTURNDICE, std::to_string(dice[0]), conexiones, conexiones[turnPlayer]);
 				rollDice = false;
 			}
 
@@ -344,11 +346,11 @@ int main()
 
 						cartasTemp.clear();
 
-						for(int i = turnPlayer + 1; cartasTemp.size() == 0 && i != turnPlayer; i++)
+						for(int i = turnPlayer - 1; cartasTemp.size() == 0 && i != turnPlayer; i--)
 						{
-							if (i == conexiones.size())
+							if (i == -1)
 							{
-								i = 0;
+								i = conexiones.size();
 							}
 
 							for (int j = 0; j < acusacion.size(); j++)
