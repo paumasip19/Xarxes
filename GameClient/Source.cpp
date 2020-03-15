@@ -274,9 +274,9 @@ int main()
 							std::cin >> eleccion;
 							if (eleccion == "1")
 							{
-								//m = hacerAcusacionFinal(barajaCompleta);
-								//c = Cabezera::YOURTURNCARDS;   cabezera definitiva
-								//Send(servidor, c, m);
+								m = hacerAcusacionFinal(barajaCompleta);
+								c = Cabezera::MAKERESOLUTION;
+								Send(servidor, c, m);
 							}
 							else if (eleccion == "2")
 							{
@@ -385,6 +385,22 @@ int main()
 		case Cabezera::INFORMACUSATION:
 			printearAcusacionExterna(m);
 			break;
+
+		case Cabezera::MAKERESOLUTION:
+			temp = printearAcusacionFinalExterna(m);
+			if (temp == "1+")
+			{
+				return 0;
+			}
+			else
+			{
+				m = "";
+				c = Cabezera::ENDTURN;
+				Send(servidor, c, m);
+			}
+
+			break;
+
 		default:
 			break;
 		}

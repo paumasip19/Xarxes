@@ -1,4 +1,5 @@
-﻿  Graphics.cpp
+﻿C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\VCTargets\Microsoft.CppClean.targets(76,5): warning : El proceso no puede obtener acceso al archivo 'd:\uni\3r\xarxes\xarxes\x64\debug\gameclient.pdb' porque está siendo utilizado en otro proceso.
+  Graphics.cpp
 d:\uni\3r\xarxes\xarxes\gameclient\graphics.h(30): warning C4244: '=': conversión de 'int' a 'T'; posible pérdida de datos
           with
           [

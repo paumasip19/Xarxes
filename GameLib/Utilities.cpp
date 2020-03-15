@@ -509,3 +509,73 @@ void printearAcusacionExterna(std::string m)
 
 	std::cout << "ha acusado a " << tempCards[0].nombre << " de asesinar con un/una " << tempCards[1].nombre << " en la " << tempCards[2].nombre << std::endl;
 }
+
+std::string printearAcusacionFinalExterna(std::string m)
+{
+	std::string delimiter1 = "-";
+	std::string delimiter2 = "/";
+	std::string delimiter3 = "+";
+	std::string temp = "";
+	std::vector<Carta> tempCards;
+	std::string n;
+	size_t pos = 0;
+
+	while ((pos = m.find(delimiter1)) != std::string::npos) {
+		std::string temp = m.substr(0, pos);
+		m.erase(0, pos + delimiter1.length());
+
+		tempCards.push_back(Carta(TipoCarta((int)(temp[0] - 48)), temp.substr(1, temp.length() - 1)));
+	}
+
+	m.erase(m.begin());
+
+	while ((pos = m.find(delimiter2)) != std::string::npos) {
+		std::string temp = m.substr(0, pos);
+		m.erase(0, pos + delimiter2.length());
+
+		if (temp == "000")
+		{
+			std::cout << "El jugador Enrique ";
+			n = "Enrique";
+		}
+		else if (temp == "02550") {
+			std::cout << "El jugador Oriol ";
+			n = "Oriol";
+		}
+		else if (temp == "2550255") {
+			std::cout << "El jugador Richard ";
+			n = "Richard";
+		}
+		else if (temp == "00255") {
+			std::cout << "La jugadora Ruth ";
+			n = "Ruth";
+		}
+		else if (temp == "25500") {
+			std::cout << "La jugadora Tona ";
+			n = "Tona";
+		}
+		else if (temp == "2552550") {
+			std::cout << "La jugadora Carmen ";
+			n = "Carmen";
+		}
+	}
+
+	m.erase(m.begin());
+
+	std::cout << "ha acusado de forma definitiva a " << tempCards[0].nombre << " de asesinar con un/una " << tempCards[1].nombre << " en la " << tempCards[2].nombre << std::endl;
+
+	if (m == "0+")
+	{
+		std::cout << "La acusacion es erronea!!!" << std::endl;
+		std::cout << "El jugador " << n << " queda eliminado!!!" << std::endl;
+		std::cout << "QUE SIGA EL JUEGO" << std::endl;
+	}
+	else if (m == "1+")
+	{
+		std::cout << "La acusacion es correcta!!! Felicidades!!!" << std::endl;
+		std::cout << "El jugador " << n << " ha ganado!!!" << std::endl;
+		std::cout << "FIN DEL JUEGO" << std::endl;
+	}
+
+	return temp;
+}

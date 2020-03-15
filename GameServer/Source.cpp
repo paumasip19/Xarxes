@@ -228,6 +228,7 @@ int main()
 
 		std::string delimiter1;
 		std::string temp;
+		std::string temp2;
 
 		size_t pos = 0;
 
@@ -236,10 +237,15 @@ int main()
 		std::vector<Carta> acusacion;
 		std::vector<Carta> cartasTemp;
 
+		std::vector<sf::Color> expelled;
+
 		int ok = 0;
+
+		bool canContinue = false;
 
 		while (running)
 		{
+			
 			//Tirar dado
 			if (rollDice)
 			{
@@ -279,14 +285,37 @@ int main()
 						break;
 
 					case Cabezera::ENDTURN:
-						if (turnPlayer == MAX_PLAYERS - 1)
+
+						//ESTO HAY QUE CORREGIRLO
+						//SI EL PRIMER JUGADOR ES ELIMINADO POR CAGARLA EN LA RESOLUCION, ESTE SE AÑADE A EXPELLED, LA LISTA DE JUGADORES ELIMINADOS
+						//ESTOS RECIBIRAN INFORMACION, PERO NI TIRARAN MAS, NI HARAN ACUSACIONES DE NINGUN TIPO
+						//AQUI HACE FALTA SALTARLOS CON UNA COMPARACION
+						//NO FUNCIONA BIEN AUN
+						//SI EL PRIMER JUGADOR QUEDA ELIMINADO, EL SEGUNDO HACE SU TIRADA, SU JUGADA, ETC... PERO CUANDO LE TOCARIA AL TERCER JUGADOR, SIEMPRE LE VUELVE A TOCAR AL SEGUNDO
+						//PORFA ARREGLAR
+
+						while (!canContinue)
 						{
-							turnPlayer = 0;
-						}
-						else
-						{
-							turnPlayer++;
-						}
+							if (turnPlayer == MAX_PLAYERS - 1)
+							{
+								turnPlayer = 0;
+							}
+							else
+							{
+
+								turnPlayer++;
+							}
+
+							canContinue = true;
+
+							for (int i = 0; i < expelled.size(); i++)
+							{
+								if (conexiones[turnPlayer].player.avatar == expelled[i])
+								{
+									canContinue = false;
+								}
+							}
+						}					
 						rollDice = true;
 						break;
 
@@ -374,7 +403,8 @@ int main()
 
 					case Cabezera::MAKERESOLUTION:
 						delimiter1 = "-";
-						temp = "";
+						temp = "";				
+						temp2 = m;
 						acusacion.clear();
 
 						while ((pos = m.find(delimiter1)) != std::string::npos) {
@@ -393,14 +423,32 @@ int main()
 							}
 						}
 
+						c = Cabezera::MAKERESOLUTION;
+						temp2 += "/";
+
+						temp2 += std::to_string(conexiones[turnPlayer].player.avatar.r);
+						temp2 += std::to_string(conexiones[turnPlayer].player.avatar.g);
+						temp2 += std::to_string(conexiones[turnPlayer].player.avatar.b);
+
+						temp2 += "/+";
+
 						if (ok == 3)
 						{
 							//Acusacion buena
+							temp2 += "1";
+							running = false;
 						}
 						else
 						{
 							//Acusacion mala
+							temp2 += "0";
+							//Sacar al jugador
+							expelled.push_back(conexiones[turnPlayer].player.avatar);
 						}
+						
+						temp2 += "+";
+
+						Send(c, temp2, conexiones);
 					default:
 						break;
 					}
@@ -409,8 +457,6 @@ int main()
 				}
 			}
 		}
-
-		//Organizacion del servidor
 	}
 
 	return 0;
