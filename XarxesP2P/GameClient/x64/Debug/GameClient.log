@@ -78,10 +78,9 @@ d:\uni\3r\xarxes\xarxes\xarxesp2p\gameclient\graphics.h(45): warning C4244: 'arg
 d:\uni\3r\xarxes\xarxes\xarxesp2p\gamelib\utilities.cpp(69): warning C4267: 'inicializando': conversión de 'size_t' a 'int'; posible pérdida de datos
 d:\uni\3r\xarxes\xarxes\xarxesp2p\gamelib\utilities.cpp(70): warning C4267: '=': conversión de 'size_t' a 'int'; posible pérdida de datos
 d:\uni\3r\xarxes\xarxes\xarxesp2p\gamelib\utilities.cpp(72): warning C4267: 'inicializando': conversión de 'size_t' a 'int'; posible pérdida de datos
-d:\uni\3r\xarxes\xarxes\xarxesp2p\gameclient\source.cpp(105): warning C4244: 'argumento': conversión de 'time_t' a 'unsigned int'; posible pérdida de datos
-d:\uni\3r\xarxes\xarxes\xarxesp2p\gameclient\source.cpp(153): warning C4267: '=': conversión de 'size_t' a 'int'; posible pérdida de datos
-d:\uni\3r\xarxes\xarxes\xarxesp2p\gameclient\source.cpp(219): warning C4267: '=': conversión de 'size_t' a 'int'; posible pérdida de datos
-d:\uni\3r\xarxes\xarxes\xarxesp2p\gameclient\source.cpp(250): warning C4101: 'hintType': variable local sin referencia
-d:\uni\3r\xarxes\xarxes\xarxesp2p\gameclient\source.cpp(276): warning C4101: 'd': variable local sin referencia
+d:\uni\3r\xarxes\xarxes\xarxesp2p\gameclient\source.cpp(162): warning C4267: '=': conversión de 'size_t' a 'int'; posible pérdida de datos
+d:\uni\3r\xarxes\xarxes\xarxesp2p\gameclient\source.cpp(230): warning C4267: '=': conversión de 'size_t' a 'int'; posible pérdida de datos
+d:\uni\3r\xarxes\xarxes\xarxesp2p\gameclient\source.cpp(313): warning C4101: 'hintType': variable local sin referencia
+d:\uni\3r\xarxes\xarxes\xarxesp2p\gameclient\source.cpp(340): warning C4101: 'd': variable local sin referencia
   Generando código...
   GameClient.vcxproj -> D:\Uni\3r\Xarxes\Xarxes\XarxesP2P\x64\Debug\GameClient.exe

@@ -21,6 +21,10 @@ struct PeerAdress
 
 int main()
 {
+	unsigned int seed = time(NULL);
+	std::string sSeed = std::to_string(seed);
+	std::cout << "la seed es " << std::to_string(seed) << std::endl;
+
 	std::vector<PeerAdress> aPeers;
 	sf::TcpListener listener;
 	sf::Socket::Status status = listener.listen(PORT);
@@ -56,6 +60,16 @@ int main()
 			{
 				std::cout << "Send fallido" << std::endl;
 			}
+
+			pack.clear();
+			pack << sSeed;
+
+			stat = sock->send(pack);
+			if (stat != sf::Socket::Done)
+			{
+				std::cout << "Send fallido" << std::endl;
+			}
+
 			PeerAdress pa;
 			pa.ipAdress = sock->getRemoteAddress();
 			pa.port = sock->getRemotePort();
