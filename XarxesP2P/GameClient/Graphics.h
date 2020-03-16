@@ -88,9 +88,9 @@ public:
 
 	Graphics();
 	Graphics(std::vector<GraphicPlayer> oP);
-	void DrawDungeon(sf::RenderWindow &_window, sf::RectangleShape &shape);
+	void DrawDungeon(sf::RenderWindow &_window, sf::RectangleShape &shape, int myPosition);
 	void movePlayer(int player, sf::Vector2f pos);
-	bool checkearSalas(std::string &nombreHabitacion);
+	bool checkearSalas(std::string &nombreHabitacion, int myPosition);
 	bool checkearSalasOther(sf::Color color, std::string &nombreHabitacion, std::vector<GraphicPlayer> players);
 	~Graphics();
 };

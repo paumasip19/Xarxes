@@ -579,3 +579,163 @@ std::string printearAcusacionFinalExterna(std::string &m)
 
 	return temp;
 }
+
+// Only P2P
+
+std::string hacerAcusacion(std::vector<Carta> deck, std::string h, std::vector<Carta> &acusacion)
+{
+	bool canContinue = false;
+	std::string p;
+	std::string a;
+
+	while (!canContinue)
+	{
+		std::cout << "Acusa a un personaje. Escribe el nombre que le corresponda:" << std::endl;
+		mostrarCartasConcrentas(deck, 1);
+		std::cin >> p;
+		bool isIn = false;
+		for (int i = 0; i < deck.size(); i++)
+		{
+			if (deck[i].nombre == p && deck[i].tipo == TipoCarta::PERSONAJE)
+			{
+				canContinue = true;
+				acusacion.push_back(deck[i]);
+			}
+		}
+
+		if (!canContinue)
+		{
+			system("cls");
+			std::cout << "Ese nombre no era correcto. Prueba otra vez." << std::endl;
+		}
+
+	}
+
+	canContinue = false;
+
+	while (!canContinue)
+	{
+		std::cout << "Elige un arma. Escribe el nombre que le corresponda:" << std::endl;
+		mostrarCartasConcrentas(deck, 2);
+		std::cin >> a;
+		bool isIn = false;
+		for (int i = 0; i < deck.size(); i++)
+		{
+			if (deck[i].nombre == a && deck[i].tipo == TipoCarta::ARMA)
+			{
+				canContinue = true;
+				acusacion.push_back(deck[i]);
+			}
+		}
+
+		if (!canContinue)
+		{
+			system("cls");
+			std::cout << "Ese nombre no era correcto. Prueba otra vez." << std::endl;
+		}
+	}
+
+	canContinue = false;
+
+	while (!canContinue)
+	{
+	
+		for (int i = 0; i < deck.size(); i++)
+		{
+			if (deck[i].nombre == h && deck[i].tipo == TipoCarta::HABITACION)
+			{
+				canContinue = true;
+				acusacion.push_back(deck[i]);
+			}
+		}
+	}
+
+	std::cout << "Has acusado a " << p << " con un/una " << a << " en la " << h << std::endl;
+
+	return "0" + p + "-1" + a + "-2" + h + "-";
+}
+
+std::string hacerAcusacionFinal(std::vector<Carta> deck, std::vector<Carta> &acusacion)
+{
+	bool canContinue = false;
+	std::string p;
+	std::string a;
+	std::string h;
+
+	while (!canContinue)
+	{
+		std::cout << "Acusa a un personaje. Escribe el nombre que le corresponda:" << std::endl;
+		mostrarCartasConcrentas(deck, 1);
+		std::cin >> p;
+		bool isIn = false;
+		for (int i = 0; i < deck.size(); i++)
+		{
+			if (deck[i].nombre == p && deck[i].tipo == TipoCarta::PERSONAJE)
+			{
+				canContinue = true;
+				acusacion.push_back(deck[i]);
+			}
+		}
+
+		if (!canContinue)
+		{
+			system("cls");
+			std::cout << "Ese nombre no era correcto. Prueba otra vez." << std::endl;
+		}
+
+	}
+
+	canContinue = false;
+
+	while (!canContinue)
+	{
+		std::cout << "Elige un arma. Escribe el nombre que le corresponda:" << std::endl;
+		mostrarCartasConcrentas(deck, 2);
+		std::cin >> a;
+		bool isIn = false;
+		for (int i = 0; i < deck.size(); i++)
+		{
+			if (deck[i].nombre == a && deck[i].tipo == TipoCarta::ARMA)
+			{
+				canContinue = true;
+				acusacion.push_back(deck[i]);
+			}
+		}
+
+		if (!canContinue)
+		{
+			system("cls");
+			std::cout << "Ese nombre no era correcto. Prueba otra vez." << std::endl;
+		}
+	}
+
+	canContinue = false;
+
+	while (!canContinue)
+	{
+		std::cout << "Elige una habitacion. Escribe el nombre que le corresponda:" << std::endl;
+		mostrarCartasConcrentas(deck, 3);
+		std::cin >> h;
+		bool isIn = false;
+		for (int i = 0; i < deck.size(); i++)
+		{
+			if (deck[i].nombre == h && deck[i].tipo == TipoCarta::HABITACION)
+			{
+				canContinue = true;
+				acusacion.push_back(deck[i]);
+			}
+		}
+
+		if (!canContinue)
+		{
+			system("cls");
+			std::cout << "Ese nombre no era correcto. Prueba otra vez." << std::endl;
+		}
+	}
+
+	std::cout << "Has acusado definitivamente a " << p << " con un/una " << a << " en la " << h << std::endl;
+
+	return "0" + p + "-1" + a + "-2" + h + "-";
+}
+
+

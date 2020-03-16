@@ -496,6 +496,7 @@ int main()
 						temp2 += "+";
 
 						Send(c, temp2, conexiones);
+						break;
 					default:
 						break;
 					}

@@ -160,6 +160,8 @@ int main()
 				pack >> size;
 
 				myPosition = size;
+				nextPlayer = myPosition + 1;
+				prevPlayer = myPosition - 1;
 
 				for (int i = 0; i < size; i++)
 				{
@@ -216,7 +218,7 @@ int main()
 	}
 
 	//Calcular jugador siguiente y anterior
-	if (myPosition == peers.size() - 1)
+	if (myPosition + 1 == peers.size() + 1)
 	{
 		nextPlayer = 0;
 	}
@@ -225,9 +227,9 @@ int main()
 		nextPlayer = myPosition + 1;
 	}
 
-	if (myPosition == 0)
+	if (myPosition - 1 == -1)
 	{
-		prevPlayer = peers.size() - 1;
+		prevPlayer = peers.size();
 	}
 	else
 	{
@@ -313,6 +315,9 @@ int main()
 	int hintType;
 	bool validHint = false;
 
+	//Make it random again
+	srand(time(NULL) * myPosition * 45666);
+
 	while (running)
 	{
 		std::string delimiter1;
@@ -335,11 +340,15 @@ int main()
 		std::string eleccion;
 
 		bool isInSala = false;
+		std::string hintType;
 
 		std::vector<Carta> tempCards;
 		Cabezera d;
 
 		std::vector<Carta> acusacion;
+		std::vector<Carta> cartasTemp;
+
+		int ok = 0;
 
 		int externalPlayer = 0;
 
@@ -369,36 +378,90 @@ int main()
 						dice[0] = rand() % 6 + 1;
 						dice[1] = rand() % 6 + 1;
 						std::cout << "Has sacado un " + std::to_string(dice[0]) + " y un " + std::to_string(dice[1]) + " !!!";
+
+						if ((dice[0] == 1 || dice[1] == 1))
+						{
+							z = rand() % 3;
+							if (z == 0)
+							{
+								hintType = "PERSONAJE";
+							}
+							else if (z == 1)
+							{
+								hintType = "ARMA";
+							}
+							else
+							{
+								hintType = "HABITACION";
+							}
+							std::cout << "Te ha tocado una carta pista de tipo " + hintType + ". Elije el nombre de la carta que quieres." << std::endl;
+
+							mostrarCartasConcrentas(barajaCompleta, z);
+							while (!validHint)
+							{
+								std::cin >> m;
+								for (int i = 0; i < barajaCompleta.size(); i++)
+								{
+									if (z - 1 == barajaCompleta[i].tipo)
+									{
+										if (m == barajaCompleta[i].nombre)
+										{
+											validHint = true;
+										}
+									}
+								}
+								if (!validHint)
+								{
+									std::cout << "[Breathes in catalan...] AVIAM... Escull un nom correcte" << std::endl;
+								}
+							}
+
+							for (int i = 0; i < peers.size(); i++)
+							{
+								for (int j = 0; j < peers[i].player.mano.size(); j++)
+								{
+									if (m == peers[i].player.mano[j].nombre)
+									{
+										std::cout << "El jugador " << peers[i].player.name << " tiene la carta " << m << std::endl;
+										m = "El jugador " + peers[i].player.name + " tiene la carta " + m;
+										c = Cabezera::TELLHINT;
+										Send(peers, c, m, myPosition);
+									}
+								}
+							}
+						}
+						
+
 						dice[0] += dice[1];
 						std::cout << "Mueve tu personaje " + std::to_string(dice[0]) + " veces" << std::endl;
 						int movimientos = dice[0];
-						sf::Vector2f lastPos = g.gPlayers[0].shape.getPosition();
+						sf::Vector2f lastPos = g.gPlayers[myPosition].shape.getPosition();
 						g.canMove = true;
 						while (movimientos != 0)
 						{
-							if (lastPos != g.gPlayers[0].shape.getPosition())
+							if (lastPos != g.gPlayers[myPosition].shape.getPosition())
 							{
 								movimientos--;
-								lastPos = g.gPlayers[0].shape.getPosition();
+								lastPos = g.gPlayers[myPosition].shape.getPosition();
 							}
 
-							g.DrawDungeon(_window, shape);
+							g.DrawDungeon(_window, shape, myPosition);
 						}
 						g.canMove = false;
 
-						m = std::to_string(g.gPlayers[0].shape.getPosition().x) + "-" + std::to_string(g.gPlayers[0].shape.getPosition().y);
+						m = std::to_string(g.gPlayers[myPosition].shape.getPosition().x) + "-" + std::to_string(g.gPlayers[myPosition].shape.getPosition().y);
 
 						m += "-/";
 
-						m += std::to_string(player.avatar.r);
-						m += std::to_string(player.avatar.g);
-						m += std::to_string(player.avatar.b);
+						m += std::to_string(g.gPlayers[myPosition].shape.getFillColor().r);
+						m += std::to_string(g.gPlayers[myPosition].shape.getFillColor().g);
+						m += std::to_string(g.gPlayers[myPosition].shape.getFillColor().b);
 
 						c = Cabezera::GLOBALTURNDICE;
 						
 						Send(peers, c, m, myPosition);
 
-						if (g.checkearSalas(salaActual))
+						if (g.checkearSalas(salaActual, myPosition))
 						{
 							while (eleccion != "1" && eleccion != "2")
 							{
@@ -410,36 +473,192 @@ int main()
 								std::cin >> eleccion;
 								if (eleccion == "1")
 								{
-									/*m = hacerAcusacion(barajaCompleta, salaActual);
+									m = hacerAcusacion(barajaCompleta, salaActual, tempCards);
+
 									c = Cabezera::INFORMACUSATION;
-									temp2 = m;
-	
-									temp2 += "/";
+									temp = "";
+									temp += m + "/";
 
-									temp2 += std::to_string(player.avatar.r);
-									temp2 += std::to_string(player.avatar.g);
-									temp2 += std::to_string(player.avatar.b);
+									temp += std::to_string(player.avatar.r);
+									temp += std::to_string(player.avatar.g);
+									temp += std::to_string(player.avatar.b);
 
-									temp2 += "/";
+									temp += "/";
 
-									//Send(peers, c, temp2);
+									Send(peers, c, temp, myPosition);
 
-									m += "+" + std::to_string(myPosition) + "+";
-									c = Cabezera::YOURTURNCARDS;
-									Send(peers[prevPlayer], c, m);*/
+									///////////////////////////////////////////////////////////////////////////////////////
+									cartasTemp.clear();
+
+									for (int i = myPosition - 1; cartasTemp.size() == 0 && i != myPosition; i--)
+									{
+										if (i == -1)
+										{
+											i = peers.size() - 1;
+										}
+
+										for (int j = 0; j < tempCards.size(); j++)
+										{
+											for (int k = 0; k < peers[i].player.mano.size(); k++)
+											{
+												if (tempCards[j].nombre == peers[i].player.mano[k].nombre)
+												{
+													cartasTemp.push_back(peers[i].player.mano[k]);
+												}
+											}
+										}
+
+										if (cartasTemp.size() != 0)
+										{
+											c = Cabezera::YOURTURNCARDS;
+											m = "";
+
+											for (int j = 0; j < cartasTemp.size(); j++)
+											{
+												m += std::to_string(cartasTemp[j].tipo) + cartasTemp[j].nombre + "-";
+											}
+
+											m += "+" + std::to_string(myPosition) + "+";
+
+											Send(peers[i], c, m);
+										}										
+									}
+
+									if (cartasTemp.size() == 0)
+									{
+										std::cout << "Ningun jugador ha podido mostrar ninguna carta ;)" << std::endl;
+										std::cout << "Quieres hacer una resolucion?" << std::endl;
+										std::cout << "1. Hacer resolucion" << std::endl;
+										std::cout << "2. Pasar turno" << std::endl;
+										tempC = "";
+										while (tempC != "1" && tempC != "2")
+										{
+											std::cin >> tempC;
+											if (tempC == "1")
+											{
+												m = hacerAcusacionFinal(barajaCompleta, acusacion);
+
+												c = Cabezera::MAKERESOLUTION; // Cambiar
+
+												temp = "";
+												temp += m + "/";
+
+												temp += std::to_string(player.avatar.r);
+												temp += std::to_string(player.avatar.g);
+												temp += std::to_string(player.avatar.b);
+
+												temp += "/+";
+
+
+												ok = 0;
+												for (int i = 0; i < solucion.size(); i++)
+												{
+													if (acusacion[i].nombre == solucion[i].nombre)
+													{
+														ok++;
+													}
+												}
+
+												if (ok == 3)
+												{
+													//Acusacion buena
+													temp += "1+";
+													//Falten missatges
+													running = false;
+												}
+												else
+												{
+													//Acusacion mala
+													temp2 += "0+";
+													//Quedamos eliminados
+													//expelled.push_back(conexiones[turnPlayer].player.avatar);
+												}
+
+												Send(peers, c, temp, myPosition);
+
+												if (printearAcusacionFinalExterna(temp) == "1+")
+												{
+													running = false;
+												}
+												else
+												{
+													//Eliminar jugador
+												}
+											}
+											else if (tempC == "2")
+											{
+												c = Cabezera::YOURTURNDICE;
+												m = "";
+
+												Send(peers[nextPlayer], c, m);
+											}
+											else
+											{
+												std::cout << "[Breathes in catalan...] AVIAM... Escull un nom correcte" << std::endl;
+											}
+
+										}
+									}
 								}
+
 								else if (eleccion == "2")
 								{
-									/*m = hacerAcusacionFinal(barajaCompleta);
-									c = Cabezera::MAKERESOLUTION;
-									Send(servidor, c, m, running);*/
+									m = hacerAcusacionFinal(barajaCompleta, acusacion);
+
+									c = Cabezera::MAKERESOLUTION; // Cambiar
+
+									temp = "";
+									temp += m + "/";
+
+									temp += std::to_string(player.avatar.r);
+									temp += std::to_string(player.avatar.g);
+									temp += std::to_string(player.avatar.b);
+
+									temp += "/+";
+
+
+									ok = 0;
+									for (int i = 0; i < solucion.size(); i++)
+									{
+										if (acusacion[i].nombre == solucion[i].nombre)
+										{
+											ok++;
+										}
+									}
+
+									if (ok == 3)
+									{
+										//Acusacion buena
+										temp += "1+";
+										//Falten missatges
+										running = false;
+									}
+									else
+									{
+										//Acusacion mala
+										temp2 += "0+";
+										//Quedamos eliminados
+										//expelled.push_back(conexiones[turnPlayer].player.avatar);
+									}
+
+									Send(peers, c, temp, myPosition);
+									
+									if (printearAcusacionFinalExterna(temp) == "1+")
+									{
+										running = false;
+									}
+									else
+									{
+										//Eliminar jugador
+									}
+
 								}
 								else
 								{
 									system("cls");
 									std::cout << "Vuelve a intentarlo." << std::endl;
 								}
-							}
+							}		
 						}
 						else
 						{
@@ -452,9 +671,54 @@ int main()
 								std::cin >> eleccion;
 								if (eleccion == "1")
 								{
-									/*m = hacerAcusacionFinal(barajaCompleta);
-									c = Cabezera::MAKERESOLUTION;
-									Send(servidor, c, m, running);*/
+									m = hacerAcusacionFinal(barajaCompleta, acusacion);
+
+									c = Cabezera::MAKERESOLUTION; // Cambiar
+
+									temp = "";
+									temp += m + "/";
+
+									temp += std::to_string(player.avatar.r);
+									temp += std::to_string(player.avatar.g);
+									temp += std::to_string(player.avatar.b);
+
+									temp += "/+";
+
+
+									ok = 0;
+									for (int i = 0; i < solucion.size(); i++)
+									{
+										if (acusacion[i].nombre == solucion[i].nombre)
+										{
+											ok++;
+										}
+									}
+
+									if (ok == 3)
+									{
+										//Acusacion buena
+										temp += "1+";
+										//Falten missatges
+										running = false;
+									}
+									else
+									{
+										//Acusacion mala
+										temp2 += "0+";
+										//Quedamos eliminados
+										//expelled.push_back(conexiones[turnPlayer].player.avatar);
+									}
+
+									Send(peers, c, temp, myPosition);
+
+									if (printearAcusacionFinalExterna(temp) == "1+")
+									{
+										running = false;
+									}
+									else
+									{
+										//Eliminar jugador
+									}
 								}
 								else if (eleccion == "2")
 								{
@@ -462,7 +726,7 @@ int main()
 									m = "";
 
 									Send(peers[nextPlayer], c, m);
-								
+
 								}
 								else
 								{
@@ -474,11 +738,33 @@ int main()
 					}
 					else
 					{
-						std::cout << "Nos has escrito R. Vuleve a intenatarlo:" << std::endl;
+					std::cout << "Nos has escrito R. Vuleve a intenatarlo:" << std::endl;
 					}
-
-					c = Cabezera::COUNTT;
 				}
+				break;
+			case Cabezera::YOURTURNCARDS:
+				tempCards.clear();
+
+				delimiter1 = "-";
+				temp = "";
+
+				while ((pos = m.find(delimiter1)) != std::string::npos) {
+					std::string temp = m.substr(0, pos);
+					m.erase(0, pos + delimiter1.length());
+
+					tempCards.push_back(Carta(TipoCarta((int)(temp[0] - 48)), temp.substr(1, temp.length() - 1)));
+				}
+
+				m.erase(m.begin());
+				m.erase(m.end());
+
+				externalPlayer = std::stoi(m);
+
+				m = desmentirCarta(tempCards);
+				m = "El jugador " + peers[myPosition].player.name + " te ha enseñado la carta de " + m;
+				c = Cabezera::PROVECARDS;
+
+				Send(peers[externalPlayer], c, m);
 				break;
 			case Cabezera::GLOBALTURNDICE:
 				delimiter1 = "-";
@@ -540,65 +826,39 @@ int main()
 				printearAcusacionExterna(m);
 				break;
 
-			case Cabezera::YOURTURNCARDS:
-	
-				temp2 = m;
+			case Cabezera::PROVECARDS:
+				std::cout << m << std::endl;
+				c = Cabezera::YOURTURNDICE;
+				m = "";
 
-				delimiter1 = "-";
-				delimiter3 = "+";
+				Send(peers[nextPlayer], c, m);
 
-				while ((pos = m.find(delimiter1)) != std::string::npos) {
-					std::string temp = m.substr(0, pos);
-					m.erase(0, pos + delimiter1.length());
+				break;
+			case Cabezera::TELLHINT:
+				std::cout << m << std::endl;
 
-					acusacion.push_back(Carta(TipoCarta((int)(temp[0] - 48)), temp.substr(1, temp.length() - 1)));
-				}
-
-				m.erase(m.begin());
-				m.erase(m.end());
-
-				externalPlayer = std::stoi(m);
-
-				if (externalPlayer == myPosition)
+			case Cabezera::MAKERESOLUTION:
+				temp = printearAcusacionFinalExterna(m);
+				if (m == "1+")
 				{
-					std::cout << "Nadie tiene ninguna de las cartas de tu acusacion" << std::endl;
-					std::cout << "Quieres hacer una resolucion?" << std::endl;
-
-					//Hacer acusacion final
-				}
-
-				for (int i = 0; i < acusacion.size(); i++)
-				{
-					for (int j = 0; j < player.mano.size(); j++)
-					{
-						if (acusacion[i].nombre == player.mano[j].nombre)
-						{
-							tempCards.push_back(acusacion[i]);
-						}
-					}
-				}
-
-				c = Cabezera::YOURTURNCARDS;
-
-				if (tempCards.size() == 0)
-				{
-					Send(peers[prevPlayer], c, temp2);
+					running = false;
 				}
 				else
 				{
+					m = "";
+					//Expulsar jugador
 
 				}
 
 				break;
-
 			default:
 				break;
 		}
-
 		c = Cabezera::COUNTT;
-		g.DrawDungeon(_window, shape);
-			
+		g.DrawDungeon(_window, shape, myPosition);
 	}
-	
-}
 
+	system("pause");
+	return 0;
+
+}

@@ -39,7 +39,7 @@ Graphics::Graphics(std::vector<GraphicPlayer> oP)
 
 }
 
-void Graphics::DrawDungeon(sf::RenderWindow &_window, sf::RectangleShape &shape)
+void Graphics::DrawDungeon(sf::RenderWindow &_window, sf::RectangleShape &shape, int myPosition)
 {
 	/*sf::Texture texture;
 	if (!texture.loadFromFile("Jordi-Radev.jpg", sf::IntRect(0, 0, 600, 600)))
@@ -72,33 +72,33 @@ void Graphics::DrawDungeon(sf::RenderWindow &_window, sf::RectangleShape &shape)
 					//Hay que arreglar
 					if (event.key.code == sf::Keyboard::Left)
 					{
-						if (gPlayers[0].shape.getPosition().x - SIZE >= 0)
+						if (gPlayers[myPosition].shape.getPosition().x - SIZE >= 0)
 						{
-							movePlayer(0, sf::Vector2f(gPlayers[0].shape.getPosition().x - SIZE, gPlayers[0].shape.getPosition().y));
+							movePlayer(myPosition, sf::Vector2f(gPlayers[myPosition].shape.getPosition().x - SIZE, gPlayers[myPosition].shape.getPosition().y));
 						}
 						std::cout << "Left" << std::endl;
 					}
 					else if (event.key.code == sf::Keyboard::Up)
 					{
-						if (gPlayers[0].shape.getPosition().y - SIZE >= 0)
+						if (gPlayers[myPosition].shape.getPosition().y - SIZE >= 0)
 						{
-							movePlayer(0, sf::Vector2f(gPlayers[0].shape.getPosition().x, gPlayers[0].shape.getPosition().y - SIZE));
+							movePlayer(myPosition, sf::Vector2f(gPlayers[myPosition].shape.getPosition().x, gPlayers[myPosition].shape.getPosition().y - SIZE));
 						}
 						std::cout << "Up" << std::endl;
 					}
 					else if (event.key.code == sf::Keyboard::Right)
 					{
-						if (gPlayers[0].shape.getPosition().x + SIZE < 800)
+						if (gPlayers[myPosition].shape.getPosition().x + SIZE < 800)
 						{
-							movePlayer(0, sf::Vector2f(gPlayers[0].shape.getPosition().x + SIZE, gPlayers[0].shape.getPosition().y));
+							movePlayer(myPosition, sf::Vector2f(gPlayers[myPosition].shape.getPosition().x + SIZE, gPlayers[myPosition].shape.getPosition().y));
 						}
 						std::cout << "Right" << std::endl;
 					}
 					else if (event.key.code == sf::Keyboard::Down)
 					{
-						if (gPlayers[0].shape.getPosition().y + SIZE < 600)
+						if (gPlayers[myPosition].shape.getPosition().y + SIZE < 600)
 						{
-							movePlayer(0, sf::Vector2f(gPlayers[0].shape.getPosition().x, gPlayers[0].shape.getPosition().y + SIZE));
+							movePlayer(myPosition, sf::Vector2f(gPlayers[myPosition].shape.getPosition().x, gPlayers[myPosition].shape.getPosition().y + SIZE));
 						}
 						std::cout << "Down" << std::endl;
 					}
@@ -143,7 +143,7 @@ void Graphics::movePlayer(int player, sf::Vector2f pos)
 	gPlayers[player].shape.setPosition(pos);
 }
 
-bool Graphics::checkearSalas(std::string &nombreHabitacion)
+bool Graphics::checkearSalas(std::string &nombreHabitacion, int myPosition)
 {
 	//player pos en pixeles
 	//salas pos en casillas
@@ -155,10 +155,10 @@ bool Graphics::checkearSalas(std::string &nombreHabitacion)
 		//Arriba 
 		//Abajo
 
-		if (gPlayers[0].shape.getPosition().x / SIZE >= (salas[i].origen.x) &&
-			gPlayers[0].shape.getPosition().x / SIZE <= ((salas[i].origen.x + salas[i].longitud.x - 1)) &&
-			gPlayers[0].shape.getPosition().y / SIZE >= (salas[i].origen.y) &&
-			gPlayers[0].shape.getPosition().y / SIZE <= ((salas[i].origen.y + salas[i].longitud.y - 1)))
+		if (gPlayers[myPosition].shape.getPosition().x / SIZE >= (salas[i].origen.x) &&
+			gPlayers[myPosition].shape.getPosition().x / SIZE <= ((salas[i].origen.x + salas[i].longitud.x - 1)) &&
+			gPlayers[myPosition].shape.getPosition().y / SIZE >= (salas[i].origen.y) &&
+			gPlayers[myPosition].shape.getPosition().y / SIZE <= ((salas[i].origen.y + salas[i].longitud.y - 1)))
 		{
 			nombreHabitacion = salas[i].texto;
 			return true;
