@@ -395,7 +395,7 @@ int main()
 						{
 							if (i == -1)
 							{
-								i = conexiones.size();
+								i = conexiones.size() - 1;
 							}
 
 							for (int j = 0; j < acusacion.size(); j++)

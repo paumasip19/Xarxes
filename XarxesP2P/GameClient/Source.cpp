@@ -858,6 +858,15 @@ int main()
 		g.DrawDungeon(_window, shape, myPosition);
 	}
 
+	for (int i = 0; i < peers.size(); i++)
+	{
+		if (i != myPosition)
+		{
+			peers[i].socket->disconnect();
+			delete(peers[i].socket);
+		}
+	}
+
 	system("pause");
 	return 0;
 
