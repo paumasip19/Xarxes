@@ -1,0 +1,5 @@
+﻿  Servidor.cpp
+d:\uni\3r\xarxes\xarxes\xarxes_udp\gameserver\servidor.cpp(115): warning C4244: 'argumento': conversión de 'double' a 'int'; posible pérdida de datos
+d:\uni\3r\xarxes\xarxes\xarxes_udp\gameserver\servidor.cpp(162): warning C4244: 'argumento': conversión de 'time_t' a 'unsigned int'; posible pérdida de datos
+d:\uni\3r\xarxes\xarxes\xarxes_udp\gameserver\servidor.cpp(196): warning C4244: 'argumento': conversión de 'double' a 'int'; posible pérdida de datos
+  GameServer.vcxproj -> D:\Uni\3r\Xarxes\Xarxes\Xarxes_UDP\x64\Debug\GameServer.exe

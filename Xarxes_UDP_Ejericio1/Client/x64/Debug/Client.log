@@ -1,8 +1,4 @@
 ﻿  Client.cpp
-d:\uni\3r\xarxes\xarxes\xarxes_udp_ejericio1\client\client.cpp(21): warning C4267: 'inicializando': conversión de 'size_t' a 'int'; posible pérdida de datos
-d:\uni\3r\xarxes\xarxes\xarxes_udp_ejericio1\client\client.cpp(162): warning C4244: 'argumento': conversión de 'size_t' a 'T'; posible pérdida de datos
-          with
-          [
-              T=float
-          ]
+d:\uni\3r\xarxes\xarxes\xarxes_udp_ejericio1\client\client.cpp(112): warning C4244: 'argumento': conversión de 'time_t' a 'unsigned int'; posible pérdida de datos
+d:\uni\3r\xarxes\xarxes\xarxes_udp_ejericio1\client\client.cpp(114): warning C4305: 'inicializando': truncamiento de 'double' a 'float'
   Client.vcxproj -> D:\Uni\3r\Xarxes\Xarxes\Xarxes_UDP_Ejericio1\x64\Debug\Client.exe
