@@ -22,12 +22,14 @@
 struct GraphicPlayer
 {
 	sf::RectangleShape shape;
+	int id;
+	std::string nick;
 
 	GraphicPlayer()
 	{
 	}
 
-	GraphicPlayer(sf::Color c, sf::Vector2f p)
+	GraphicPlayer(sf::Color c, sf::Vector2f p, int ID, std::string n)
 	{
 		shape.setSize(sf::Vector2f(SIZE, SIZE));
 		shape.setOutlineColor(sf::Color::Black);
@@ -35,6 +37,9 @@ struct GraphicPlayer
 
 		shape.setFillColor(c);
 		shape.setPosition(p);
+
+		id = ID;
+		nick = n;
 	}
 };
 
@@ -50,6 +55,7 @@ public:
 	void DrawDungeon(sf::RenderWindow &_window, sf::RectangleShape &shape, bool &isRunning);
 	void addNewPlayer(GraphicPlayer player);
 	void movePlayer(int player, sf::Vector2f pos);
+	int findPlayerByID(int ID);
 	~Graphics();
 };
 

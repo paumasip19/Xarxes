@@ -109,6 +109,19 @@ void Graphics::movePlayer(int player, sf::Vector2f pos) //Buscar manera de ident
 	gPlayers[player].shape.setPosition(pos);
 }
 
+int Graphics::findPlayerByID(int ID)
+{
+	for (int i = 0; i < gPlayers.size(); i++)
+	{
+		if (ID == gPlayers[i].id)
+		{
+			return i;
+		}
+	}
+
+	return -1;
+}
+
 Graphics::~Graphics()
 {
 }

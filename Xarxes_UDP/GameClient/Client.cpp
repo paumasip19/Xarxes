@@ -4,7 +4,7 @@
 #define SERVER_IP "127.0.0.1"
 #define SERVER_PORT 5000
 #define MAX_NUMPLAYERS 10
-#define DISCONNECTION_TIME 60
+#define DISCONNECTION_TIME 200
 
 void Receive(Cabezera& cabezera, std::string& mensaje, sf::UdpSocket &socket, Client &tempClient, double clientSalt) //CABEZERA_<SALT.CLIENT><SALT.SERVER>INFO
 {
@@ -106,17 +106,17 @@ int main()
 {
 	srand(time(NULL));
 
+	Client player;
+
 	float latency = 0.030;
-	double clientSalt = rand() % 100000;
+	player.salt = rand() % 100000;
 	int ourID = -1;
 	bool isConnected = false;
 
 	std::cout << "Buenas Cliente!!!" << std::endl;
 	std::cout << "Inserta un nombre de usuario:" << std::endl;
 
-	std::string userName = "";
-
-	std::cin >> userName;
+	std::cin >> player.nickname;
 
 	std::cout << std::endl;
 
@@ -137,14 +137,14 @@ int main()
 
 	while (!isConnected)
 	{
-		Receive(c, m, socket, server, clientSalt);
+		Receive(c, m, socket, server, player.salt);
 
 		if ((clock() - timer) / CLOCKS_PER_SEC >= latency)
 		{
 			c = Cabezera::HELLO;
-			m = userName;
-			Send(c, m, socket, server, clientSalt, ourID); // HELLO_<2789492><0>Pau
-			std::cout << "El client Salt es " + std::to_string(clientSalt) << std::endl;
+			m = player.nickname;
+			Send(c, m, socket, server, player.salt, player.id); // HELLO_<2789492><0>Pau
+			std::cout << "El client Salt es " + std::to_string(player.salt) << std::endl;
 			std::cout << "HELLO enviado" << std::endl;
 			system("cls");
 			timer = clock();
@@ -180,12 +180,49 @@ int main()
 			}
 
 			m = std::to_string(a + b);
-			Send(c, m, socket, server, clientSalt, ourID);	
+			Send(c, m, socket, server, player.salt, player.id);
 		}
 		else if (c == Cabezera::WELCOME)
 		{
 			std::cout << "Te has conectado a servidor" << std::endl;
-			ourID = std::stoi(m);
+			player.id = (int)m[0] - 48;
+			m.erase(m.begin());
+			m.erase(m.begin());
+
+			std::string delimiter1 = "-";
+			size_t pos = 0;
+			int num = 0;
+
+			while ((pos = m.find(delimiter1)) != std::string::npos) {
+
+				if (num == 0)
+				{
+					player.position.x = std::stoi(m.substr(0, pos));
+				}
+				else if (num == 1)
+				{
+					player.position.y = std::stoi(m.substr(0, pos));
+				}
+				else if (num == 2)
+				{
+					player.color.r = std::stoi(m.substr(0, pos));
+				}
+				else if (num == 3)
+				{
+					player.color.g = std::stoi(m.substr(0, pos));
+				}
+				else if (num == 4)
+				{
+					player.color.b = std::stoi(m.substr(0, pos));
+				}
+
+				m.erase(0, pos + delimiter1.length());
+
+				num++;
+			}
+
+			player.color.a = 255;
+
 			isConnected = true;
 		}
 	}
@@ -195,16 +232,87 @@ int main()
 	shape.setOutlineColor(sf::Color::Black);
 	shape.setOutlineThickness(2.f);
 
-	GraphicPlayer player(sf::Color::Blue, sf::Vector2f(0, 0));
+	GraphicPlayer p(player.color, player.position, player.id, player.nickname);
 
-	Graphics graphics(player);
+	Graphics graphics(p);
+
+	std::string delimiter1;
+	size_t pos = 0;
+	int num = 0;
+	GraphicPlayer tempGP;
+	sf::Color tempColor;
+	sf::Vector2f tempPos;
+	int localPacketID = 0;
+	int tempID;
+	std::string tempNick;
 
 	while (isRunning)
 	{
-		Receive(c, m, socket, server, clientSalt);
+		Receive(c, m, socket, server, player.salt);
 
 		switch (c)
 		{
+			case Cabezera::NEWPLAYER:
+				delimiter1 = "-";
+				pos = 0;
+				num = 0;
+
+				while ((pos = m.find(delimiter1)) != std::string::npos) {
+
+					if (num == 0)
+					{
+						localPacketID = std::stoi(m.substr(0, pos));
+					}
+					else if (num == 1)
+					{
+						tempID = std::stoi(m.substr(0, pos));
+					}
+					else if (num == 2)
+					{
+						tempPos.x = std::stoi(m.substr(0, pos));
+					}
+					else if (num == 3)
+					{
+						tempPos.y = std::stoi(m.substr(0, pos));
+					}
+					else if (num == 4)
+					{
+						tempColor.r = std::stoi(m.substr(0, pos));
+					}
+					else if (num == 5)
+					{
+						tempColor.g = std::stoi(m.substr(0, pos));
+					}
+					else if (num == 6)
+					{
+						tempColor.b = std::stoi(m.substr(0, pos));
+					}
+					else if (num == 7)
+					{
+						tempNick = m.substr(0, pos);
+					}
+
+					m.erase(0, pos + delimiter1.length());
+
+					num++;
+				}
+
+				tempColor.a = 255;
+
+				if (graphics.findPlayerByID(tempID) == -1)
+				{
+					graphics.addNewPlayer(GraphicPlayer(tempColor, tempPos, tempID, tempNick));
+
+					std::cout << "El jugador/a " + tempNick + " se ha conectado a la partida" << std::endl;
+				}
+
+				c = Cabezera::NEWPLAYERACK;
+				m = std::to_string(localPacketID);
+
+				Send(c, m, socket, server, player.salt, player.id);
+
+				break;
+
 			case Cabezera::DISCONNECT:
 				if (m[0] == '0')
 				{
@@ -234,8 +342,10 @@ int main()
 		{
 			c = Cabezera::DISCONNECT;
 			m = "";
-			Send(c, m, socket, server, clientSalt, ourID);
+			Send(c, m, socket, server, player.salt, player.id);
 		}
+
+		c = Cabezera::COUNT;
 	}
 
 	system("pause");

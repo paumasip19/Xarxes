@@ -1,7 +1,86 @@
-﻿  Source.cpp
-  Generating code
-  30 of 30 functions (100.0%) were compiled.
-    0 functions were new in current compilation
+﻿  Graphics.cpp
+d:\uni\3r\xarxes\xarxes\xarxesclientservidor\gameclient\graphics.h(30): warning C4244: '=': conversión de 'int' a 'T'; posible pérdida de datos
+          with
+          [
+              T=float
+          ]
+d:\uni\3r\xarxes\xarxes\xarxesclientservidor\gameclient\graphics.h(31): warning C4244: '=': conversión de 'int' a 'T'; posible pérdida de datos
+          with
+          [
+              T=float
+          ]
+d:\uni\3r\xarxes\xarxes\xarxesclientservidor\gameclient\graphics.h(32): warning C4244: '=': conversión de 'int' a 'T'; posible pérdida de datos
+          with
+          [
+              T=float
+          ]
+d:\uni\3r\xarxes\xarxes\xarxesclientservidor\gameclient\graphics.h(33): warning C4244: '=': conversión de 'int' a 'T'; posible pérdida de datos
+          with
+          [
+              T=float
+          ]
+d:\uni\3r\xarxes\xarxes\xarxesclientservidor\gameclient\graphics.h(41): warning C4244: 'inicializando': conversión de 'T' a 'int'; posible pérdida de datos
+          with
+          [
+              T=float
+          ]
+d:\uni\3r\xarxes\xarxes\xarxesclientservidor\gameclient\graphics.h(41): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+d:\uni\3r\xarxes\xarxes\xarxesclientservidor\gameclient\graphics.h(43): warning C4244: 'inicializando': conversión de 'T' a 'int'; posible pérdida de datos
+          with
+          [
+              T=float
+          ]
+d:\uni\3r\xarxes\xarxes\xarxesclientservidor\gameclient\graphics.h(43): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+d:\uni\3r\xarxes\xarxes\xarxesclientservidor\gameclient\graphics.h(45): warning C4244: 'argumento': conversión de 'int' a 'T'; posible pérdida de datos
+          with
+          [
+              T=float
+          ]
+d:\uni\3r\xarxes\xarxes\xarxesclientservidor\gameclient\graphics.cpp(129): warning C4267: 'inicializando': conversión de 'size_t' a 'int'; posible pérdida de datos
+  Source.cpp
+d:\uni\3r\xarxes\xarxes\xarxesclientservidor\gameclient\graphics.h(30): warning C4244: '=': conversión de 'int' a 'T'; posible pérdida de datos
+          with
+          [
+              T=float
+          ]
+d:\uni\3r\xarxes\xarxes\xarxesclientservidor\gameclient\graphics.h(31): warning C4244: '=': conversión de 'int' a 'T'; posible pérdida de datos
+          with
+          [
+              T=float
+          ]
+d:\uni\3r\xarxes\xarxes\xarxesclientservidor\gameclient\graphics.h(32): warning C4244: '=': conversión de 'int' a 'T'; posible pérdida de datos
+          with
+          [
+              T=float
+          ]
+d:\uni\3r\xarxes\xarxes\xarxesclientservidor\gameclient\graphics.h(33): warning C4244: '=': conversión de 'int' a 'T'; posible pérdida de datos
+          with
+          [
+              T=float
+          ]
+d:\uni\3r\xarxes\xarxes\xarxesclientservidor\gameclient\graphics.h(41): warning C4244: 'inicializando': conversión de 'T' a 'int'; posible pérdida de datos
+          with
+          [
+              T=float
+          ]
+d:\uni\3r\xarxes\xarxes\xarxesclientservidor\gameclient\graphics.h(41): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+d:\uni\3r\xarxes\xarxes\xarxesclientservidor\gameclient\graphics.h(43): warning C4244: 'inicializando': conversión de 'T' a 'int'; posible pérdida de datos
+          with
+          [
+              T=float
+          ]
+d:\uni\3r\xarxes\xarxes\xarxesclientservidor\gameclient\graphics.h(43): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+d:\uni\3r\xarxes\xarxes\xarxesclientservidor\gameclient\graphics.h(45): warning C4244: 'argumento': conversión de 'int' a 'T'; posible pérdida de datos
+          with
+          [
+              T=float
+          ]
+d:\uni\3r\xarxes\xarxes\xarxesclientservidor\gamelib\utilities.cpp(69): warning C4267: 'inicializando': conversión de 'size_t' a 'int'; posible pérdida de datos
+d:\uni\3r\xarxes\xarxes\xarxesclientservidor\gamelib\utilities.cpp(70): warning C4267: '=': conversión de 'size_t' a 'int'; posible pérdida de datos
+d:\uni\3r\xarxes\xarxes\xarxesclientservidor\gamelib\utilities.cpp(72): warning C4267: 'inicializando': conversión de 'size_t' a 'int'; posible pérdida de datos
+  Generando código
+  442 of 442 functions (100.0%) were compiled.
+    413 functions were new in current compilation
     0 functions had inline decision re-evaluated but remain unchanged
-  Finished generating code
-  GameClient.vcxproj -> C:\Users\Carmen\Downloads\Platilla_3Projects (1)\Platilla_3Projects\x64\Release\GameClient.exe
+  Generación de código finalizada
+  GameClient.vcxproj -> D:\Uni\3r\Xarxes\Xarxes\XarxesClientServidor\x64\Release\GameClient.exe
