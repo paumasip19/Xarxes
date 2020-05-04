@@ -9,7 +9,35 @@
 #include <ctime>
 #include <map>
 
-enum Cabezera { HELLO, CHALLENGE, CHALLENGER, WELCOME, DISCONNECT, NEWPLAYER, NEWPLAYERACK, COUNT };
+enum Cabezera { HELLO, CHALLENGE, CHALLENGER, WELCOME, DISCONNECT, NEWPLAYER, NEWPLAYERACK, PLAYERSTATUS, WORLDSTATUS, NEWBULLET, NEWBULLETACK, BULLETSTATUS, BULLETSWORLDSTATUS, COUNT };
+
+
+struct AccumCommand
+{
+	int idMove = 0;
+	float absoluteX = 0;
+	float absoluteY = 0;
+	bool lastCorrect = false;
+	int bulletID = -1;
+
+	AccumCommand() {}
+	AccumCommand(int id, float aX, float aY)
+	{
+		idMove = id;
+
+		absoluteX = aX;
+		absoluteY = aY;
+	}
+	AccumCommand(int id, float aX, float aY, int bID)
+	{
+		idMove = id;
+
+		absoluteX = aX;
+		absoluteY = aY;
+
+		bulletID = bID;
+	}
+};
 
 struct CriticalPackets
 {
@@ -19,7 +47,7 @@ struct CriticalPackets
 	clock_t checkTimer;
 	std::vector<float> RTTs;
 	std::map<int, clock_t> RTTTimer;
-	clock_t calculate;
+	clock_t calculate = clock();
 
 	void pushPacket(std::string p)
 	{
@@ -65,6 +93,48 @@ struct CriticalPackets
 	}
 };
 
+struct Bullet
+{
+	sf::RectangleShape shape;
+	int id;
+	std::vector<sf::Vector2f> lerpPositions;
+	float t = 0;
+	float step = 0.12f;
+	sf::Vector2f speed;
+	bool hasToDie = false;
+
+	CriticalPackets newBulletsCP;
+
+	std::vector<AccumCommand> bulletCommands;
+	int bulletCommandCounter = 0;
+
+	Bullet() 
+	{
+		shape.setSize(sf::Vector2f(20 / 2.5, 20 / 2.5));
+		shape.setOutlineColor(sf::Color::Black);
+		shape.setOutlineThickness(2.f);
+	}
+
+	Bullet(sf::Color c, sf::Vector2f p, int ID, sf::Vector2f s)
+	{
+		shape.setSize(sf::Vector2f(20 / 2.5, 20 / 2.5));
+		shape.setOutlineColor(sf::Color::Black);
+		shape.setOutlineThickness(2.f);
+
+		shape.setFillColor(c);
+		shape.setPosition(p);
+
+		id = ID;
+		speed = s;
+	}
+
+	void addMovementCommand(AccumCommand c)
+	{
+		bulletCommands.push_back(c);
+		bulletCommandCounter++;
+	}
+};
+
 struct cToValidate
 {
 	sf::IpAddress ip;
@@ -92,10 +162,20 @@ struct Client
 	int id;
 	std::string nickname;
 	sf::Color color;
+
 	clock_t incativityTimer;
+
 	sf::Vector2f position = sf::Vector2f(0, 0);
+	sf::Vector2f lastPos = sf::Vector2f(0, 0);
+
 	CriticalPackets newPlayersCP;
 
+	std::vector<AccumCommand> movingCommands;
+	int movingCommandCounter = 0;
+	clock_t commandTimer = clock();
+
+	std::vector<Bullet> bullets;
+	int bulletIndex = 0;
 
 	Client() {}
 	Client(cToValidate a)
@@ -106,9 +186,34 @@ struct Client
 		nickname = a.nickname;
 		incativityTimer = clock();
 	}
+
+	void addMovementCommand(AccumCommand c)
+	{
+		movingCommands.push_back(c);
+		movingCommandCounter++;
+	}
+
+	int getPositionInBullets(int bullID)
+	{
+		int it = -1;
+		for (int i = 0; i < bullets.size(); i++)
+		{
+			if (bullets[i].id == bullID)
+			{
+				it = i;
+				break;
+			}
+		}
+
+		return it;
+	}
+
+
 };
 
-int getIDinClients(int salt, std::map<int, Client> clients)
+
+
+inline int getIDinClients(int salt, std::map<int, Client> clients)
 {
 	std::map<int, Client>::iterator it = clients.begin();
 
@@ -123,7 +228,7 @@ int getIDinClients(int salt, std::map<int, Client> clients)
 	return -1;
 }
 
-int pendingValidation(std::vector<cToValidate> toValidate, Client client)
+inline int pendingValidation(std::vector<cToValidate> toValidate, Client client)
 {
 	for (int i = 0; i < toValidate.size(); i++)
 	{
@@ -136,7 +241,7 @@ int pendingValidation(std::vector<cToValidate> toValidate, Client client)
 	return -1;
 }
 
-void printPlayers(std::vector<cToValidate> clientsToValidate, std::map<int, Client> clients)
+inline void printPlayers(std::vector<cToValidate> clientsToValidate, std::map<int, Client> clients)
 {
 	system("cls");
 	std::cout << "Jugadores por validar" << std::endl;
@@ -155,6 +260,18 @@ void printPlayers(std::vector<cToValidate> clientsToValidate, std::map<int, Clie
 		std::cout << it->second.nickname << "  ID = " << std::to_string(it->first) << 
 			"  Color = " << std::to_string(it->second.color.r) << "  " << std::to_string(it->second.color.g) << "  " << std::to_string(it->second.color.b) << 
 			"  Position   X = " << std::to_string(it->second.position.x) << "  Y = "<< std::to_string(it->second.position.y) << std::endl;
+	}
+}
+
+inline bool inBounds(sf::Vector2f pos)
+{
+	if (pos.x >= 800 - 20 || pos.x <= 0 || pos.y >= 600 - 20 || pos.y <= 0)
+	{
+		return false;
+	}
+	else
+	{
+		return true;
 	}
 }
 

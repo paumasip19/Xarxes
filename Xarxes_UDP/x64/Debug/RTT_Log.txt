@@ -1,29 +1,1795 @@
-Pau RTT in 5088 : 0.000000
-Manu RTT in 8413 : 0.000000
-Xite RTT in 11805 : 0.000000
-Pau RTT in 15091 : 0.087500
-Manu RTT in 18555 : 5.005500
-Xite RTT in 21858 : 13.967000
-Pau RTT in 25209 : 0.000000
-Manu RTT in 28649 : 0.000000
-Xite RTT in 31912 : 0.000000
-Ciber RTT in 34751 : 0.000000
-Pau RTT in 35285 : 0.113000
-Manu RTT in 38675 : 0.203000
-Xite RTT in 42141 : 0.315000
-Ciber RTT in 44817 : 36.238998
-Pau RTT in 45302 : 0.000000
-Manu RTT in 48777 : 0.000000
-Xite RTT in 52220 : 0.000000
-Ciber RTT in 54938 : 0.000000
-Pau RTT in 55306 : 0.000000
-gjbj RTT in 58161 : 0.000000
-Manu RTT in 58829 : 0.308000
-Xite RTT in 62351 : 0.142000
-Pau RTT in 65338 : 0.431000
-Ciber RTT in 65339 : 0.546000
-gjbj RTT in 68197 : 59.875000
-Manu RTT in 68869 : 0.000000
-Xite RTT in 72471 : 0.000000
-Pau RTT in 75462 : 0.000000
-Ciber RTT in 75462 : 0.000000
+Pau RTT in 13550 : 0.009500Xite RTT in 17365 : 0.680000Manu RTT in 22563 : 0.691000Pau RTT in 23550 : 0.018500No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+p RTT in 32726 : 0.861000
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+p RTT in 81766 : 0.859000
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+p RTT in 44238 : 0.015000
+w RTT in 46556 : 1.127000
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+p RTT in 50355 : 0.013000
+s RTT in 58896 : 1.072000
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+a RTT in 15551 : 0.003000
+b RTT in 18210 : 1.055000
+No se han enviado paquetes
+Pau RTT in 15075 : 0.015000
+Manu RTT in 24435 : 1.303000
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+XIte RTT in 35485 : 0.011000
+Manu RTT in 37104 : 1.673000
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+Manu RTT in 14511 : 0.057000
+Xite RTT in 21888 : 1.358000
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+Xite RTT in 36453 : 1.152000
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+Manu RTT in 24047 : 0.002000
+Xite RTT in 32399 : 1.208000
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+a RTT in 31743 : 1.043000
+No se han enviado paquetes
+a RTT in 40686 : 1.062000
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+a RTT in 59513 : 1.075000
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+s RTT in 85374 : 1.122000
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+l RTT in 72623 : 1.173000
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+p RTT in 58288 : 1.039000
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+g RTT in 120926 : 1.006000
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+f RTT in 137364 : 1.060000
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+p RTT in 44869 : 0.012000
+ffss RTT in 49329 : 1.128000
+No se han enviado paquetes
+p RTT in 18374 : 0.002000
+s RTT in 24526 : 2.069000
+No se han enviado paquetes
+xite RTT in 19046 : 0.003000
+as RTT in 27022 : 1.586000
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+a RTT in 16714 : 0.016000
+b RTT in 24130 : 1.418000
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+a RTT in 20863 : 0.015000
+b RTT in 24460 : 1.478000
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+a RTT in 22387 : 0.967000
+b RTT in 25580 : 1.224000
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+a RTT in 29310 : 0.015000
+fsff RTT in 32744 : 1.455000
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+p RTT in 16431 : 0.009000
+s RTT in 21611 : 1.171000
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+p RTT in 16121 : 0.005000
+x RTT in 19889 : 1.285000
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+x RTT in 26153 : 1.314000
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+p RTT in 15080 : 0.040000
+x RTT in 21720 : 1.985000
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+p RTT in 13900 : 0.007000
+x RTT in 21580 : 1.308000
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+x RTT in 101580 : 0.017000
+p RTT in 103900 : 0.004000
+s RTT in 111313 : 1.563000
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+p RTT in 133900 : 0.013000
+s RTT in 141313 : 0.016000
+x RTT in 141580 : 0.009000
+fsf RTT in 143765 : 1.709000
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+pau RTT in 16695 : 0.019000
+s RTT in 25162 : 1.527000
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+l RTT in 30603 : 1.072000
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+d RTT in 44493 : 1.241000
+No se han enviado paquetes
+No se han enviado paquetes
+d RTT in 23808 : 0.966000
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+fas RTT in 74394 : 4.272000
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+d RTT in 102179 : 1.154000
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+sd RTT in 168729 : 1.112000
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+sad RTT in 29720 : 1.214000
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+sadasdsa RTT in 48640 : 1.153000
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+pau RTT in 14221 : 0.006000
+manu RTT in 17557 : 0.569500
+pau RTT in 24221 : 0.005000
+xite RTT in 25357 : 1.508000
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+xite RTT in 15335 : 0.046000
+manu RTT in 18306 : 1.345000
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+pau RTT in 26439 : 0.004000
+xite RTT in 35255 : 1.343000
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+pau RTT in 14443 : 0.126000
+manu RTT in 19735 : 1.186000
+No se han enviado paquetes
+No se han enviado paquetes
+Pau RTT in 14828 : 0.603000
+Xite RTT in 19059 : 1.186000
+No se han enviado paquetes
+pau RTT in 15752 : 0.810000
+xite RTT in 19438 : 1.097000
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+Pau RTT in 15740 : 0.009000
+Xite RTT in 18640 : 1.349000
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+p RTT in 15247 : 0.010000
+a RTT in 18720 : 1.194000
+p RTT in 14256 : 0.034000
+m RTT in 21265 : 1.687000
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+f RTT in 13393 : 0.013000
+F RTT in 19790 : 2.129000
+No se han enviado paquetes
+p RTT in 14348 : 0.011000
+f RTT in 16534 : 1.168000
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+p RTT in 19255 : 0.069000
+a RTT in 21928 : 1.463000
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+a RTT in 13336 : 0.002000
+s RTT in 16685 : 1.553000
+No se han enviado paquetes
+No se han enviado paquetes
+p RTT in 20884 : 0.607000
+a RTT in 22374 : 1.301000
+No se han enviado paquetes
+No se han enviado paquetes
+aa RTT in 14727 : 0.006000
+bb RTT in 17207 : 1.099000
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+s RTT in 13240 : 0.005000
+a RTT in 15568 : 1.071000
+No se han enviado paquetes
+No se han enviado paquetes
+a RTT in 12682 : 0.007000
+p RTT in 15511 : 1.013000
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+l RTT in 41437 : 0.955000
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+p RTT in 15774 : 0.004000
+j RTT in 25022 : 1.526000
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+p RTT in 29532 : 1.114000
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+p RTT in 32393 : 1.132000
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+Y RTT in 56338 : 1.262000
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+p RTT in 13241 : 0.005000
+h RTT in 21876 : 1.108000
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+x RTT in 14161 : 0.736000
+y RTT in 16812 : 0.874000
+No se han enviado paquetes
+No se han enviado paquetes
+x RTT in 34161 : 0.010000
+No se han enviado paquetes
+a RTT in 13684 : 0.004000
+j RTT in 19786 : 1.831000
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+a RTT in 13007 : 0.007000
+b RTT in 16006 : 0.911000
+No se han enviado paquetes
+No se han enviado paquetes
+a RTT in 10823 : 0.007000
+a RTT in 15864 : 0.002000
+s RTT in 18944 : 1.020000
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+a RTT in 13267 : 0.003000
+sd RTT in 19239 : 1.659000
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+a RTT in 10264 : 0.008000
+d RTT in 19461 : 1.020000
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+p RTT in 14856 : 0.007000
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+s RTT in 28052 : 0.549500
+d RTT in 30796 : 1.096000
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+s RTT in 10958 : 0.010000
+f RTT in 18869 : 1.053000
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+a RTT in 16820 : 0.004000
+fsf RTT in 25747 : 1.038000
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+a RTT in 14042 : 0.015000
+f RTT in 19612 : 1.943000
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+a RTT in 12835 : 0.011000
+sfs RTT in 17572 : 1.118000
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+a RTT in 15124 : 0.008000
+df RTT in 22610 : 1.048000
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+a RTT in 15564 : 0.009000
+b RTT in 21201 : 1.738000
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+as RTT in 16583 : 0.010000
+dss RTT in 25260 : 1.146000
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+a RTT in 12755 : 0.004000
+dsf RTT in 18678 : 1.811000
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+sdasd RTT in 14760 : 0.005000
+sdfsaf RTT in 20796 : 1.963000
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+a RTT in 14262 : 0.040000
+d RTT in 16174 : 1.020000
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+¤ RTT in 13402 : 0.015000
+d RTT in 16050 : 1.014000
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+p RTT in 14330 : 0.009000
+¤ RTT in 20143 : 1.720000
+No se han enviado paquetes
+No se han enviado paquetes
+asd RTT in 12949 : 0.011000
+sfsf RTT in 18669 : 1.883000
+dssf RTT in 14537 : 0.019000
+fsdsd RTT in 17404 : 1.020000
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+fsasf RTT in 53744 : 0.008000
+jjb RTT in 59056 : 1.224000
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+asds RTT in 16359 : 0.009000
+fsff RTT in 21521 : 1.014000
+No se han enviado paquetes
+h RTT in 16564 : 0.003000
+sfsfsf RTT in 22874 : 1.772000
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+Pau RTT in 16606 : 0.062000
+pa RTT in 18338 : 0.060000
+ds RTT in 22819 : 1.133000
+l RTT in 15340 : 0.055000
+k RTT in 23102 : 1.266000
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+ghgh RTT in 13345 : 0.003000
+asfsaf RTT in 19451 : 1.983000
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+huhsfa RTT in 13743 : 0.077000
+koj RTT in 21504 : 4.198000
+No se han enviado paquetes
+sfafasf RTT in 13938 : 0.009000
+fsafasff RTT in 17104 : 1.627000
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+asdsda RTT in 13561 : 0.058000
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+hi RTT in 10375 : 0.018000
+sfsff RTT in 17356 : 2.176000
+safsff RTT in 14033 : 0.076000
+sfsfsa RTT in 21618 : 4.752000
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+sfasafsf RTT in 13234 : 0.013000
+sasafsf RTT in 14895 : 0.016000
+No se han enviado paquetes
+No se han enviado paquetes
+fafsafs RTT in 33398 : 0.015000
+fsfsfaf RTT in 40692 : 1.559000
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+asdsads RTT in 28069 : 1.354000
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+safsfa RTT in 13949 : 0.041000
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+add RTT in 25588 : 1.405000
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+asadasd RTT in 23791 : 0.058000
+sadsadasda RTT in 25108 : 4.177000
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+adds RTT in 14384 : 0.051000
+nnda RTT in 22134 : 4.692000
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+iji RTT in 14819 : 0.021000
+afsaf RTT in 21524 : 4.333000
+No se han enviado paquetes
+kkas RTT in 15225 : 0.034000
+jiij RTT in 24203 : 4.475000
+No se han enviado paquetes
+safsf RTT in 13350 : 0.034000

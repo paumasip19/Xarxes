@@ -1,8 +1,8 @@
 ﻿  Servidor.cpp
 d:\uni\3r\xarxes\xarxes\xarxes_udp\gameserver\servidor.cpp(122): warning C4244: 'argumento': conversión de 'double' a 'int'; posible pérdida de datos
-d:\uni\3r\xarxes\xarxes\xarxes_udp\gameserver\servidor.cpp(212): warning C4244: 'argumento': conversión de 'time_t' a 'unsigned int'; posible pérdida de datos
-d:\uni\3r\xarxes\xarxes\xarxes_udp\gameserver\servidor.cpp(246): warning C4244: 'argumento': conversión de 'double' a 'int'; posible pérdida de datos
-d:\uni\3r\xarxes\xarxes\xarxes_udp\gameserver\servidor.cpp(300): warning C4244: 'argumento': conversión de 'int' a 'T'; posible pérdida de datos
+d:\uni\3r\xarxes\xarxes\xarxes_udp\gameserver\servidor.cpp(341): warning C4244: 'argumento': conversión de 'time_t' a 'unsigned int'; posible pérdida de datos
+d:\uni\3r\xarxes\xarxes\xarxes_udp\gameserver\servidor.cpp(387): warning C4244: 'argumento': conversión de 'double' a 'int'; posible pérdida de datos
+d:\uni\3r\xarxes\xarxes\xarxes_udp\gameserver\servidor.cpp(441): warning C4244: 'argumento': conversión de 'int' a 'T'; posible pérdida de datos
           with
           [
               T=float
