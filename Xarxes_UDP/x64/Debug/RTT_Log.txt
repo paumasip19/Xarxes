@@ -1793,3 +1793,19 @@ kkas RTT in 15225 : 0.034000
 jiij RTT in 24203 : 4.475000
 No se han enviado paquetes
 safsf RTT in 13350 : 0.034000
+safsf RTT in 13962 : 0.036000
+sfsfsfa RTT in 22103 : 4.975000
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes
+sfsfsfa RTT in 42105 : 0.019000
+safsf RTT in 43968 : 0.027000
+sfsff RTT in 49553 : 2.187000
+No se han enviado paquetes
+No se han enviado paquetes
+sasaf RTT in 14699 : 0.021500
+safsfffsf RTT in 18306 : 0.670000
+sfsfafsa RTT in 22651 : 3.152000
+No se han enviado paquetes
+No se han enviado paquetes
+No se han enviado paquetes

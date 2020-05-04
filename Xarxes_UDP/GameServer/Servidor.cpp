@@ -661,7 +661,7 @@ int main()
 
 			c = Cabezera::COUNT;
 
-			printBullets();
+			//printBullets();
 
 			reSendCriticalPackets(c, socket, tempClient, serverSalt);
 			calculateRTTs();

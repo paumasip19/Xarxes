@@ -1,4 +1,5 @@
-﻿  Client.cpp
+﻿C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\VCTargets\Microsoft.CppClean.targets(76,5): warning : Acceso denegado a la ruta de acceso 'd:\uni\3r\xarxes\xarxes\xarxes_udp\x64\debug\gameclient.exe'.
+  Client.cpp
 d:\uni\3r\xarxes\xarxes\xarxes_udp\gameclient\client.cpp(247): warning C4244: 'argumento': conversión de 'time_t' a 'unsigned int'; posible pérdida de datos
 d:\uni\3r\xarxes\xarxes\xarxes_udp\gameclient\client.cpp(251): warning C4305: 'inicializando': truncamiento de 'double' a 'float'
 d:\uni\3r\xarxes\xarxes\xarxes_udp\gameclient\client.cpp(340): warning C4244: '=': conversión de 'int' a 'T'; posible pérdida de datos
